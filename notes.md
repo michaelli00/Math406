@@ -8,21 +8,38 @@ header-includes:
 output: pdf_document
 ---
 
+&nbsp;
+
+Notes are based off of *An Introduction to Number Theory with Cryptography* (Second edition), by Washington
+and Kraft
+
+\newpage
+
 # Divisibility
 
 ## Divisibility
 
-**Definition 2.1**: Given $a, d \in Z$ and $d \neq 0$, we say $d$ **divides** $a$ if $\exists c \in Z$ such that $a = cd$
+**Definition 2.1**: Given $a, d \in Z$, for $d \neq 0$, $d$ **divides** $a$ if $\exists c \in Z$ such that $a = cd$
+
+&nbsp;
 
 **Proposition 2.2**: Let $a, b, c \in Z$. If $a \mid b$ and $b \mid c \implies a \mid c$
 
-&nbsp; *Proof*: $b = ea$ and $c = fb \implies c = (fe)a$
+*Proof*: $b = ea$ and $c = fb \implies c = (fe)a$
+
+&nbsp;
 
 **Proposition 2.3**: Let $a, b, d, x, y \in Z$. If $d \mid a$ and $d \mid b \implies d \mid ax + by$
 
-&nbsp; *Proof*: $a = md$ and $b = nd \implies ax + by = d(mx + ny)$
+*Proof*: $a = md$ and $b = nd \implies ax + by = d(mx + ny)$
 
-&nbsp; **UPSHOT**: $d \mid a$ and $d \mid b \implies d$ divides any linear combination of $a, b$
+**UPSHOT**: Every common divisor of both $a, b$ divides any linear combination of $a, b$
+
+&nbsp;
+
+**Corollary 2.4**: Let $a, b, d \in Z$. If $d \mid a$ and $d \mid b$, then $d \mid a + b$ and $d \mid a - b$
+
+*Proof*: Apply Proposition 2.3 using $x = 1, y = 1$, and $x = 1, y = -1$, respectively
 
 ## Euclid's Theorem
 
@@ -30,55 +47,59 @@ output: pdf_document
 
 **Composite**: Integer $n \geq 2$ not prime
 
+&nbsp;
+
 **Lemma 2.6**: Every integer greater than $1$ is prime or divisible by a prime
 
-&nbsp; *Proof*: If $n$ is NOT prime, then it is divisible by some $a_1 \in Z$ where $1 < a_1 < n$
+*Proof*: If $n$ is NOT prime, then it is divisible by some $a_1 \in Z$ where $1 < a_1 < n$
 
-&nbsp; If $a_1$ is prime, we are done
+If $a_1$ is prime, we are done
 
-&nbsp; Otherwise $a_1$ is divisible by some $a_2 \in Z$ where $1 < a_2 < a_1 \implies a_2 \mid n$
+Otherwise $a_1$ is divisible by some $a_2 \in Z$ where $1 < a_2 < a_1 \implies a_2 \mid n$
 
-&nbsp; This creates a decreasing sequence of positive integers, which by the Well Ordering Principle, must have a smallest element $a_m$
+This creates a decreasing sequence of positive integers, which by the Well Ordering Principle, must have a smallest element $a_m$
 
-&nbsp; So either some $a_i$ is prime and divides $n$ or we stop at $a_m$, which is prime. Thus $n$ is divisible by a prime
+So either some $a_i$ is prime and divides $n$ or we stop at $a_m$, which is prime. Thus $n$ is divisible by a prime
+
+&nbsp;
 
 **Euclid's Theorem**: there are an infinite number of primes
 
-&nbsp; *Proof*: Assume there are a finite number of primes $2, 3, 5, \ldots, p_n$
+*Proof*: Assume by contradiction that there are a finite number of primes $2, 3, 5, \ldots, p_n$
 
-&nbsp; Let $N = (2 * 3 * 5 * \cdots * p_n) + 1$
+Let $N = (2 * 3 * 5 * \cdots * p_n) + 1$
 
-&nbsp; Since $N > p_n$ it is composite and thus is divisible by some $p_i$ in the list of primes
+Since $N > p_n$, it is composite and thus is divisible by some $p_i$ in the list of primes
 
-&nbsp; Then we have $p_i \mid 2 * 3 * 5 * \cdots * p_n$ and $p_i \mid N \implies p_i \mid N - (2 * 3 * 5 * \cdots * p_n) \implies p_i \mid 1$ contradiction since $p_i > 1$
+Then we have $p_i \mid 2 * 3 * 5 * \cdots * p_n$ and $p_i \mid N \implies p_i \mid N - (2 * 3 * 5 * \cdots * p_n) \implies p_i \mid 1$ contradiction since $p_i > 1$
 
-&nbsp; Thus there are an infinite number of primes
+Thus there are an infinite number of primes
 
 ## The Sieve of Eratosthenes
 
 **Proposition 2.7**: If $n$ is composite then $n$ has a prime factor $p \leq \sqrt{n}$
 
-&nbsp; *Proof*: $n = ab$ where $1 < a \leq b < n \implies a^2 \leq ab = n \implies a \leq \sqrt{n}$
+*Proof*: $n = ab$ where $1 < a \leq b < n \implies a^2 \leq ab = n \implies a \leq \sqrt{n}$
 
-&nbsp; Let $p$ be a prime divisor of $a \implies p \leq a \leq \sqrt{n}$
+Let $p$ be a prime divisor of $a \implies p \leq a \leq \sqrt{n}$
 
 ## The Division Algorithm
 
 **Division Algorithm**: Let $a, b \in Z$ with $b > 0$. Then $\exists ! q, r$ such that $a = bq + r$ with $0 \leq r < b$
 
-&nbsp; *Proof*: Let $q$ be the largest integers $\leq a /b$ such that $q \leq a/b < q + 1$
+*Proof*: Let $q$ be the largest integers $\leq a /b$ such that $q \leq a/b < q + 1$
 
-&nbsp; Then we have $bq \leq a < bq + b \implies 0 \leq a - bq < b$
+Then we have $bq \leq a < bq + b \implies 0 \leq a - bq < b$
 
-&nbsp; Setting $r = a - bq$ we see that $0 \leq r < b$ and we have $a = bq + r$ so EXISTENCE is done
+Setting $r = a - bq$ we see that $0 \leq r < b$ and we have $a = bq + r$ so EXISTENCE is done
 
-&nbsp; To show UNIQUENESS let $a = bq + r = bq_1 + r_1$ for $0 \leq r, r_1 < b$
+To show UNIQUENESS let $a = bq + r = bq_1 + r_1$ for $0 \leq r, r_1 < b$
 
-&nbsp; Then we have $b(q - q_1) = r_1 - r$. Since LHS is a mutliple of $b$, RHS is also a multiple of $b$
+Then we have $b(q - q_1) = r_1 - r$. Since LHS is a mutliple of $b$, RHS is also a multiple of $b$
 
-&nbsp; But $0 \leq r, r_1 < b \implies -b < r_1 - r < b \implies r_1 - r = 0$ $b= 0$ is the only multiple of $b$ that satisfies this inequality
+But $0 \leq r, r_1 < b \implies -b < r_1 - r < b \implies r_1 - r = 0$ since $b= 0$ is the only multiple of $b$ that satisfies this inequality
 
-&nbsp; Thus $r_1 = r$ and since $b \neq 0 \implies b(q - q_1) = 0 \implies q = q_1$. So $q, r$ are UNIQUE
+Thus $r_1 = r$ and since $b \neq 0 \implies b(q - q_1) = 0 \implies q = q_1$. So $q, r$ are UNIQUE
 
 ## The Greatest Common Divisor
 
@@ -86,25 +107,31 @@ output: pdf_document
 
 - By definition, we have $\gcd(a, 0) = a$
 
+&nbsp;
+
 **Proposition 2.10**: Let $a, b \in Z$ and $d = \gcd(a, b)$. Then $\gcd(\frac{a}{d}, \frac{b}{d}) = 1$
 
-&nbsp; *Proof*: Let $c = \gcd(a/d, b/d)$. Then $c \mid (a/d)$ and $c \mid (b/d)$
+*Proof*: Let $c = \gcd(a/d, b/d)$. Then $c \mid (a/d)$ and $c \mid (b/d)$
 
-&nbsp; Thus $a = cdk_1$ and $b = cdk_2$ so $cd$ is a common divisor of $a, b$
+Thus $a = cdk_1$ and $b = cdk_2$ so $cd$ is a common divisor of $a, b$
 
-&nbsp; Since $d$ is the greatest common divisor of $a, b$ we must have $c = 1$
+Since $d$ is the greatest common divisor of $a, b$ we must have $c = 1$
+
+&nbsp;
 
 **Proposition 2.11**: If $a, b \in Z$, not both $0$, and $e \in Z^+$. Then $\gcd(ea, eb) = e * \gcd(a, b)$
 
-&nbsp; *Proof*: Let $d = \gcd(ea, eb)$, we show that $d = e * \gcd(a, b)$
+*Proof*: Let $d = \gcd(ea, eb)$, we show that $d = e * \gcd(a, b)$
 
-&nbsp; $\gcd(a, b) = ax + by \implies e \gcd(a, b) = eax + eby$. If $d$ is a common divisor of $ea$ and $eb$, then $d \mid e * \gcd(a, b)$
+$\gcd(a, b) = ax + by \implies e \gcd(a, b) = eax + eby$. If $d$ is a common divisor of $ea$ and $eb$, then $d \mid e * \gcd(a, b)$
 
-&nbsp; Thus $d \leq e \gcd (a, b)$. But since $e \gcd(a, b)$ is a common divisor of $ea, eb$, it is the $\gcd$ we desire
+Thus $d \leq e \gcd (a, b)$. But since $e \gcd(a, b)$ is a common divisor of $ea, eb$, it is the $\gcd$ we desire
+
+&nbsp;
 
 Various ways to find $\gcd(a, b)$:
 
-1. List all prime factors of $a, b$ and take the largest factor. 
+1. List all prime factors of $a, b$ and take the largest factor.
 
     **Example**: $84 = 2 *2 * 3 * 7$ and $264 = 2 * 2 * 2 * 3 * 11 \implies \gcd(84, 264) = 2 * 2 *3 = 12$
 
@@ -119,36 +146,40 @@ Various ways to find $\gcd(a, b)$:
 ## The Euclidean Algorithm
 
 **Euclidean Algorithm**: Let $a, b \in Z$ with $a \geq 0, b > 0$. Then we have
-
-$$a = q_1 b + r_1 \quad \quad 0 < r_1 < b$$
-$$b = q_2 r_1 + r_2 \quad \quad 0 < r_2 < r_1$$
-$$r_1 = q_3 r_2 + r_3 \quad \quad 0 < r_3 < r_2$$
-$$\ldots$$
-$$r_{n-3} = q_{n-1} r_{n-2} + r_{n-1} \quad \quad 0 < r_{n-1} < r_{n-2}$$
-$$r_{n-2} = q_n r_{n-1} + 0$$
+\begin{align*}
+a &= q_1 b + r_1 \quad \quad 0 < r_1 < b \\
+b &= q_2 r_1 + r_2 \quad \quad 0 < r_2 < r_1 \\
+r_1 &= q_3 r_2 + r_3 \quad \quad 0 < r_3 < r_2 \\
+&\ldots \\
+r_{n-3} &= q_{n-1} r_{n-2} + r_{n-1} \quad \quad 0 < r_{n-1} < r_{n-2} \\
+r_{n-2} &= q_n r_{n-1} + 0
+\end{align*}
 
 Where $r_{n-1} = \gcd(a, b)$
 
-&nbsp; *Proof*: $r_{n-1} \mid r_{n-2}, r_{n-1} \mid r_{n-3}, \ldots, r \mid b, r \mid a$ so cleary $r_{n-1}$ is a common factor of $a, b$
+*Proof*: $r_{n-1} \mid r_{n-2}, r_{n-1} \mid r_{n-3}, \ldots, r_{n-1} \mid b, r_{n-1} \mid a$ so cleary $r_{n-1}$ is a common factor of $a, b$
 
-&nbsp; To show that $r_{n-1}$ is the largest common factor, let $d$ be an arbitrary common divisor of $a, b$
+To show that $r_{n-1}$ is the largest common factor, let $d$ be an arbitrary common divisor of $a, b$
 
-&nbsp; From the first line, we see that $d \mid r_1$. From the second line, $d \mid r_2$. This continues until $d \mid r_{n-1}$
+From the first line, we see that $d \mid r_1$. From the second line, $d \mid r_2$. This continues until $d \mid r_{n-1}$
 
-&nbsp; Thus $d \leq r_{n-1}$ which means that $r_{n-1}$ is the largest divisor and $\gcd(a, b) = r_{n-1}$
+Thus $d \leq r_{n-1}$ which means that $r_{n-1}$ is the largest divisor and $\gcd(a, b) = r_{n-1}$
 
 **NOTE**: each common divisor of $a, b$ also divides $\gcd(a, b)$
 
 ### The Extended Euclidean Algorithm
 
-**Extended Euclidean Algorithm**: $\gcd(a, b)$ can be expressed as a linear combination of $a, b$. Example $\gcd(456, 123)$
+**Extended Euclidean Algorithm**: $\gcd(a, b)$ can be expressed as a linear combination of $a, b$.
 
-$$456 = 3 * 123 + 87$$
-$$123 = 1 * 87 + 36$$
-$$87 = 2 * 36 + 15$$
-$$36 = 2 * 15 + 6$$
-$$15 = 2 * 6 + 3$$
-$$6 = 2 * 3$$
+**Example**: $\gcd(456, 123)$
+\begin{align*}
+456 &= 3 * 123 + 87 \\
+123 &= 1 * 87 + 36 \\
+87 &= 2 * 36 + 15 \\
+36 &= 2 * 15 + 6\\
+15 &= 2 * 6 + 3\\
+6 &= 2 * 3
+\end{align*}
 
 Using the values above, we can create a table
 
@@ -164,81 +195,124 @@ Using the values above, we can create a table
 
 Thus $3 = 456 * 17 - 123 * 63$
 
-**Theorem 2.12**: Let $a, b \in Z$ with one non-zero. Then there exists $x, y \in Z$ such that $\gcd(a, b) = ax + by$
+&nbsp;
 
-**Theorem 2.13**: Let $n \geq 2$ and $a_1, \ldots, a_n \in Z$ with at least one nonzero $a_i$. Then $\exists x_1, \ldots, x_n \in Z$ such that 
+**Theorem 2.12**: Let $a, b \in Z$ with at least one non-zero. Then there exists $x, y \in Z$ such that $\gcd(a, b) = ax + by$
 
+*Proof*: Let $S$ be a set of integers that can be written in the form $ax + by$ for $x, y \in Z$
+
+Since $a, b, -a, -b \in S$, clearly $S$ contains at least one positive integer.
+
+Using the Well-Ordering Principle, let $d$ be the smallest positive integer in $S$. Thus $d = ax_0 + by_0$ for $x_0, y_0 \in Z$
+
+We show that $d$ is a common divisor of $a, b$
+$$a = dq + r \implies r = a - dq = a - (ax_0 + by_0)q = a(1- x_0 q) + b(-y_0 q)$$
+Thus $r \in S$. But since $d$ is the smallest positive element of $S$ and $0 \leq r < d$, we must have $r = 0$
+
+Thus $d \mid a$. Similarly, $d \mid b$. Thus $d$ is a common divisor of $a, b$
+
+&nbsp;
+
+**Theorem 2.13**: Let $n \geq 2$ and $a_1, \ldots, a_n \in Z$ with at least one nonzero $a_i$. Then $\exists x_1, \ldots, x_n \in Z$ such that
 $$\gcd(a_1, \ldots, a_n) = a_1 x_1 + \cdots + a_n x_n$$
 
-&nbsp; *Proof by Induction*: By Theorem 2.12, the statement holds for $n = 2$
+*Proof by Induction*: By Theorem 2.12, the statement holds for $n = 2$
 
-&nbsp; IH: assume the statement holds for $n = k$. $\gcd(a_1, \ldots, a_k) = a_1 x_1 + \cdots + a_k x_k$
+IH: assume the statement holds for $n = k$. $\gcd(a_1, \ldots, a_k) = a_1 x_1 + \cdots + a_k x_k$
 
-&nbsp; IS: Note that $\gcd(a_1, \ldots, a_{k+1}) = \gcd(\gcd(a_1, \ldots, a_k), a_{k+1})$
+IS: Note that $\gcd(a_1, \ldots, a_{k+1}) = \gcd(\gcd(a_1, \ldots, a_k), a_{k+1})$
 
-&nbsp; Apply Theorem 2.12 to $a_1 x_1 + \cdots + a_k x_k$ and $a_{k+1}$ so $\gcd(a_1, \ldots, a_{k+1}) = (a_1 x_1 + \cdots + a_k x_k)y + a_{k+1} x$
+Apply Theorem 2.12 to $a_1 x_1 + \cdots + a_k x_k$ and $a_{k+1}$ so $\gcd(a_1, \ldots, a_{k+1}) = (a_1 x_1 + \cdots + a_k x_k)y + a_{k+1} x$
 
-&nbsp; But then this satisfies the statement since if we set $y_i = yx_i$ for $1 \leq i \leq k$ and $y_{k+1} = x$
+But then this satisfies the statement since if we set $y_i = yx_i$ for $1 \leq i \leq k$ and $y_{k+1} = x$
 
-&nbsp; Thus by Induction, $\gcd(a_1, \ldots, a_n) = a_1 x_1 + \cdots + a_n x_n$
+Thus by Induction, $\gcd(a_1, \ldots, a_n) = a_1 x_1 + \cdots + a_n x_n$
+
+&nbsp;
 
 **Corollary 2.14**: If $e$ is a common divisor of $a, b$ then $e \mid \gcd(a, b)$
 
-&nbsp; *Proof*: $e \mid a$ and $e \mid b \implies e$ divides any linear combination of $a, b \implies e \mid \gcd(a, b)$
+*Proof*: $e \mid a$ and $e \mid b \implies e$ divides any linear combination of $a, b \implies e \mid \gcd(a, b) = ax + by$
+
+&nbsp;
 
 **Proposition 2.15**: Let $a, b, c \in Z$ with $\gcd(a, c) = \gcd(b, c) = 1$. Then $\gcd(ab, c) = 1$
 
-&nbsp; *Proof*: $\gcd(a, c) = 1 \implies ax_1 + cy_1 = 1$
+*Proof*: $\gcd(a, c) = 1 \implies ax_1 + cy_1 = 1$
 
-&nbsp; $\gcd(b, c) = 1 \implies bx_2 + cy_2 = 1$
+$\gcd(b, c) = 1 \implies bx_2 + cy_2 = 1$
 
-&nbsp; Multiplying these 2 equations we get $1 = (ab)(x_1 x_2) + (c)(by_1 x_2 + ax_1 y_2 + cy_1 y_2)$
+Multiplying these 2 equations we get $1 = (ab)(x_1 x_2) + (c)(by_1 x_2 + ax_1 y_2 + cy_1 y_2)$
 
-&nbsp; Thus common divisor of $ab$ and $c$ must divide $1 \implies \gcd(ab, c) = 1$
+Thus by Proposition 2.3, any common divisor of $ab$ and $c$ must divide $1 \implies \gcd(ab, c) = 1$
+
+&nbsp;
 
 **Proposition 2.16**: Let $a, b,c \in Z$ with $a \neq 0$ and $\gcd(a, b) = 1$. Then $a \mid bc \implies a \mid c$
 
-&nbsp; *Proof*: By Theorem 2.12, $1 = ax + by \implies c = acx + bcy$
+*Proof*: By Theorem 2.12, $1 = ax + by \implies c = acx + bcy$
 
-&nbsp; Since $a \mid a$ and $a \mid bc \implies a \mid c$
+Thus by Proposition 2.3, $a \mid a$ and $a \mid bc \implies a \mid c$
+
+&nbsp;
+
 
 **Proposition 2.17**: Let $a, b, c \in Z$ with $a, b$ nonzero and $\gcd(a, b) = 1$. Then if $a \mid c$ and $b \mid c \implies ab \mid c$
 
-&nbsp; *Proof*: By Theorem 2.12, $1 = ax + by \implies c = acx + bcy$
+*Proof*: By Theorem 2.12, $1 = ax + by \implies c = acx + bcy$
 
-&nbsp; $b \mid c \implies ab \mid ac$
+$b \mid c \implies ab \mid ac$
 
-&nbsp; $a \mid c \implies ab \mid bc$
+$a \mid c \implies ba \mid bc$
 
-&nbsp; Since $c$ is a linear combination of $ac$ and $bc$, we must have that $ab \mid c$
+Since $c$ is a linear combination of $ac$ and $bc$, by Proposition 2.3, we must have that $ab \mid c$
+
+## Other Bases
+
+We can convert a number from base 10 to any other base using the Division Algorithm
+
+**Example**: Convert $21963_{10}$ to base $8$
+\begin{align*}
+21963 &= 2745 * 8 + 3 \\
+2745 &= 343 * 8 + 1\\
+343 &= 42 *8 + 7\\
+42 &- 5 *8 + 2 \\
+5 &= 0*8 + 5
+\end{align*}
+Thus $21963_{10} = 52713_8$ This is because
+$$5 *8^4 + 2 * 8^3 + 7*8^2 + 1 *8 + 3 = 52713_8$$
 
 ## Fermat and Mersenne Numbers
 
 **Mersenne Numbers**: $M_n = 2^n - 1$ for prime $n$. Thought to generate prime numbers, but doesn't always work (e.g. $n = 11$ results in a composite number)
 
+&nbsp;
+
 **Proposition 2.18**: If $n$ is composite, then $2^{n}-1$ is composite
 
-&nbsp; *Proof*: Recall that $x^k - 1 = (x - 1) (x^{k-1} + x^{k-2} + \cdots + x + 1)$
+*Proof*: Recall that $x^k - 1 = (x - 1) (x^{k-1} + x^{k-2} + \cdots + x + 1)$
 
-&nbsp; Since $n$ is composite, $n = ab$. Let $x = 2^a$ and $k = b$
+Since $n$ is composite, $n = ab$. Let $x = 2^a$ and $k = b$
 
-&nbsp; Then $2^{ab} - 1 = (2^a - 1)(2^{a(b-1)} + \cdots + 2^a + 1)$
+Then $2^{ab} - 1 = (2^a - 1)(2^{a(b-1)} + \cdots + 2^a + 1)$
 
-&nbsp; $1 < a < n \implies 1 < 2^a - 1 < 2^n - 1$ so $2^{a}-1$ is a nontrivial factor and $2^n - 1$ is composite
+$1 < a < n \implies 1 < 2^a - 1 < 2^n - 1$ so $2^{a}-1$ is a nontrivial factor and $2^n - 1$ is composite
 
 &nbsp;
 
 **Fermat Numbers**: $F_n = 2^{2^n} + 1$. Thought to generate prime numbers, but doesn't always work (e.g. $n = 5$ results in a composite number)
 
+&nbsp;
+
 **Proposition 2.19**: If $m > 1$ is not a power of $2$ then $2^m + 1$ is composite
 
-&nbsp; *Proof*: Recall that $k$ is odd then $x^k + 1 = (x + 1)(x^{k-1} - x^{k-2} + x^{k-3} - \cdots - x + 1)$
+*Proof*: Recall that $k$ is odd then $x^k + 1 = (x + 1)(x^{k-1} - x^{k-2} + x^{k-3} - \cdots - x + 1)$
 
-&nbsp; Since $m$ is not a power of $2$ it has a nontrivial odd factor $a \geq 3$, so $m = ab$. Let $k = a$ and $x = 2^b$
+Since $m$ is not a power of $2$ it has a nontrivial odd factor $a \geq 3$, so $m = ab$. Let $k = a$ and $x = 2^b$
 
-&nbsp; Then $2^{ab} + 1 = (2^b + 1)(2^{b(a-1)} - 2^{b(a-2)} + \cdots - 2^b + 1)$
+Then $2^{ab} + 1 = (2^b + 1)(2^{b(a-1)} - 2^{b(a-2)} + \cdots - 2^b + 1)$
 
-&nbsp; $1 \leq b < m \implies 1 < 2^b + 1 < 2^m + 1$ so $2^{b}+1$ is a nontrivial factor and $2^n + 1$ is composite
+$1 \leq b < m \implies 1 < 2^b + 1 < 2^m + 1$ so $2^{b}+1$ is a nontrivial factor and $2^n + 1$ is composite
 
 # Linear Diophantine Equation
 
@@ -249,7 +323,6 @@ We look for solutions to $ax + by = c$ for $a, b, c \in Z$
 **Theorem 3.1**: Let $a, b, c \in Z$ where at least one $a, b$ is nonzero. Then $ax + by = c$ has a solution if and only if $\gcd(a, b) \mid c$
 
 Furthermore, if it has one solution $(x_0, y_0)$, then there are an infinite number of solutions of the form
-
 $$x = x_0 + \frac{b}{\gcd(a, b)}t \quad \quad y = y_0 - \frac{a}{\gcd(a, b)}t \quad \quad t \in Z$$
 
 &nbsp; *Proof*: Let $d = \gcd(a, b)$
@@ -282,10 +355,9 @@ $$x = x_0 + \frac{b}{\gcd(a, b)}t \quad \quad y = y_0 - \frac{a}{\gcd(a, b)}t \q
 
 &nbsp; Furthermore, $\frac{a}{d}(u - x_0) = \frac{b}{d}(\frac{a}{d}t) \implies u = x_0 + \frac{b}{d}t$
 
-**Corollary 3.2**: Let $a, b, c \in Z$ with at least one $a, b$ nonzero. If $\gcd(a, b) = 1$ then $ax + by = c$ always has infinite number of solutions
+**Corollary 3.2**: Let $a, b, c \in Z$ with at least one $a, b$ nonzero. If $\gcd(a, b) = 1$ then $ax + by = c$ has infinite number of solutions
 
 If $(x_0, y_0)$ is a particular solution, then all solutions are of the form
-
 $$x = x_0 + bt \quad \quad y= y_0 - at \quad \quad t \in Z$$
 
 **General Steps to Solve Linear Diophantine Equation**:
@@ -367,7 +439,6 @@ $$x = x_0 + bt \quad \quad y= y_0 - at \quad \quad t \in Z$$
 &nbsp; *Proof*: Lemma 4.3 shows that any integer $> 1$ can be written as a product of primes
 
 &nbsp; For uniqueness, suppose that there are $2$ ways of factoring an integer. Let $n$ be the smallest of these integers
-
 $$n = p_1 p_2 \cdots p_r = q_1 q_2 \cdots q_s$$
 
 &nbsp; $p_1 \mid$ LHS $\implies p_1 \mid$ RHS $\implies p_1 \mid q_i$
@@ -406,7 +477,7 @@ $$n = p_1 p_2 \cdots p_r = q_1 q_2 \cdots q_s$$
 
 **Proposition 4.7**: Let $n \in Z^{+}$. Then there exists $r \in Z, r \geq 1$ and a squarefree integer $s \geq 1$ such that $n = r^2s$
 
-&nbsp; *Proof*: Let $n = p_1^{a_1} p_2^{a_2} \cdots$. 
+&nbsp; *Proof*: Let $n = p_1^{a_1} p_2^{a_2} \cdots$.
 
 &nbsp; If $a_i$ is even, write it as $a_i = 2b_i$. Otherwise write $a_i = 2b_i + 1$
 
@@ -522,7 +593,7 @@ $$a = n^2 - m^2 \quad \quad b = 2mn \quad \quad c = m^2 + n^2$$
 
 &nbsp; Thus $a^2 + b^2$ is not a multiple of 4 so by Lemma 5.7, $a^2 + b^2$ cannot be a square. Thus at least one of $a, b$ is even
 
-&nbsp; Suppose by contradiction that both $a, b$ are even. Then $c^2 + a^2 + b^2$ is even so $c$ is even. 
+&nbsp; Suppose by contradiction that both $a, b$ are even. Then $c^2 + a^2 + b^2$ is even so $c$ is even.
 
 &nbsp; But then $2$ is common divisor of $a, b, c$ but we have $\gcd(a, b, c) = 1$. Contradiction
 
@@ -610,7 +681,7 @@ $$b = \lfloor \frac{n}{p} \rfloor + \lfloor \frac{n}{p^2} \rfloor + \cdots$$
 
 ## Definitions and Examples
 
-**Congruence**: $a \equiv b \pmod{m}$ if $a - b$ is a multiple of $m$ 
+**Congruence**: $a \equiv b \pmod{m}$ if $a - b$ is a multiple of $m$
 
 **Proposition 6.2**: $a \equiv b \pmod{m} \iff a = b + km$ for some $k \in Z$
 
@@ -630,13 +701,13 @@ Looking at integers mod $m$, we get $m$ **congruent classes**. Each integer is o
 - $a \equiv b \pmod{m} \implies b \equiv a \pmod{m}$
 - $a \equiv c \pmod{m}$ and $b \equiv c \pmod{m} \implies a \equiv c \pmod{m}$
 
-&nbsp; *Proof*: 
+&nbsp; *Proof*:
 
 - $a = a + 0 * m \implies a \equiv a \pmod{m}$
 - $a \equiv b \pmod{m} \implies a = b + km \implies b = a + (-k)m \implies b \equiv a$
 - $a - c = (a - b) + (b - c) = (k_1 + k_2)m  \implies a \equiv c \pmod{m}$
 
-**Proposition 6.5**: Let $a, b, c, d \in Z$ and $m \in Z^{+}$. If $a \equiv b \pmod{m}$ and $c \equiv d \pmod{m}$
+**Proposition 6.5**: Let $a, b, c, d \in Z$ and $m \in Z^{+}$. If $a \equiv b \pmod{m}$ and $c \equiv d \pmod{m}$ then
 
 - $a + c \equiv b + d \pmod{m}$
 - $a - c \equiv b - d \pmod{m}$
@@ -652,7 +723,7 @@ Looking at integers mod $m$, we get $m$ **congruent classes**. Each integer is o
 
 &nbsp; *Proof*: By the previous proposition, $a \equiv b \pmod{m} \implies a^2 \equiv b^2 \pmod{m}$. Repeated multiplication yields $a^n \equiv b^n \pmod{n}$
 
-**Proposition 6.7**: $ac \equiv bc \pmod{m}$ and $\gcd(c, m)  = 1 \implies a \equiv b \pmod{c}$
+**Proposition 6.7**: $ac \equiv bc \pmod{m}$ and $\gcd(c, m)  = 1 \implies a \equiv b \pmod{m}$
 
 &nbsp; $ac \equiv bc \pmod{m} \implies m \mid (ac - bc) \implies m \mid c(a - b)$
 
@@ -665,6 +736,8 @@ Looking at integers mod $m$, we get $m$ **congruent classes**. Each integer is o
 &nbsp; Since $\gcd(c, m) = d$, we must have $\gcd(m/d, c/d) = 1 \implies \frac{m}{d} \mid a - b \implies a \equiv b \pmod{(m/d)}$
 
 &nbsp; Furthermore, $a - b = m (\frac{d}{k})$ where $\frac{d}{k} \in Z \implies 0 \leq k \leq d - 1$
+
+&nbsp;
 
 Various ways to solve equations of the form $ax \equiv b \pmod{m}$:
 
@@ -688,7 +761,7 @@ Various ways to solve equations of the form $ax \equiv b \pmod{m}$:
 
 **Proposition 6.10**: If $p$ is a prime and $ab \equiv 0 \pmod{p}$. Then $a \equiv 0 \pmod{p}$ or $b \equiv 0 \pmod{p}$
 
-&nbsp; *Proof*: $ab \equiv 0 \pmod{p} \implies p \mid ab$. Thus by a theorem, $p \mid a$ or $p \mid b \implies a \equiv 0 \pmod{p}$ or $b \equiv 0 \pmod{p}$, respectively
+&nbsp; *Proof*: $ab \equiv 0 \pmod{p} \implies p \mid ab$. Thus by theorem, $p \mid a$ or $p \mid b \implies a \equiv 0 \pmod{p}$ or $b \equiv 0 \pmod{p}$, respectively
 
 **Corollary 6.11**: Let $p$ be a prime. Then $x^2 \equiv 1 \pmod{p}$ has only solutions $x \equiv \pm 1 \pmod{p}$
 
@@ -837,10 +910,10 @@ x_2 &\equiv \pmod{m} \quad \quad x_2 \equiv b \pmod{n}
 \begin{align*}
 x &\equiv a_1 \pmod{m_1}\\
 x &\equiv a_2 \pmod{m_1} \\
-\ldots \\
+& \ldots \\
 x &\equiv a_3 \pmod{m_r}
 \end{align*}
-Has a unique solution mod $m_1 m_2 \cdots m_r$
+Has a unique solution $x \pmod{m_1 m_2 \cdots m_r}$
 
 &nbsp; *Existence Proof 1*: Pair up the first 2 equations and use Theorem 6.22
 $$x \equiv b_1 \pmod{m_1 m_2)}$$
@@ -857,7 +930,7 @@ $$n_i u_i \equiv 1 \pmod{m_i}$$
 &nbsp; Let $x = a_1n_1u_1 + \cdots + a_rn_ru_r$, then clearly for each $m_i$
 $$x \equiv a_in_iu_i \equiv a_i \pmod{m_i}$$
 
-&nbsp; *Unique Proof*: Assume there are 2 solutions $x_1, x_2$. THen for each $m_i$ we must have
+&nbsp; *Unique Proof*: Assume there are 2 solutions $x_1, x_2$. Then for each $m_i$ we must have
 $$m_i \mid (x_1 - x_2) \quad \quad 1 \leq i \leq r$$
 &nbsp; Thus means that $m_1 m_2 \cdots m_r \mid (x_1 - x_2)$ since $m_i$ are relatively prime
 
@@ -878,7 +951,7 @@ $$m_i \mid (x_1 - x_2) \quad \quad 1 \leq i \leq r$$
 **Example**: $x^2 \equiv \pmod{275 = 5^2 * 11}$ can be broken down into
 \begin{align*}
 x^2 &\equiv 1 \pmod{25} \implies x \equiv 1, 24 \pmod{25}\\
-x^2 &\equiv 1 \pmod{11} \implies x \equiv 1, 10 \pmod{11}\\
+x^2 &\equiv 1 \pmod{11} \implies x \equiv 1, 10 \pmod{11}
 \end{align*}
 Thus solutions are of the form
 \begin{align*}
@@ -899,3 +972,4 @@ We can interpret $\frac{a}{b} \pmod{m}$ as $a(b^{-1}) \pmod{m}$ where $b^{-1}$ c
 **Example**: Calculate $\frac{2}{7} \pmod{19}$
 
 &nbsp; We see that $7^{-1} \equiv 11 \pmod{19}$. Thus $\frac{2}{7} = 2 * 11 \equiv 3 \pmod{19}$
+
