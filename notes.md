@@ -15,6 +15,12 @@ and Kraft
 
 \newpage
 
+# Basics
+
+**Well-Ordering Principle**: All non-empty subsets of $N$ has a smallest member
+
+- **Note**: This is equivalent to the Principle of Induction
+
 # Divisibility
 
 ## Divisibility
@@ -40,6 +46,14 @@ and Kraft
 **Corollary 2.4**: Let $a, b, d \in Z$. If $d \mid a$ and $d \mid b$, then $d \mid a + b$ and $d \mid a - b$
 
 *Proof*: Apply Proposition 2.3 using $x = 1, y = 1$, and $x = 1, y = -1$, respectively
+
+&nbsp;
+
+**Lemma 2.5**: Let $d, n \in N$ and $d \mid n$. Then $d \leq n$
+
+*Proof by Contradiction*: Assume $d > n$. Then there cannot be $k \in N$ such that $dk = n$ since we would have $dk \geq d > n$
+
+Thus we must have $d \leq n$
 
 ## Euclid's Theorem
 
