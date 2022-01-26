@@ -39,7 +39,7 @@ and Kraft
 
 *Proof*: $a = md$ and $b = nd \implies ax + by = d(mx + ny)$
 
-**UPSHOT**: Every common divisor of both $a, b$ divides any linear combination of $a, b$
+**Upshot**: Every common divisor of both $a, b$ divides any linear combination of $a, b$
 
 &nbsp;
 
@@ -51,21 +51,23 @@ and Kraft
 
 **Lemma 2.5**: Let $d, n \in N$ and $d \mid n$. Then $d \leq n$
 
-*Proof by Contradiction*: Assume $d > n$. Then there cannot be $k \in N$ such that $dk = n$ since we would have $dk \geq d > n$
+*Proof*: Since $d \mid n$, we have $k \in Z$ such that $dk = n$
 
-Thus we must have $d \leq n$
+Since $d \in N$, we also must have $k \in N$ (otherwise $n \notin N$)
+
+Thus $n = dk \geq d * 1$
 
 ## Euclid's Theorem
 
 **Prime**: Integer $p \geq 2$ whose divisors are $1, p$
 
-**Composite**: Integer $n \geq 2$ not prime
+**Composite**: Integer $n \geq 2$ not prime such that $n = ab$ for $a, b \in Z$ and $1 < a, b, < p$
 
 &nbsp;
 
 **Lemma 2.6**: Every integer greater than $1$ is prime or divisible by a prime
 
-*Proof*: If $n$ is NOT prime, then it is divisible by some $a_1 \in Z$ where $1 < a_1 < n$
+*Proof 1*: If $n$ is NOT prime, then it is divisible by some $a_1 \in Z$ where $1 < a_1 < n$
 
 If $a_1$ is prime, we are done
 
@@ -77,13 +79,26 @@ So either some $a_i$ is prime and divides $n$ or we stop at $a_m$, which is prim
 
 &nbsp;
 
+*Proof 2 by Induction*: Let $n \in Z, n \geq 2$, and suppose $n$ is composite. Thus $n = kl$ for $k, l \in Z$ where $1 < k, l, < n$
+
+Base case: we only care about the first composite $n$, i.e. $n = 4 = 2 \cdot 2$ thus $2 \mid 4$ and $2$ is prime
+
+IH: Suppose the Lemma holds for all $i \in N, i < n$
+
+IS: $n = kl$ where $k < n$. Thus $k$ is either a prime or is divisible by a prime
+
+- If $k$ is prime, we are done since $k \mid n$
+- Otherwise $p \mid k$ for some prime $p < k$. Then we have $p \mid k \wedge k \mid n \implies p \mid n$
+
+&nbsp;
+
 **Euclid's Theorem**: there are an infinite number of primes
 
 *Proof*: Assume by contradiction that there are a finite number of primes $2, 3, 5, \ldots, p_n$
 
 Let $N = (2 * 3 * 5 * \cdots * p_n) + 1$
 
-Since $N > p_n$, it is composite and thus is divisible by some $p_i$ in the list of primes
+Since $N > 2p_n1 + 1 > p_n$, it is composite and thus is divisible by some $p_i$ in the list of primes
 
 Then we have $p_i \mid 2 * 3 * 5 * \cdots * p_n$ and $p_i \mid N \implies p_i \mid N - (2 * 3 * 5 * \cdots * p_n) \implies p_i \mid 1$ contradiction since $p_i > 1$
 
@@ -95,7 +110,9 @@ Thus there are an infinite number of primes
 
 *Proof*: $n = ab$ where $1 < a \leq b < n \implies a^2 \leq ab = n \implies a \leq \sqrt{n}$
 
-Let $p$ be a prime divisor of $a \implies p \leq a \leq \sqrt{n}$
+By Lemma 2.6, $a$ has a prime divisor $p$, where $p \mid a \implies p \leq a \leq \sqrt{n}$
+
+- **Note**: Not all prime factors of $n$ are $\leq \sqrt{n}$. For example, $6 = 2 * 3$ but $3 > \sqrt{6}$
 
 ## The Division Algorithm
 
