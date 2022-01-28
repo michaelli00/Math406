@@ -116,9 +116,16 @@ By Lemma 2.6, $a$ has a prime divisor $p$, where $p \mid a \implies p \leq a \le
 
 ## The Division Algorithm
 
-**Division Algorithm**: Let $a, b \in Z$ with $b > 0$. Then $\exists ! q, r$ such that $a = bq + r$ with $0 \leq r < b$
+**Division Algorithm**: Let $a, b \in Z$ with $b > 0$. Then there exists unique $q, r \in Z$ such that $a = bq + r$ with $0 \leq r < b$
 
-*Proof*: Let $q$ be the largest integers $\leq a /b$ such that $q \leq a/b < q + 1$
+*Proof*: Let $S = \{n \in Z \mid bn \leq a\}$. Clearly $S$ is non-empty since
+
+- If $a \geq 0$, take $n = -1$
+- If $a < 0$, take $n = a$
+
+Since $S$ is bounded above by $a/b$, it has a largest member, call it $q$
+
+Thus $q$ is the largest integers $\leq a /b$ such that $q \leq a/b < q + 1$
 
 Then we have $bq \leq a < bq + b \implies 0 \leq a - bq < b$
 
