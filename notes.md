@@ -153,7 +153,7 @@ Thus $r_1 = r$ and since $b \neq 0 \implies b(q - q_1) = 0 \implies q = q_1$. So
 
 Thus $a = cdk_1$ and $b = cdk_2$ so $cd$ is a common divisor of $a, b$
 
-Since $d$ is the greatest common divisor of $a, b$ we must have $c = 1$
+Since $d$ is the greatest common divisor of $a, b$, we have $d \leq cd \leq d \implies c = 1$
 
 &nbsp;
 
