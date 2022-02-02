@@ -235,7 +235,7 @@ Thus $3 = 456 * 17 - 123 * 63$
 
 &nbsp;
 
-**Theorem 2.12**: Let $a, b \in Z$ with at least one non-zero. Then there exists $x, y \in Z$ such that $\gcd(a, b) = ax + by$
+**Theorem 2.12 (Bezout's Theorem)**: Let $a, b \in Z$ with at least one non-zero. Then there exists $x, y \in Z$ such that $\gcd(a, b) = ax + by$
 
 *Proof*: Let $S$ be a set of integers that can be written in the form $ax + by$ for $x, y \in Z$
 
@@ -248,6 +248,10 @@ $$a = dq + r \implies r = a - dq = a - (ax_0 + by_0)q = a(1- x_0 q) + b(-y_0 q)$
 Thus $r \in S$. But since $d$ is the smallest positive element of $S$ and $0 \leq r < d$, we must have $r = 0$
 
 Thus $d \mid a$. Similarly, $d \mid b$. Thus $d$ is a common divisor of $a, b$
+
+Next we show that for any common divisor of $a, b$, call it $e$, we have $e \leq d$
+
+$e \mid a$ and $e \mid b \implies e \mid ax_0 + by_0 = d$. Thus $e \leq d$
 
 &nbsp;
 
@@ -290,7 +294,7 @@ Thus by Proposition 2.3, any common divisor of $ab$ and $c$ must divide $1 \impl
 
 *Proof*: By Theorem 2.12, $1 = ax + by \implies c = acx + bcy$
 
-Thus by Proposition 2.3, $a \mid a$ and $a \mid bc \implies a \mid c$
+Thus by Proposition 2.3, $a \mid a$ and $a \mid bc \implies a \mid acx + bcy = c$
 
 &nbsp;
 
