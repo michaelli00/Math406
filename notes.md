@@ -324,6 +324,19 @@ We can convert a number from base 10 to any other base using the Division Algori
 Thus $21963_{10} = 52713_8$ This is because
 $$5 *8^4 + 2 * 8^3 + 7*8^2 + 1 *8 + 3 = 52713_8$$
 
+&nbsp;
+
+**Note**: decimal representations in other bases are NOT unique. For $a_k \leq n - 1$
+
+$\displaystyle \sum_{k=1}^{\infty} \frac{a_k}{n^k} \leq \sum_{k=1}^{\infty} \frac{n-1}{n^k}$, which is the geometric series and converges
+
+Thus any sequence $\{a_n\}_{n= 1}^\infty$ for $0 \leq a_k \leq n -1$ converges
+
+In particular, for $\displaystyle j > 1, \sum_{k=j}^{\infty} \frac{n-1}{n^k} = \frac{1}{n^{j-1}}$
+
+- **Example**: for $n = 10$, we have $1 = 0.\bar{9}$
+- **Example**: $0.01_7 = 0.000\bar{66}_7$
+
 ## Fermat and Mersenne Numbers
 
 **Mersenne Numbers**: $M_n = 2^n - 1$ for prime $n$. Thought to generate prime numbers, but doesn't always work (e.g. $n = 11$ results in a composite number)
@@ -339,6 +352,10 @@ Since $n$ is composite, $n = ab$. Let $x = 2^a$ and $k = b$
 Then $2^{ab} - 1 = (2^a - 1)(2^{a(b-1)} + \cdots + 2^a + 1)$
 
 $1 < a < n \implies 1 < 2^a - 1 < 2^n - 1$ so $2^{a}-1$ is a nontrivial factor and $2^n - 1$ is composite
+
+&nbsp;
+
+**Note**: Contrapositive is important: $M_n$ prime $\implies n$ is prime
 
 &nbsp;
 
