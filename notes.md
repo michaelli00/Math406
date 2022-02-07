@@ -355,7 +355,15 @@ $1 < a < n \implies 1 < 2^a - 1 < 2^n - 1$ so $2^{a}-1$ is a nontrivial factor a
 
 &nbsp;
 
-**Note**: Contrapositive is important: $M_n$ prime $\implies n$ is prime
+**Corollary 2.18.1**: For $k, n \in N$, $k \mid n \implies M_k \mid M_n$
+
+*Proof*: Can be seen from the factorization seen in the previous proposition
+
+&nbsp;
+
+**Corollary 2.18.2**: If $M_n$ is prime, then $n$ is prime
+
+*Proof*: Follows from the contraposition of Proposition 2.18
 
 &nbsp;
 
@@ -372,6 +380,10 @@ Since $m$ is not a power of $2$ it has a nontrivial odd factor $a \geq 3$, so $m
 Then $2^{ab} + 1 = (2^b + 1)(2^{b(a-1)} - 2^{b(a-2)} + \cdots - 2^b + 1)$
 
 $1 \leq b < m \implies 1 < 2^b + 1 < 2^m + 1$ so $2^{b}+1$ is a nontrivial factor and $2^n + 1$ is composite
+
+&nbsp;
+
+**Proposition 2.20**: A regular $n$-gon is constructable if and only if $n = 2^a F_{n_1} F_{n_2} \cdots F_{n_r}$ for distinct Fermat Primes and $a \geq 0$
 
 # Linear Diophantine Equation
 
@@ -1031,4 +1043,5 @@ We can interpret $\frac{a}{b} \pmod{m}$ as $a(b^{-1}) \pmod{m}$ where $b^{-1}$ c
 **Example**: Calculate $\frac{2}{7} \pmod{19}$
 
 &nbsp; We see that $7^{-1} \equiv 11 \pmod{19}$. Thus $\frac{2}{7} = 2 * 11 \equiv 3 \pmod{19}$
+
 
