@@ -389,47 +389,58 @@ $1 \leq b < m \implies 1 < 2^b + 1 < 2^m + 1$ so $2^{b}+1$ is a nontrivial facto
 
 We look for solutions to $ax + by = c$ for $a, b, c \in Z$
 
-- If $\gcd(a, b) \nmid c$ then there are NO integer solutions $(x, y)$
+- If $\gcd(a, b) \nmid c$ then there are NO integer solutions $(x, y)$. This follows from $\gcd(a, b)$ divides any linear combination of $a, b$
 
-**Theorem 3.1**: Let $a, b, c \in Z$ where at least one $a, b$ is nonzero. Then $ax + by = c$ has a solution if and only if $\gcd(a, b) \mid c$
+&nbsp;
+
+**Theorem 3.1**: Let $a, b, c \in Z$ where $a, b$ are not both $0$. Then $ax + by = c$ has a solution if and only if $\gcd(a, b) \mid c$
 
 Furthermore, if it has one solution $(x_0, y_0)$, then there are an infinite number of solutions of the form
 $$x = x_0 + \frac{b}{\gcd(a, b)}t \quad \quad y = y_0 - \frac{a}{\gcd(a, b)}t \quad \quad t \in Z$$
+*Proof*: Let $d = \gcd(a, b)$
 
-&nbsp; *Proof*: Let $d = \gcd(a, b)$
+$\implies$ Contraposition: If $d \nmid c$ then clearly no solutions
 
-&nbsp; If $d \nmid c$ then clearly no solutions
+$\impliedby$ If $d \mid c$ then by Theorem 2.12, there exists $r, s \in Z$ such that $ar + bs = d$
 
-&nbsp; Otherwise assume $d \mid c$ then by Theorem 2.12, there exists $r, s \in Z$ such that $ar + bs = d$
+$d \mid c \implies df = c$ for $f \in Z \implies a(rf) + b(sf) = df = c$
 
-&nbsp; $d \mid c \implies df = c$ for $f \in Z \implies a(rf) + b(sf) = df = c$
+Thus $x_0 = rf$ and $y_0 = sf$ is a solution to $ax + by = c$
 
-&nbsp; Thus $x_0 = rf$ and $y_0 = sf$ is a solution to $ax + by = c$
+&nbsp;
 
-&nbsp; To show there are an infinite number of solutions, first let $x = x_0 + \frac{b}{d} t$ and $y = y_0 - \frac{a}{d}t$
+To show there are an infinite number of solutions, first let $x = x_0 + \frac{b}{d} t$ and $y = y_0 - \frac{a}{d}t$
 
-&nbsp; Since $a/d, b/d \in Z$ we must have $x, y \in Z$
+Then $ax + by = a(x_0 + \frac{b}{d} t) + b(y_0 - \frac{a}{d} t) = ax_0 + by_0  = c$
 
-&nbsp; Thus $ax + by = a(x_0 + \frac{b}{d} t) + b(y_0 - \frac{a}{d} t) = ax_0 + by_0  = c$
+Thus there are an infinite number of solutions of this form
 
-&nbsp; Thus there are an infinite number of solutions of this form
+&nbsp;
 
-&nbsp; To show that every solution has the correct form, fix solutions $x_0, y_0$ and let $u, v$ be any solution
+To show that every solution has the correct form, fix solutions $x_0, y_0$ and let $u, v$ be any solution
 
-&nbsp; $au + bv = c = ax_0 + by_0 \implies a(u - x_0) - b(v - y_0) = 0 \implies \frac{a}{d}(u - x_0) = \frac{b}{d}(y_0 - v)$
+$au + bv = c = ax_0 + by_0 \implies a(u - x_0) - b(v - y_0) = 0 \implies \frac{a}{d}(u - x_0) = \frac{b}{d}(y_0 - v)$
 
-&nbsp; Thus we have $(a/d) \mid (b/d)(y_0 - v)$
+- The last part follows because $d \mid a$ and $d \mid b \implies \frac{a}{d}, \frac{b}{d} \in Z$
 
-&nbsp; Since, by Proposition 2.10, $\gcd(a/d, b/d) = 1$, we have by Proposition 2.6, $(a/d) \mid (y_0 - v)$
+Thus we have $(a/d) \mid (b/d)(y_0 - v)$
 
-&nbsp; Thus $y_0 - v = \frac{a}{d}t \implies v = y_0 - t \frac{a}{d}$
+Since, by Proposition 2.10, $\gcd(a/d, b/d) = 1$, we have by Proposition 2.6, $(a/d) \mid (y_0 - v)$
 
-&nbsp; Furthermore, $\frac{a}{d}(u - x_0) = \frac{b}{d}(\frac{a}{d}t) \implies u = x_0 + \frac{b}{d}t$
+Thus $y_0 - v = \frac{a}{d}t \implies v = y_0 - t \frac{a}{d}$
+
+Furthermore, $\frac{a}{d}(u - x_0) = \frac{b}{d}(\frac{a}{d}t) \implies u = x_0 + \frac{b}{d}t$
+
+&nbsp;
 
 **Corollary 3.2**: Let $a, b, c \in Z$ with at least one $a, b$ nonzero. If $\gcd(a, b) = 1$ then $ax + by = c$ has infinite number of solutions
 
-If $(x_0, y_0)$ is a particular solution, then all solutions are of the form
+&nbsp;
+
+**Upshot**: If $(x_0, y_0)$ is a particular solution, then all solutions are of the form
 $$x = x_0 + bt \quad \quad y= y_0 - at \quad \quad t \in Z$$
+
+&nbsp;
 
 **General Steps to Solve Linear Diophantine Equation**:
 
@@ -445,33 +456,37 @@ $$x = x_0 + bt \quad \quad y= y_0 - at \quad \quad t \in Z$$
     - **Example**: $-17x +14y = 30 \implies 17x + 14y = 30$ has the solution $(5*30, -6*30)$ so the desired solution is $(-150, -180)$ and general solution is of the form
   $$x = -150 + 14t \quad \quad y = -180 + 17t \quad \quad t \in Z$$
 
+&nbsp;
+
 **Proposition 3.3**: Let $a, b \in Z^+$ and relatively prime. Then there are no non-negative $x, y \in Z$ such that $ax + by = ab - a - b$
 
-&nbsp; *Proof*: Observe that $a(-1) + b(a-1) = ab - a - b \implies x = -1$ and $y = a-1$ is a solution
+*Proof*: Observe that $a(-1) + b(a-1) = ab - a - b \implies x = -1$ and $y = a-1$ is a solution
 
-&nbsp; Since $\gcd(a, b) = 1$ every solution has the form $x = -1 + bt$ and $y = a - 1 - at = a(1- t) - 1$
+Since $\gcd(a, b) = 1$ every solution has the form $x = -1 + bt$ and $y = a - 1 - at = a(1- t) - 1$
 
-&nbsp; Note that $x > 0$ if and only if $t > 0$ but then we have $1 - t \leq 0 \implies y \leq -1$
+Note that $x > 0$ if and only if $t > 0$ but then we have $1 - t \leq 0 \implies y \leq -1$
 
-&nbsp; Thus it is impossible to find a non-negative solution to $ax + by = ab - a - b$
+Thus it is impossible to find a non-negative solution to $ax + by = ab - a - b$
+
+&nbsp;
 
 **Proposition 3.4**: Let $a, b \in Z^+$ and relatively prime. If $n > ab - a - b$ then there exists non-negative $x, y \in Z$ such that $ax + by = n$
 
-&nbsp; *Proof*: First find a pair $(x_0, y_0)$ such that $ax_0 + by_0 = n \geq ab - a - b + 1$. Note $(x_0, y_0)$ may be negative
+*Proof*: First find a pair $(x_0, y_0)$ such that $ax_0 + by_0 = n \geq ab - a - b + 1$. Note $(x_0, y_0)$ may be negative
 
-&nbsp; Solution has the form $x = x_0 + bt$ and $y = y_0 - at$
+Solution has the form $x = x_0 + bt$ and $y = y_0 - at$
 
-&nbsp; We find the smallest possible $y \geq 0$ then show that $x \geq 0$
+We find the smallest possible $y \geq 0$ then show that $x \geq 0$
 
-&nbsp; From Division Algorithm and dividing $y_0$ by $a$, we have $y_0 = at + y_1$ for $0 \leq y_1 < a$. Let $y_1$ be our choice of $y$
+From Division Algorithm and dividing $y_0$ by $a$, we have $y_0 = at + y_1$ for $0 \leq y_1 < a$. Let $y_1$ be our choice of $y$
 
-&nbsp; Since $y_1 = y_0 - at$, we take $x_1 = x_0 + bt$ as our choice of $x$
+Since $y_1 = y_0 - at$, we take $x_1 = x_0 + bt$ as our choice of $x$
 
-&nbsp; Suppose by contradiction that $x_1 \leq -1$, then $y_1 \leq a- 1$. This occurs from $ax_1 + by_1 < ab - a -b$
+Suppose by contradiction that $x_1 \leq -1$, then $y_1 \leq a- 1$. This occurs from $ax_1 + by_1 < ab - a -b$
 
-&nbsp; Thus $n = ax_0 + by_0 = a(x_1 - bt) + b(y_1 + at) \leq a(-1) + b(a - 1) = ab - a -b$. Contradiction since we said $n >$ this value
+Thus $n = ax_0 + by_0 = a(x_1 - bt) + b(y_1 + at) \leq a(-1) + b(a - 1) = ab - a -b$. Contradiction since we said $n >$ this value
 
-&nbsp; Thus $(x_1, y_1)$ is a non-negative solution
+Thus $(x_1, y_1)$ is a non-negative solution
 
 # Unique Factorization
 
