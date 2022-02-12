@@ -452,6 +452,7 @@ $$x = x_0 + bt \quad \quad y= y_0 - at \quad \quad t \in Z$$
 2. Then use Extended Euclidean Algorithm to solve for $a'x + b'y = 1$, then multiply the solution by the value of $c'$
 
 3. If one of the solution variable (e.g. $x$) is negative, we can perform Extended Euclidean Algorithm with a positive $x$ then flip the sign of $x$ at the end
+4. General solutions will be $(x_0 + \frac{b}{d}t, y_0 - \frac{a}{d}t)$
 
     - **Example**: $-17x +14y = 30 \implies 17x + 14y = 30$ has the solution $(5*30, -6*30)$ so the desired solution is $(-150, -180)$ and general solution is of the form
   $$x = -150 + 14t \quad \quad y = -180 + 17t \quad \quad t \in Z$$
@@ -492,84 +493,99 @@ Thus $(x_1, y_1)$ is a non-negative solution
 
 **Theorem 4.1**: Let $p$ be prime and $a,b \in Z$ such that $p \mid ab$. Then $p \mid a$ or $p \mid b$
 
-&nbsp; *Proof*: let $d = \gcd(a, p)$. If $d = p$ then $d \mid a \implies p \mid a$
+*Proof*: let $d = \gcd(a, p)$. If $d = p$ then $d \mid a \implies p \mid a$
 
-&nbsp; Otherwise applying Extended Euclidean Algorithm, $d = 1 = ax + py \implies b = abx + pby$
+Otherwise applying Extended Euclidean Algorithm, $d = 1 = ax + py \implies b = abx + pby$
 
-&nbsp; $p \mid ab$ and $p \mid p \implies p \mid b$, which is a linear combination of $p$ and $ab$
+$p \mid ab$ and $p \mid p \implies p \mid b$, which is a linear combination of $p$ and $ab$
 
-**NOTE**: if $n$ is composite, then we CANNOT conclude $n \mid a$ or $n \mid b$ from $n \mid ab$
+- **NOTE**: if $n$ is composite, then we CANNOT conclude $n \mid a$ or $n \mid b$ from $n \mid ab$
+
+&nbsp;
 
 **Corollary 4.2**: Let $p$ be prime and $a_1, a_2, \ldots, a_3 \in Z$ such that $p \mid a_1 \cdot a_2 \cdots a_r$. Then $p \mid a_i$ for some $i$
 
-&nbsp; *Proof by Induction*: clearly statement holds for $r = 1$
+*Proof by Induction*: clearly statement holds for $r = 1$
 
-&nbsp; IH: assume statement holds for $r = k$
+IH: assume statement holds for $r = k$
 
-&nbsp; IS: show statement is true for $r = k + 1$. Let $a = a_1 \cdots a_k$ and $b = a_{k+1}$
+IS: show statement is true for $r = k + 1$. Let $a = a_1 \cdots a_k$ and $b = a_{k+1}$
 
-&nbsp; We can apply Theorem 4.1 where $p \mid ab \implies$ statement holds for any $r \geq 1$
+We can apply Theorem 4.1 where $p \mid ab \implies$ statement holds for any $r \geq 1$
+
+&nbsp;
 
 **Lemma 4.3**: Every integer can be written as a product of primes
 
-&nbsp; *Proof*: Assume there exist composite integers that cannot be written as product of primes. Let $S$ be the set of these ints $> 1$
+*Proof*: Assume there exist composite integers that cannot be written as product of primes. Let $S$ be the set of these ints $> 1$
 
-&nbsp; Since all $e \in S$ are positive, by Well Ordering Principle, it has a smallest element $s$
+Since all $e \in S$ are positive, by Well Ordering Principle, it has a smallest element $s$
 
-&nbsp; Since $s$ is composite,we have $s = ab$, but $a, b < s \implies a, b \notin S \implies a, b$ can be written as the product of primes
+Since $s$ is composite,we have $s = ab$, but $a, b < s \implies a, b \notin S \implies a, b$ can be written as the product of primes
 
-&nbsp; Thus $s$ is also a product of primes and thus $S$ is empty
+Thus $s$ is also a product of primes and thus $S$ is empty
+
+&nbsp;
 
 **Fundamental Theorem of Arithmetic**: Any positive integer $> 1$ is either prime or can be factored exactly one way as a product of primes
 
-&nbsp; *Proof*: Lemma 4.3 shows that any integer $> 1$ can be written as a product of primes
+*Proof*: Lemma 4.3 shows that any integer $> 1$ can be written as a product of primes
 
-&nbsp; For uniqueness, suppose that there are $2$ ways of factoring an integer. Let $n$ be the smallest of these integers
+For uniqueness, suppose that there are $2$ ways of factoring an integer. Let $n$ be the smallest of these integers
 $$n = p_1 p_2 \cdots p_r = q_1 q_2 \cdots q_s$$
+$p_1 \mid$ LHS $\implies p_1 \mid$ RHS $\implies p_1 \mid q_i$
 
-&nbsp; $p_1 \mid$ LHS $\implies p_1 \mid$ RHS $\implies p_1 \mid q_i$
+Rearranging the RHS, we let $p_1 = q_1$ and now we have $n/p_1 = m = p_2 \cdots p_r = q_2 \cdots q_s$
 
-&nbsp; Rearranging the RHS, we let $p_1 = q_1$ and now we have $n/p_1 = m = p_2 \cdots p_r = q_2 \cdots q_s$
+But $m < n$ so it must have a unique factorization but we see that $m$ can be written using 2 different factorization
 
-&nbsp; But $m < n$ so it must have a unique factorization but we see that $m$ can be written using 2 different factorization
+Thus we have a contradiction and every positive integer $> 1$ can be unique factored
 
-&nbsp; Thus we have a contradiction and every positive integer $> 1$ can be unique factored
+&nbsp;
 
 **Proposition 4.4**: Let $a, b \in Z^+$ where $a = 2^{a_2} 3 ^{a_3} \cdots$ and $b = 2^{b_2} 3 ^{b_3} \cdots$. Then $a \mid b \iff a_p \leq b_p$ for all $p$
 
-&nbsp; *Proof*: $\implies a \mid b \implies ac = b$ where $c = 2^{c_2} 3 ^{c_3} \cdots$
+*Proof*: $\implies a \mid b \implies ac = b$ where $c = 2^{c_2} 3 ^{c_3} \cdots$
 
-&nbsp; Then $2 = 2^{a_2 + c_2} 3 ^{a_3 + c_3} \cdots = b$
+Then $2 = 2^{a_2 + c_2} 3 ^{a_3 + c_3} \cdots = b$
 
-&nbsp; Thus we must have $\forall p, a_p + c_p = b_p \implies a_p \leq b_p$
+Thus we must have $\forall p, a_p + c_p = b_p \implies a_p \leq b_p$
 
-&nbsp; $\impliedby$ suppose $\forall p, a_p \leq b_p$ and let $c_p = b_p - a_p$. Clearly $c_p \geq 0$
+$\impliedby$ suppose $\forall p, a_p \leq b_p$ and let $c_p = b_p - a_p$. Clearly $c_p \geq 0$
 
-&nbsp; Let $c = 2^{c_2} 3 ^{c_3} \cdots \implies ac = b \implies a \mid b$
+Let $c = 2^{c_2} 3 ^{c_3} \cdots \implies ac = b \implies a \mid b$
 
-**Least Common Multiple**: $\lcm(a, b)$ is the smallest positive integer divisible by $a, b$
+&nbsp;
+
+**Definition - Least Common Multiple**: $\lcm(a, b)$ is the smallest positive integer divisible by $a, b$
+
+&nbsp;
 
 **Proposition 4.5**: Let $a, b \in Z^+$ where $a = 2^{a_2} 3 ^{a_3} \cdots$ and $b = 2^{b_2} 3 ^{b_3} \cdots$. Furthermore, for all $p$, let $d_p = \min(a_p, b_p)$ and $e_p = \max(a_p, b_p)$. Then $\gcd(a, b) = 2^{d_2} 3^{d_3} \cdots$ and $\lcm(a, b) = 2^{e_2} 3^{e_3} \cdots$
 
-&nbsp; *Proof*: Let $d$ be any common divisor of $a, b$ such that $d = 2^{d_2} 3 ^{d_3} \cdots$
+*Proof*: Let $d$ be any common divisor of $a, b$ such that $d = 2^{d_2} 3 ^{d_3} \cdots$
 
-&nbsp; $d \mid a \implies d_p \leq a_p$ for all $p$. Similarly $d \mid b \implies d_p \leq b_p$ for all $p$
+$d \mid a \implies d_p \leq a_p$ for all $p$. Similarly $d \mid b \implies d_p \leq b_p$ for all $p$
 
-&nbsp; Largest common divisor occurs when $d_p = \min(a_p, b_p)$ for each $p$
+Largest common divisor occurs when $d_p = \min(a_p, b_p)$ for each $p$
 
-&nbsp; Least common multiple occurs when $e_p = \max(a_p, b_p)$ for each $p$
+Least common multiple occurs when $e_p = \max(a_p, b_p)$ for each $p$
 
-**Squarefree**: integer whose factors are all distinct (doesn't have a square of a number as a factor)
+&nbsp;
+
+**Definition - Squarefree**: integer whose factors are all distinct (doesn't have a square of a number as a factor)
+
+&nbsp;
 
 **Proposition 4.7**: Let $n \in Z^{+}$. Then there exists $r \in Z, r \geq 1$ and a squarefree integer $s \geq 1$ such that $n = r^2s$
 
-&nbsp; *Proof*: Let $n = p_1^{a_1} p_2^{a_2} \cdots$.
+*Proof*: Let $n = p_1^{a_1} p_2^{a_2} \cdots$.
 
-&nbsp; If $a_i$ is even, write it as $a_i = 2b_i$. Otherwise write $a_i = 2b_i + 1$
+If $a_i$ is even, write it as $a_i = 2b_i$. Otherwise write $a_i = 2b_i + 1$
 
-&nbsp; Let $r = p_1^{a_1} p_2^{p_2} \cdots$ and let $s =$ the product of all primes $p_i$ with odd $a_i$
+Let $r = p_1^{a_1} p_2^{p_2} \cdots$ and let $s =$ the product of all primes $p_i$ with odd $a_i$
 
-&nbsp; Then we have $r^2s = n$
+Then we have $r^2s = n$
 
 # Applications of Unique Factorization
 

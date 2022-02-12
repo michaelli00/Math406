@@ -6,7 +6,7 @@ header-includes:
 output: pdf_document
 ---
 
-# Divisibility
+## Divisibility
 
 $d \mid a$ and $d \mid b \implies d$ divides any linear combination of $a, b$
 
@@ -26,7 +26,7 @@ If $n$ is composite then $2^n - 1$ is composite
 
 If $m$ is NOT a power of $2$, then $2^m + 1$ is composite
 
-# Linear Diophantine Equations
+## Linear Diophantine Equations
 
 We want to be able to find integer solutions $(x, y)$ to $ax + by = c$
 
@@ -38,12 +38,13 @@ General steps for solving Linear Diophantine problems
 2. Divide the equation by $d = \gcd(a, b) \implies a'x + b' y = c'$ where $\gcd(a', b') = 1$
 3. Use Extended Euclidean Algorithm to solve $(x, y)$ for $a'x + b'y = 1$. Then multiply the solution by $c$
 4. If a solution variable (e.g. $x$) is negative, perform Extended Euclidean Algorithm with positive $x$ then flip the sign at the end
+5. General solutions will be $(x_0 + \frac{b}{d}t, y_0 - \frac{a}{d}t)$
 
-There are no non-negative solutions to $ax + by = ab - a - b$
+For relatively prime $a,b$ and $a, b \geq 0$, there are no non-negative solutions to $ax + by = ab - a - b$
 
-For any $n > ab - a - b$, there is a non-negative solution to $ax + by = n$
+For relatively prime $a,b$, $a, b \geq 0$, and any $n > ab - a - b$, there is a non-negative solution to $ax + by = n$
 
-# Unique Factorization
+## Unique Factorization
 
 **Fundamental Theorem of Arithmetic**: any positive integer greater than $1$ can be uniquely factored into a product of primes
 
@@ -51,7 +52,7 @@ $\gcd(a, b) = 2^{d_2}3^{d_3} \cdots$ where $d_p = \min(a_p, b_p)$
 
 $\lcm(a, b) = 2^{e_2}3^{e_3} \cdots$ where $e_p = \max(a_p, b_p)$
 
-# Linear Congruence
+## Linear Congruence
 
 $a \equiv b \pmod{m} \implies m \mid a - b$ AND $a = b + km$ AND $\gcd(a, n) = \gcd(b, n)$
 
