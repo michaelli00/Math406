@@ -481,11 +481,13 @@ We find the smallest possible $y \geq 0$ then show that $x \geq 0$
 
 From Division Algorithm and dividing $y_0$ by $a$, we have $y_0 = at + y_1$ for $0 \leq y_1 < a$. Let $y_1$ be our choice of $y$
 
-Since $y_1 = y_0 - at$, we take $x_1 = x_0 + bt$ as our choice of $x$
+Since $y_1 = y_0 - at$, we take $x_1 = x_0 + bt$ as our choice of $x$. First note that these are a valid solution
+$$ax_1 + by_1 = a(x_0 + bt) + b(y_0 - at) = ax_0 + by_0 = m$$
+Now we show that $x_1 \geq 0$
 
-Suppose by contradiction that $x_1 \leq -1$, then $y_1 \leq a- 1$. This occurs from $ax_1 + by_1 < ab - a -b$
-
-Thus $n = ax_0 + by_0 = a(x_1 - bt) + b(y_1 + at) \leq a(-1) + b(a - 1) = ab - a -b$. Contradiction since we said $n >$ this value
+Suppose by contradiction that $x_1 \leq -1$, then we have
+$$n = ax_1 + by_1 \leq  a + by_1 \leq -a + b\underbrace{(a-1)}_{0 \leq y < a}$$
+Thus $n = ab - a - b$. Contradiction since we said $n >ab - a -b$
 
 Thus $(x_1, y_1)$ is a non-negative solution
 
