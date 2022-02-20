@@ -98,7 +98,7 @@ IS: $n = kl$ where $k < n$. Thus $k$ is either a prime or is divisible by a prim
 
 Let $N = (2 * 3 * 5 * \cdots * p_n) + 1$
 
-Since $N > 2p_n1 + 1 > p_n$, it is composite and thus is divisible by some $p_i$ in the list of primes
+Since $N > 2p_n + 1 > p_n$, it is composite and thus is divisible by some $p_i$ in the list of primes
 
 Then we have $p_i \mid 2 * 3 * 5 * \cdots * p_n$ and $p_i \mid N \implies p_i \mid N - (2 * 3 * 5 * \cdots * p_n) \implies p_i \mid 1$ contradiction since $p_i > 1$
 
@@ -465,7 +465,7 @@ $$x = x_0 + bt \quad \quad y= y_0 - at \quad \quad t \in Z$$
 
 Since $\gcd(a, b) = 1$ every solution has the form $x = -1 + bt$ and $y = a - 1 - at = a(1- t) - 1$
 
-Note that $x > 0$ if and only if $t > 0$ but then we have $1 - t \leq 0 \implies y \leq -1$
+Note that $x \geq 0$ if and only if $t > 0$ but then we have $1 - t \leq 0 \implies y \leq -1$
 
 Thus it is impossible to find a non-negative solution to $ax + by = ab - a - b$
 
@@ -495,7 +495,7 @@ Thus $(x_1, y_1)$ is a non-negative solution
 
 **Theorem 4.1**: Let $p$ be prime and $a,b \in Z$ such that $p \mid ab$. Then $p \mid a$ or $p \mid b$
 
-*Proof*: let $d = \gcd(a, p)$. If $d = p$ then $d \mid a \implies p \mid a$
+*Proof*: Let $d = \gcd(a, p)$. If $d = p$ then $d \mid a \implies p \mid a$
 
 Otherwise applying Extended Euclidean Algorithm, $d = 1 = ax + py \implies b = abx + pby$
 
@@ -549,7 +549,7 @@ Thus we have a contradiction and every positive integer $> 1$ can be unique fact
 
 *Proof*: $\implies a \mid b \implies ac = b$ where $c = 2^{c_2} 3 ^{c_3} \cdots$
 
-Then $2 = 2^{a_2 + c_2} 3 ^{a_3 + c_3} \cdots = b$
+Then $2^{a_2 + c_2} 3 ^{a_3 + c_3} \cdots = b$
 
 Thus we must have $\forall p, a_p + c_p = b_p \implies a_p \leq b_p$
 

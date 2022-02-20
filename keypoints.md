@@ -12,6 +12,8 @@ $d \mid a$ and $d \mid b \implies d$ divides any linear combination of $a, b$
 
 **Euclid Theorem**: there are an infinite number of primes
 
+**Division Algorithm**: Let $a, b \in Z$ with $b > 0$. Then there exists unique $q, r \in Z$ such that $a = bq + r$ with $0 \leq r < b$
+
 Ways of finding $\gcd(a, b)$
 
 - List all prime factors and take the largest factor
@@ -20,7 +22,7 @@ Ways of finding $\gcd(a, b)$
 
 Any common divisor of $a, b$ divides $\gcd(a, b)$
 
-From Extended Euclidean Algorithm, we can write $\gcd(a, b) = ax + by$
+**Bezout Theorem**: $\gcd(a, b) = ax + by$
 
 If $n$ is composite then $2^n - 1$ is composite
 
@@ -46,11 +48,15 @@ For relatively prime $a,b$, $a, b \geq 0$, and any $n > ab - a - b$, there is a 
 
 ## Unique Factorization
 
+**Theorem 4.1**: Let $p$ be prime and $a,b \in Z$ such that $p \mid ab$. Then $p \mid a$ or $p \mid b$
+
 **Fundamental Theorem of Arithmetic**: any positive integer greater than $1$ can be uniquely factored into a product of primes
 
 $\gcd(a, b) = 2^{d_2}3^{d_3} \cdots$ where $d_p = \min(a_p, b_p)$
 
 $\lcm(a, b) = 2^{e_2}3^{e_3} \cdots$ where $e_p = \max(a_p, b_p)$
+
+\newpage
 
 ## Linear Congruence
 
