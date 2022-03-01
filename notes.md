@@ -595,55 +595,61 @@ Then we have $r^2s = n$
 
 **Proposition 5.1**: Let $k \geq 2$ be an integer and $m \in Z^+$. Then $m$ is a kth power $\iff$ all exponents in the prime factorization of $m$ are multiples of $k$
 
-&nbsp; *Proof*: $\implies$ Let $m = 2^{y_2} 3^{y_3} \cdots$. If each $y_p$ is a multiple of $k$ then $y_p = k z_p \implies m = (2^{z_2} 3^{z_3} \cdots)^k$
+*Proof*: $\impliedby$ Let $m = 2^{y_2} 3^{y_3} \cdots$. If each $y_p$ is a multiple of $k$ then $y_p = k z_p \implies m = (2^{z_2} 3^{z_3} \cdots)^k$
 
-&nbsp; $\impliedby$ If $m = n^k$ where $n = 2^{w_2} 3^{w_3} \cdots$, then $2^{y_2}3^{y_3} \cdots = m = n^k = 2^{kw_2} 3^{kw_3} \cdots$
+$\implies$ If $m = n^k$ where $n = 2^{w_2} 3^{w_3} \cdots$, then $2^{y_2}3^{y_3} \cdots = m = n^k = 2^{kw_2} 3^{kw_3} \cdots$
 
-&nbsp; By Uniqueness of Factorization, $y_p = kw_p$ for each $p \implies$ each exponent for $m$ is a multiple of $k$
+By Uniqueness of Factorization, $y_p = kw_p$ for each $p \implies$ each exponent for $m$ is a multiple of $k$
 
-**Example** Find a number such that $2/3 A^2$ is a cube
+&nbsp;
 
-&nbsp; We have $2/3A^2 = 2^{2a+1} 3^{2b -1} 5^{2c} \cdots$ is a cube, so $2a + 1$, $2b - 1$, $2c$, $\cdots$ are all multiples of $3$
+**Example** Find a number such that $2/3 * A^2$ is a cube
 
-&nbsp; By brute force, we see that $a = 1, b = 2, c = d = \cdots = 0$ works and gives us $A = 18$
+We have $2/3 * A^2 = 2^{2a+1} 3^{2b -1} 5^{2c} \cdots$ is a cube, so $2a + 1$, $2b - 1$, $2c$, $\cdots$ are all multiples of $3$
 
-&nbsp; To find the general solution, we note that $3 \mid 2c$ and $\gcd(3, 2) = 1$ so $c$ must be a multiple of $3 \implies c= 3c'$. Similar for $d, e, \ldots$
+By brute force, we see that $a = 1, b = 2, c = d = \cdots = 0$ works and gives us $A = 18$
 
-&nbsp; Since $2a + 1$ is odd and a multiple of $3$, we have $2a + 1 = 3(2j + 1) \implies a = 3j + 1$
+To find the general solution, we note that $3 \mid 2c$ and $\gcd(3, 2) = 1$ so $c$ must be a multiple of $3 \implies c= 3c'$. Similar for $d, e, \ldots$
 
-&nbsp; Since $2b - 1$ is odd and a multiple of $3$, we have $2b -1 = 3(2k + 1) \implies b = 3k + 2$
+Since $2a + 1$ is odd and a multiple of $3$, we have $2a + 1 = 3(2j + 1) \implies a = 3j + 1$
 
-&nbsp; Finally, we see that $A = 2^a3^b 5^c \dots = 2*3^2 (2^j3^k5^{c'} \cdots)^3 = 18 B^3$ for any $B \geq 1$
+Since $2b - 1$ is odd and a multiple of $3$, we have $2b -1 = 3(2k + 1) \implies b = 3k + 2$
+
+Finally, we see that $A = 2^a3^b 5^c \dots = 2*3^2 (2^j3^k5^{c'} \cdots)^3 = 18 B^3$ for any $B \geq 1$
 
 ## Irrationality Proof
 
 **Rational**: number that can expressed as a ratio of $2$ integers
 
+&nbsp;
+
 **Theorem 5.2**: $\sqrt{2}$ is irrational
 
-&nbsp; *Proof*: Suppose by contradiction that $\sqrt{2}$ is rational and $\sqrt{2} = a/b \in Q$ in reduced form
+*Proof*: Suppose by contradiction that $\sqrt{2}$ is rational and $\sqrt{2} = a/b \in Q$ in reduced form
 
-&nbsp; Then we have $2 = a^2 / b^2 \implies 2b^2 = a^2$
+Then we have $2 = a^2 / b^2 \implies 2b^2 = a^2$
 
-&nbsp; Clearly $a^2$ is even $\implies a$ is even so $a = 2a_1$
+Clearly $a^2$ is even $\implies a$ is even so $a = 2a_1$
 
-&nbsp; But then we have $b^2 = 2a_1$ so $b^2$ is even $\implies b$ is even. This a contradiction since we said $a/b$ is in reduced form
+But then we have $b^2 = 2a_1$ so $b^2$ is even $\implies b$ is even. This a contradiction since we said $a/b$ is in reduced form
 
-&nbsp; Thus we have a contradiction and $\sqrt{2}$ is irrational
+Thus we have a contradiction and $\sqrt{2}$ is irrational
 
-**Theorem 5.3**: Let $k \in Z$ and $k \geq 2$. let $n \in Z^+$ that is not a perfeect kth power. Then $\sqrt[k]{n}$ is irrational
+&nbsp;
 
-&nbsp; *Proof*: We show the contrapositive that if $\sqrt[k]{n}$ is irrational then $n$ is a perfect kth power
+**Theorem 5.3**: Let $k \in Z$ and $k \geq 2$. let $n \in Z^+$ that is not a perfect kth power. Then $\sqrt[k]{n}$ is irrational
 
-&nbsp; Suppose $\sqrt[k]{n} = a/b \implies nb^k = a^k$
+*Proof*: We show the contrapositive that if $\sqrt[k]{n}$ is rational then $n$ is a perfect kth power
 
-&nbsp; We can prime factorize $n,b$ to get $n = 2^{x_2} 3^{x_3} \cdots$ and $b = 2^{z_2} 3^{z_3} \cdots$
+Suppose $\sqrt[k]{n} = a/b \implies nb^k = a^k$
 
-&nbsp; Thus we have $nb^k = 2^{x_2 + kz_2} 3^{x_3 + kz_3} \cdots$
+We can prime factorize $n,b$ to get $n = 2^{x_2} 3^{x_3} \cdots$ and $b = 2^{z_2} 3^{z_3} \cdots$
 
-&nbsp; Let $a = 2^{y_2} 3^{y_3} \cdots$. Since $nb^k = a^k$ is a perfect power, by Proposition 5.1, every exponent is of the prime factorization is a multiple of $k$
+Thus we have $nb^k = 2^{x_2 + kz_2} 3^{x_3 + kz_3} \cdots$
 
-&nbsp; Thus $x_p + kz_p = ky_p \implies x_p = k(y_p - z_p) \implies n$ is a perfect kth power
+Let $a = 2^{y_2} 3^{y_3} \cdots$. Since $nb^k = a^k$ is a perfect power, by Proposition 5.1, every exponent is of the prime factorization is a multiple of $k$
+
+Thus $x_p + kz_p = ky_p \implies x_p = k(y_p - z_p) \implies n$ is a perfect kth power
 
 ## Rational Root Theorem
 
@@ -651,11 +657,11 @@ Then we have $r^2s = n$
 
 If $r = u/v \in Q$ with $\gcd(u, v) = 1$ and $P(u/v) = 0$ then $u \mid a_0$ and $v \mid a_n$
 
-&nbsp; *Proof*: $P(u/v) = 0 \implies a_n(u/v)^n + \cdots + a_0 = 0 \implies a_n(u^n) + \cdots + a_0 v^n = 0$
+*Proof*: $P(u/v) = 0 \implies a_n(u/v)^n + \cdots + a_0 = 0 \implies a_n u^n + \cdots + a_0 v^n = 0$
 
-&nbsp; All terms except the first are multiple of $v$. Thus $v$ must divide $a_n u^n$. But $\gcd(u, v) = 1 \implies v \mid a_n$
+$a_{n-1}v u^{n-1} + \cdots + a_0 v^n = -a_n u^n \implies v \mid a_n u^n$. But $\gcd(u, v) = 1 \implies v \mid a_n$
 
-&nbsp; All terms except the last are multiple of $u$. Thus $u$ must divide $a_0 v^n$. But $\gcd(u, v) = 1 \implies u \mid a_0$
+$a_{n}u^n + \cdots + a_1 v^{n-1} u = -a_0 v^n \implies u \mid a_0 v^n$. But $\gcd(u, v) = 1 \implies u \mid a_0$
 
 ## Pythagorean Triples
 
@@ -663,67 +669,78 @@ If $r = u/v \in Q$ with $\gcd(u, v) = 1$ and $P(u/v) = 0$ then $u \mid a_0$ and 
 
 **Primitive Pythagorean Triples**: Pythagorean triples where $\gcd(a, b, c) = 1$
 
-A primitive way of generating Pythagorean Triples is using odd numbers
+&nbsp;
+
+**Example**: A primitive way of generating Pythagorean Triples is using odd numbers
 
 $(2n + 1)^2 = 4n^2 + 4n + 1 = (2n^2 + 2n) + (2n^2 + 2n + 1) \implies (2n+1)^2 + (2n^2 + 2n)^2 = (2n^2 + 2n + 1)^2$
 
+&nbsp;
+
+
 **Lemma 5.6**: Let $k \in Z, k \geq 2$ and let $a, b$ relatively prime integers such that $ab = n^k$. Then $a, b$ are each kth powers of integers
 
-&nbsp; *Proof*: Let $n = 2^{x_2} 3^{x_3} \cdots$. Then $ab = $n^k = 2^{kx_2} 3^{kx_3} \cdots$
+*Proof*: Let $n = 2^{x_2} 3^{x_3} \cdots$. Then $ab = n^k = 2^{kx_2} 3^{kx_3} \cdots$
 
-&nbsp; Let $p$ be a prime in the prime factorization of $a$ and $p^c$ be the exact power of $p$ in the factorization of $a$
+Let $p$ be a prime in the prime factorization of $a$ and $p^c$ be the exact power of $p$ in the factorization of $a$
 
-&nbsp; Since $\gcd(a, b) = 1$, $p$ doesn't occur in the factorization of $b$, so $p^c$ occurs in $ab$ and $n^k$ has $p^{kx_p}$ as the power of $p$
+Since $\gcd(a, b) = 1$, $p$ doesn't occur in the factorization of $b$, so $p^c$ occurs in $ab$ and $n^k$ has $p^{kx_p}$ as the power of $p$
 
-&nbsp; Since prime factorization is unique, we have $c = kx_p \implies$ every prime in factorization of $a$ occurs with a power of a multiple of $k$
+Since prime factorization is unique, we have $c = kx_p \implies$ every prime in factorization of $a$ occurs with a power of a multiple of $k$
 
-&nbsp; Thus $a$ is a kth power integer. Similar for $b$
+Thus $a$ is a kth power integer. Similar for $b$
+
+&nbsp;
 
 **Lemma 5.7**: The square of an odd integer is $1$ more than a multiple of $8$. The square of an even integer is a multiple of $4$
 
-&nbsp; *Proof*: Let $n$ be even then $n = 2k \implies n^2 = 4j^2 \implies 4 \mid n$
+*Proof*: Let $n$ be even then $n = 2k \implies n^2 = 4j^2 \implies 4 \mid n$
 
-&nbsp; Let $n$ be odd $\implies n = 2k + 1 \implies n^2 4k(k+1) + 1$
+Let $n$ be odd $\implies n = 2k + 1 \implies n^2 4k(k+1) + 1$
 
-&nbsp; Since $k$ or $k+ 1$ is even, we have $k(k+1)$ is a multiple of $8$. Thus $n$ is a $1$ more than a multiple of $8$
+Since $k$ or $k+ 1$ is even, we have $4k(k+1)$ is a multiple of $8$. Thus $n$ is a $1$ more than a multiple of $8$
 
-**Theorem 5.5**: Let $(a, b, c)$ be a primitive Pythagorean triple. Then $c$ is odd and exactly one of $a, b$ is even and the other is odd. Assume $b$ is even, then there relatively prime integers $m, n$ such that $m < n$ and one odd and the other even such that
+&nbsp;
+
+**Theorem 5.5**: Let $(a, b, c)$ be a Primitive Pythagorean triple. Then $c$ is odd and exactly one of $a, b$ is even and the other is odd. Assume $b$ is even, then there are relatively prime integers $m, n$ such that $m < n$ and one odd and the other even such that
 
 $$a = n^2 - m^2 \quad \quad b = 2mn \quad \quad c = m^2 + n^2$$
 
-&nbsp; *Proof*: Let $a^2 + b^2 = c^2$ and $\gcd(a, b, c) = 1$
+*Proof*: Let $a^2 + b^2 = c^2$ and $\gcd(a, b, c) = 1$
 
-&nbsp; Suppose by contradiction that both $a, b$ are odd, then by Lemma 5.7, $a^2 + b^2$ is $2$ more than a multiple of $8$
+Suppose by contradiction that both $a, b$ are odd, then by Lemma 5.7, $a^2 + b^2$ is $2$ more than a multiple of $8$
 
-&nbsp; Thus $a^2 + b^2$ is not a multiple of 4 so by Lemma 5.7, $a^2 + b^2$ cannot be a square. Thus at least one of $a, b$ is even
+Thus $a^2 + b^2$ is not a multiple of 4 so by Lemma 5.7, $a^2 + b^2$ cannot be a square. Thus at least one of $a, b$ is even
 
-&nbsp; Suppose by contradiction that both $a, b$ are even. Then $c^2 + a^2 + b^2$ is even so $c$ is even.
+Suppose by contradiction that both $a, b$ are even. Then $c^2 = a^2 + b^2$ is even so $c$ is even.
 
-&nbsp; But then $2$ is common divisor of $a, b, c$ but we have $\gcd(a, b, c) = 1$. Contradiction
+But then $2$ is common divisor of $a, b, c$ but we have $\gcd(a, b, c) = 1$. Contradiction
 
-&nbsp; Thus one of $a, b$ is even and the other is odd. WLOG let $a$ be off and $b$ be even
+Thus one of $a, b$ is even and the other is odd. WLOG let $a$ be odd and $b$ be even
 
-&nbsp; Then we have $a^2 + b^2 = c^2$ is odd. Let $b = 2b_1$ so we have $c^2 - a^2 = (c+a) (c-a) = b^2 = 4b_1^2$
+Then we have $a^2 + b^2 = c^2$ is odd.
 
-&nbsp; Thus we have $(\frac{c+a}{2})(\frac{c-a}{2}) = b_1^2$. Since $c, a$ are odd we must have $\frac{c+a}{2}$ and $\frac{c-a}{2} \in Z$
+Let $b = 2b_1$ so we have $c^2 - a^2 = (c+a) (c-a) = b^2 = 4b_1^2$
 
-&nbsp; Let $d = \gcd((c + a)/2, (c - a)/2)$ and suppose by contradiction $d > 1$. Then let $p$ be a prime dividing $d$
+Thus we have $(\frac{c+a}{2})(\frac{c-a}{2}) = b_1^2$. Since $c, a$ are odd we must have $\frac{c+a}{2}$ and $\frac{c-a}{2} \in Z$
 
-&nbsp; Then $c = \frac{c+2}{2} + \frac{c-a}{2}$ and $a = \frac{c + a}{2} - \frac{c - a}{2}$ are multiples of $p$
+Let $d = \gcd((c + a)/2, (c - a)/2)$ and suppose by contradiction $d > 1$. Then let $p$ be a prime dividing $d$
 
-&nbsp; Thus $c^2 - a^2= b^2$ is a multiple of $p \implies p \mid b$ so $p$ is a common divisor of $a, b, c$, contradicting that $\gcd(a, b, c) = 1$. Thus $d = 1$
+Then $c = \frac{c+a}{2} + \frac{c-a}{2}$ and $a = \frac{c + a}{2} - \frac{c - a}{2}$ are multiples of $p$
 
-&nbsp; Thus we have two relatively prime integers: $(c + a)/ 2$ and $(c - a)/2$ whose product is a square
+Thus $c^2 - a^2= b^2$ is a multiple of $p \implies p \mid b$ so $p$ is a common divisor of $a, b, c$, contradicting that $\gcd(a, b, c) = 1$. Thus $d = 1$
 
-&nbsp; By Lemma 5.6, each factor is a square so $\frac{c- a}{2} = m^2$ and $\frac{c + a}{2} = n^2$
+Thus we have two relatively prime integers: $(c + a)/ 2$ and $(c - a)/2$ whose product is a square
 
-&nbsp; Thus $c = \frac{c + a}{2} + \frac{c - a}{2} = n^2 + m^2$ and $a = \frac{c + a}{2} - \frac{c - a}{2} = n^2 - m^2$
+By Lemma 5.6, each factor is a square so $\frac{c- a}{2} = m^2$ and $\frac{c + a}{2} = n^2$
 
-&nbsp; Thus $b^2 = c^2 - a^2 = (n^2 + m^2)^2 - (n^2 - m^2)^2 = 4m^2n^2 \implies b = 2mn$
+Thus $c = \frac{c + a}{2} + \frac{c - a}{2} = n^2 + m^2$ and $a = \frac{c + a}{2} - \frac{c - a}{2} = n^2 - m^2$
 
-&nbsp; Since $(c-a)/2 = m^2$ and $(c+a)/2 = n^2$ are relatively prime, then $\gcd(n, m) = 1$
+Thus $b^2 = c^2 - a^2 = (n^2 + m^2)^2 - (n^2 - m^2)^2 = 4m^2n^2 \implies b = 2mn$
 
-&nbsp; Finally since $m^2 + n^2 = c$ is odd, one of $m, n$ is odd and the other is even
+Since $(c-a)/2 = m^2$ and $(c+a)/2 = n^2$ are relatively prime, then $\gcd(n, m) = 1$
+
+Finally since $m^2 + n^2 = c$ is odd, one of $m, n$ is odd and the other is even
 
 ## Difference of Squares
 

@@ -38,7 +38,7 @@ General steps for solving Linear Diophantine problems
 
 1. Verify $\gcd(a, b) \mid c$
 2. Divide the equation by $d = \gcd(a, b) \implies a'x + b' y = c'$ where $\gcd(a', b') = 1$
-3. Use Extended Euclidean Algorithm to solve $(x, y)$ for $a'x + b'y = 1$. Then multiply the solution by $c$
+3. Use Extended Euclidean Algorithm to solve $(x, y)$ for $a'x + b'y = 1$. Then multiply the solution by $c'$
 4. If a solution variable (e.g. $x$) is negative, perform Extended Euclidean Algorithm with positive $x$ then flip the sign at the end
 5. General solutions will be $(x_0 + \frac{b}{d}t, y_0 - \frac{a}{d}t)$
 
