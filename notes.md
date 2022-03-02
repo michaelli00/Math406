@@ -746,11 +746,11 @@ Finally since $m^2 + n^2 = c$ is odd, one of $m, n$ is odd and the other is even
 
 **Theorem 5.8**: Let $m \in Z^+$. Then $m$ is a difference of 2 squares $\iff$ either $m$ is odd or $m$ is a multiple of $4$
 
-&nbsp; *Proof*: $\implies$. Let $m$ be odd then $m = 2n + 1 = (n+1)^2 - n^2$.
+*Proof*: $\impliedby$ Let $m$ be odd then $m = 2n + 1 = (n+1)^2 - n^2$.
 
-&nbsp; Otherwise let $m$ be a multiple of $4$ then $m = 4n = (n+1)^2 - (n- 1)^2$
+Otherwise let $m$ be a multiple of $4$ then $m = 4n = (n+1)^2 - (n- 1)^2$
 
-&nbsp; $\impliedby$ Suppose $m = x^2 - y^2 = (x+y)(x-y)$. Since $x + y, x - y$ differ by $2y$ (even) they are either both even or both odd
+$\implies$ Suppose $m = x^2 - y^2 = (x+y)(x-y)$. Since $x + y, x - y$ differ by $2y$ (even) they are either both even or both odd
 
 - If they are both even, then $m = (x+y)(x-y)$ is the product of $2$ even numbers and is thus a multiple of $4$
 
@@ -762,17 +762,23 @@ As an aside, suppose $m = uv$ where $u,v$ have the same parity and $u \geq v$
 
 If we let $x = \frac{(u+v)}{2}$ and $y = \frac{(u-v)}{2}$ then clearly $x, y \in Z$ since $u,v$ have the same parity
 
-And we have $x^2 - y^2 = \frac{u + v)^2}{4} - \frac{(u-v)^2}{4} = uv = m$
+And we have $x^2 - y^2 = \frac{(u + v)^2}{4} - \frac{(u-v)^2}{4} = uv = m$
 
-**UPSHOT**: Writing $m$ as a difference of 2 squares corresponds to factorizing $m$ into 2 factors of the same parity
+&nbsp;
 
-- **Example**: $m = 15 \implies 15 * 1 = 8^2 - 7^2$ where $8 + 7 = 15$ and $8 - 7 = 1$
+**Upshot**: Writing $m$ as a difference of 2 squares corresponds to factorizing $m$ into 2 factors of the same parity
 
-    $m = 15 \implies 5 * 3 = 4^2 - 1^2$ where $4 + 1 = 5$ and $4 - 1 = 3$
+&nbsp;
 
-- **Example**: $m = 60 \implies 30 * 2 = 16^2 - 14^2$
+**Example**: $m = 15 \implies 15 * 1 = 8^2 - 7^2$ where $8 + 7 = 15$ and $8 - 7 = 1$
 
-    $m = 60 \implies 10 * 6 = 8^2 - 2^2$
+$m = 15 \implies 5 * 3 = 4^2 - 1^2$ where $4 + 1 = 5$ and $4 - 1 = 3$
+
+&nbsp;
+
+**Example**: $m = 60 \implies 30 * 2 = 16^2 - 14^2$
+
+$m = 60 \implies 10 * 6 = 8^2 - 2^2$
 
 ## Prime Factorization of Factorials
 
@@ -780,23 +786,28 @@ And we have $x^2 - y^2 = \frac{u + v)^2}{4} - \frac{(u-v)^2}{4} = uv = m$
 
 $$b = \lfloor \frac{n}{p} \rfloor + \lfloor \frac{n}{p^2} \rfloor + \cdots$$
 
-&nbsp; *Proof*: write $n = qp + r$ for $0 \leq r < p$. Clearly multiples of $p$ up to $n$ are $p, 2p, \ldots, qp$
+*Proof*: write $n = qp + r$ for $0 \leq r < p$. Clearly multiples of $p$ up to $n$ are $p, 2p, \ldots, qp$
 
-&nbsp; but we see that $\lfloor \frac{n}{p} \rfloor = \lfloor q + (r/p) \rfloor = q$ so there are $\lfloor \frac{n}{p} \rfloor$ multiples of $p$ up to $n$
+but we see that $\lfloor \frac{n}{p} \rfloor = \lfloor q + (r/p) \rfloor = q$ so there are $\lfloor \frac{n}{p} \rfloor$ multiples of $p$ up to $n$
 
-&nbsp; Similarly, there are $\lfloor \frac{n}{p^j} \rfloor$ multiples of $p^j$ up to $n$
+Similarly, there are $\lfloor \frac{n}{p^j} \rfloor$ multiples of $p^j$ up to $n$
 
-&nbsp; Thus we can write $b = (\# \text{ of multiples of p up to n}) + (\text{ of multiples of } p^2 \text{ up to n}) + \cdots$
+Thus we can write $b = (\# \text{ of multiples of p up to n}) + (\text{ of multiples of } p^2 \text{ up to n}) + \cdots$
 
-&nbsp; Take $m$ such that $1 \leq m \leq n$ and $m = p^k m_1$ with $p \nmid m_1$.
+Take $m$ such that $1 \leq m \leq n$ and $m = p^k m_1$ with $p \nmid m_1$.
 
-&nbsp; Then $m$ contributes $p^k$ to $n!$ and contributes $k$ to the exponent $b$ since $m$ is a multiple of $p^j$ for $j \leq k$
+Then $m$ contributes $p^k$ to $n!$ and contributes $k$ to the exponent $b$ since $m$ is a multiple of $p^j$ for $j \leq k$
 
-- **Example**: $n = 30, p = 5 \implies \lfloor \frac{30}{5} \rfloor + \lfloor \frac{30}{25} \rfloor = 6 + 1 \implies 5^7$ is the power of $5$ in $30!$
+&nbsp;
 
-    $n = 30, p = 5 \implies \lfloor \frac{30}{2} \rfloor + \lfloor \frac{30}{4} \rfloor + \lfloor \frac{30}{8} \rfloor + \lfloor \frac{30}{16} \rfloor = 15 + 7 + 3 + 1 = 26 \implies 2^{26}$ is the power of $2$ in $30!$
 
-    Thus $2^{26}5^{7} = 2^{19}10^{7} \implies 30!$ has $7$ zeros at the end
+**Example**: $n = 30, p = 5 \implies \lfloor \frac{30}{5} \rfloor + \lfloor \frac{30}{25} \rfloor = 6 + 1 \implies 5^7$ is the power of $5$ in $30!$
+
+&nbsp;
+
+**Example**: $n = 30, p = 2 \implies \lfloor \frac{30}{2} \rfloor + \lfloor \frac{30}{4} \rfloor + \lfloor \frac{30}{8} \rfloor + \lfloor \frac{30}{16} \rfloor = 15 + 7 + 3 + 1 = 26 \implies 2^{26}$ is the power of $2$ in $30!$
+
+Thus $2^{26}5^{7} = 2^{19}10^{7} \implies 30!$ has $7$ zeros at the end
 
 # Congruences
 
