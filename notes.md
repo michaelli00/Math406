@@ -809,6 +809,49 @@ Then $m$ contributes $p^k$ to $n!$ and contributes $k$ to the exponent $b$ since
 
 Thus $2^{26}5^{7} = 2^{19}10^{7} \implies 30!$ has $7$ zeros at the end
 
+## Riemann Zeta Function
+
+**Definition - Riemann Zeta Function**: For a real number $s > 1$, we define the **Riemann zeta function** as
+$$\zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s}$$
+
+&nbsp;
+
+**Theorem 5.10**: If $s > 1$, then
+$$\zeta(s) = \prod_p (1 - p^{-s})^{-1} \quad \quad \text{for all primes } p$$
+
+*Proof*:
+
+Note that the geometric series $1 + r + r^2 + \cdots = \frac{1}{1-r} = (1-r)^{-1}$ for $|r| < 1$
+
+Letting $r = p^{-1}$, we get
+$$1 + \frac{1}{p^s} + \frac{1}{p^{2s}} + \cdots = (1 - p^{-s})^{-1}$$
+
+As an example, consider the product
+\begin{align*}
+(1-2^{-s})^{-1}(1 - 3^{-s})^{-1} &= (1 + \frac{1}{2^s} + \frac{1}{4^s} + \cdots) (1 + \frac{1}{3^s} + \frac{1}{9^s} + \cdots) \\
+&= (1 + \frac{1}{2^s} + \frac{1}{4^s} + \cdots) + (\frac{1}{3^s} + \frac{1}{2^s3^s} + \frac{1}{4^s3^s} + \cdots) + (\frac{1}{9^s} + \frac{1}{2^s9^s} + \frac{1}{4^s9^s} + \cdots) \\
+&= \sum_{n \in S(2, 3)}^{} \frac{1}{n^s} \quad \quad S(p, q) \text{ are all integers whose prime factorizations only use } p,q
+\end{align*}
+
+
+Now consider using $m$ primes
+$$(1 - 2^{-s})^{-1} (1 - 3^{-s})^{-1} \cdots (1 - p_m^{-s})^{-1} = \sum_{n \in S(2, 3, \ldots, p_m)}^{} \frac{1}{n^s}$$
+The LHS converges to the product over all primes. Since every positive integer has a prime factorization, each $n$ lies in $S(2, 3, \ldots, p_m)$. Thus RHS converges to the sum over all positive integers $n$
+
+&nbsp;
+
+**Infinite Primes Proof**: BWOC suppose there are only a finite number of primes. Then
+$$\lim_{s \rightarrow 1^+} \prod_p (1 - p^{-s})^{-1} = \prod_p (1 - p^{-1})^{-1}$$
+is a finite product and thus must itself be finite
+
+Furthermore, since each of the functions used in the product is continuous at $s = 1$, we have that for $n > 1, x \geq n, s > 1$
+$$x^s \geq n^s \implies \frac{1}{n^s} \geq \frac{1}{x^s} \implies \int_{n}^{n+1} \frac{1}{n^s} \, dx \geq \int_n^{n+1} \frac{1}{x^s} \, dx$$
+Thus we have
+$$\zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s} \geq \sum_{n=1}^{\infty}\int_n^{n+1} \frac{1}{x^s} = \int_1^\infty \frac{1}{x^s} \, dx = \frac{1}{s-1}$$
+Thus $\zeta(s) \geq \frac{1}{s-1}$ diverges as $s \rightarrow 1^+$. Contradiction since we showed that $\displaystyle \prod_p (1-p^{-s})^{-1}$ converges
+
+Thus there are an infinite number of primes
+
 # Congruences
 
 ## Definitions and Examples
