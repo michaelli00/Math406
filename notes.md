@@ -856,19 +856,27 @@ Thus there are an infinite number of primes
 
 ## Definitions and Examples
 
-**Congruence**: $a \equiv b \pmod{m}$ if $a - b$ is a multiple of $m$
+**Definition - Congruence**: $a \equiv b \pmod{m}$ if $a - b$ is a multiple of $m$
+
+&nbsp;
 
 **Proposition 6.2**: $a \equiv b \pmod{m} \iff a = b + km$ for some $k \in Z$
 
-&nbsp; *Proof*: $a \equiv b \pmod{m}$ if and only if $a-b$ is a multiple of $m$. Thus $a -b = km \implies a = b + km$
+*Proof*: $a \equiv b \pmod{m}$ if and only if $a-b$ is a multiple of $m$. Thus $a -b = km \implies a = b + km$
+
+&nbsp;
 
 Looking at integers mod $m$, we get $m$ **congruent classes**. Each integer is only in one congruent class mod $m$
 
+&nbsp;
+
 **Proposition 6.3**: Let $a \in Z$ and $m \in Z^{+}$ then $\exists! r$, with $0 \leq r \leq m-1$ such that $a \equiv r \pmod{m}$
 
-&nbsp; *Proof*: By division algorithm, we have $\exists$ unique $q, r$ such that $a = mq + r$ with $0 \leq r \leq m - 1$
+*Proof*: By division algorithm, we have $\exists$ unique $q, r$ such that $a = mq + r$ with $0 \leq r \leq m - 1$
 
-&nbsp; Thus from the previous proposition, $a \equiv r \pmod{m}$
+Thus from the previous proposition, $a \equiv r \pmod{m}$
+
+&nbsp;
 
 **Proposition 6.4**: Let $a, b, c \in Z$ and $m \in Z^{+}$. Then
 
@@ -876,11 +884,13 @@ Looking at integers mod $m$, we get $m$ **congruent classes**. Each integer is o
 - $a \equiv b \pmod{m} \implies b \equiv a \pmod{m}$
 - $a \equiv c \pmod{m}$ and $b \equiv c \pmod{m} \implies a \equiv c \pmod{m}$
 
-&nbsp; *Proof*:
+*Proof*:
 
 - $a = a + 0 * m \implies a \equiv a \pmod{m}$
 - $a \equiv b \pmod{m} \implies a = b + km \implies b = a + (-k)m \implies b \equiv a$
 - $a - c = (a - b) + (b - c) = (k_1 + k_2)m  \implies a \equiv c \pmod{m}$
+
+&nbsp;
 
 **Proposition 6.5**: Let $a, b, c, d \in Z$ and $m \in Z^{+}$. If $a \equiv b \pmod{m}$ and $c \equiv d \pmod{m}$ then
 
@@ -888,21 +898,27 @@ Looking at integers mod $m$, we get $m$ **congruent classes**. Each integer is o
 - $a - c \equiv b - d \pmod{m}$
 - $ac \equiv bd \pmod{m}$
 
-&nbsp; *Proof*: $a \equiv b \pmod{m} \implies a = b + k_1m$ and $c \equiv d \pmod{m} \implies c = d + k_2m$
+*Proof*: $a \equiv b \pmod{m} \implies a = b + k_1m$ and $c \equiv d \pmod{m} \implies c = d + k_2m$
 
 - $a +c = (b + d) + (k_1 + k_2)m \implies a + c \equiv c + d \pmod{m}$
 - $a -c = (b - d) + (k_1 - k_2)m \implies a - c \equiv c - d \pmod{m}$
 - $ac = (bd)(bk_2 + dk_1 + k_1k_2m)m \implies ac \equiv cd \pmod{m}$
 
+&nbsp;
+
 **Corollary 6.6**: $a \equiv b \pmod{m} \implies a^n \equiv b^n \pmod{m}$ for $n \in Z^{+}$
 
-&nbsp; *Proof*: By the previous proposition, $a \equiv b \pmod{m} \implies a^2 \equiv b^2 \pmod{m}$. Repeated multiplication yields $a^n \equiv b^n \pmod{n}$
+*Proof*: By the previous proposition, $a \equiv b \pmod{m} \implies a^2 \equiv b^2 \pmod{m}$. Repeated multiplication yields $a^n \equiv b^n \pmod{n}$
+
+&nbsp;
 
 **Proposition 6.7**: $ac \equiv bc \pmod{m}$ and $\gcd(c, m)  = 1 \implies a \equiv b \pmod{m}$
 
-&nbsp; $ac \equiv bc \pmod{m} \implies m \mid (ac - bc) \implies m \mid c(a - b)$
+$ac \equiv bc \pmod{m} \implies m \mid (ac - bc) \implies m \mid c(a - b)$
 
-&nbsp; If $c, m$ are relatively prime, then we must have $m \mid a- b \implies a \equiv b \pmod{m}$
+If $c, m$ are relatively prime, then we must have $m \mid a- b \implies a \equiv b \pmod{m}$
+
+&nbsp;
 
 **Proposition 6.8**: $ac \equiv bc \pmod{m}$ and $\gcd(c, m) = d \implies a \equiv b \pmod{(m/d)}$ and $a = b + (\frac{m}{d})k$ with $0 \leq k \leq d - 1$
 
