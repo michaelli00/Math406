@@ -58,6 +58,46 @@ $\lcm(a, b) = 2^{e_2}3^{e_3} \cdots$ where $e_p = \max(a_p, b_p)$
 
 \newpage
 
+## Applications of Unique Prime Factorization
+
+**Proposition 5.1**: $n$ is a kth power if and only if all exponents in its prime factorization are multiples of $k$
+
+**Example**: Find $A$ such that $\frac{2}{3}A$ is a cube
+
+Let $A = 2^a 3^b 5^c \cdots$ be the prime factorization of $A$
+
+Then $\frac{2}{3}A^2 = 2^{2a + 1} 3^{2b - 1} 5^{2c} \cdots$ means that eaech exponent is a multiple of $3$ Thus
+
+$3 \mid 2a + 1 \implies a = 1 \quad \quad 3 \mid 2b - 1 \implies b= 2 \quad \quad 3 \mid 2c \implies c$ is a multiple of $3$ (same for $d, e, \ldots$)
+
+Thus $A = 18B^3$ for $B \geq 1$
+
+## Irrationality Proof
+
+Show that $\sqrt{3}$ is irrational
+
+BWOC suppose $\sqrt{3} = \frac{a}{b} \implies 3b^2 = a^2$
+
+$\gcd(a, b) = 1 \implies 3 \mid a^2 \implies 3 \mid a$ by (UPF)
+
+Thus $3b^2 = 9k^2$ for some $k \in Z \implies b^2 = 3k^2 \implies 3 \mid b$. Contradiction thus $\sqrt{3} \notin Q$
+
+**Theorem 5.3**: $n$ is not a perfect kth power $\implies \sqrt[k]{n}$ is irrational
+
+*Proof* By contraposition: Suppose $\sqrt[k]{n} = \frac{a}{b} \implies nb^k = a^k$
+
+Looking at prime factorization, $nb^k = p_1^{x_1 + y_1k} \cdots = p_1^{z_1k} \cdots = a^k$
+
+Thus $x_i + y_i k = z_i k \implies x_i = k(z_i - y_i) \implies n$ is a perfect kth power
+
+## Rational Root Theorem
+
+**Theorem 5.4**: For $P(x) = a_nx^n + \cdots a_1x + a_0$ with $a_i \in Z$ and $a_n, a_0 \neq 0$, if $r = \frac{u}{v} \in Q$ and $\gcd(u, v) = 1$ and $P(u/v) = 0$, then $u \mid a_0$ and $v \mid a_n$
+
+*Proof*: $a_n (\frac{u}{v})^n + \cdots + a_1 (\frac{u}{v}) + a_0 =0 \implies a_n u^n + \cdots + a_1 u v^{n-1} + a_0 v^n = 0$
+
+Because $\gcd(u, v) = 1$, we have $v \mid a_n$ and $v \mid a_0$
+
 ## Linear Congruence
 
 $a \equiv b \pmod{m} \implies m \mid a - b$ AND $a = b + km$ AND $\gcd(a, n) = \gcd(b, n)$

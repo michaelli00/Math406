@@ -603,7 +603,9 @@ By Uniqueness of Factorization, $y_p = kw_p$ for each $p \implies$ each exponent
 
 &nbsp;
 
-**Example** Find a number such that $2/3 * A^2$ is a cube
+**Example**: Find a number $A$ such that $2/3 * A^2$ is a cube
+
+Let $A = 2^a 3^b 5^c \cdots$ be the prime factorization of $A$
 
 We have $2/3 * A^2 = 2^{2a+1} 3^{2b -1} 5^{2c} \cdots$ is a cube, so $2a + 1$, $2b - 1$, $2c$, $\cdots$ are all multiples of $3$
 
@@ -619,7 +621,7 @@ Finally, we see that $A = 2^a3^b 5^c \dots = 2*3^2 (2^j3^k5^{c'} \cdots)^3 = 18 
 
 ## Irrationality Proof
 
-**Rational**: number that can expressed as a ratio of $2$ integers
+**Rational**: Number that can expressed as a ratio of $2$ integers
 
 &nbsp;
 
@@ -647,7 +649,7 @@ We can prime factorize $n,b$ to get $n = 2^{x_2} 3^{x_3} \cdots$ and $b = 2^{z_2
 
 Thus we have $nb^k = 2^{x_2 + kz_2} 3^{x_3 + kz_3} \cdots$
 
-Let $a = 2^{y_2} 3^{y_3} \cdots$. Since $nb^k = a^k$ is a perfect power, by Proposition 5.1, every exponent is of the prime factorization is a multiple of $k$
+Let $a = 2^{y_2} 3^{y_3} \cdots$. Since $a^k$ is a perfect power, by Proposition 5.1, every exponent is of the prime factorization is a multiple of $k$
 
 Thus $x_p + kz_p = ky_p \implies x_p = k(y_p - z_p) \implies n$ is a perfect kth power
 
@@ -920,13 +922,13 @@ If $c, m$ are relatively prime, then we must have $m \mid a- b \implies a \equiv
 
 &nbsp;
 
-**Proposition 6.8**: $ac \equiv bc \pmod{m}$ and $\gcd(c, m) = d \implies a \equiv b \pmod{(m/d)}$ and $a = b + (\frac{m}{d})k$ with $0 \leq k \leq d - 1$
+**Proposition 6.8**: $ac \equiv bc \pmod{m}$ and $\gcd(c, m) = d \implies a \equiv b \pmod{\frac{m}{d}}$ and $a = b + (\frac{m}{d})k$ with $0 \leq k \leq d - 1$
 
-&nbsp; *Proof*: $ac \equiv bc \pmod{m} \implies m \mid c(a-b) \implies \frac{m}{d} \mid \frac{c}{d}(a-b)$
+*Proof*: $ac \equiv bc \pmod{m} \implies m \mid c(a-b) \implies \frac{m}{d} \mid \frac{c}{d}(a-b)$
 
-&nbsp; Since $\gcd(c, m) = d$, we must have $\gcd(m/d, c/d) = 1 \implies \frac{m}{d} \mid a - b \implies a \equiv b \pmod{(m/d)}$
+Since $\gcd(c, m) = d$, we must have $\gcd(\frac{m}{d}, \frac{c}{d}) = 1 \implies \frac{m}{d} \mid a - b \implies a \equiv b \pmod{\frac{m}{d}}$
 
-&nbsp; Furthermore, $a - b = m (\frac{d}{k})$ where $\frac{d}{k} \in Z \implies 0 \leq k \leq d - 1$
+Furthermore, $a - b = m (\frac{d}{k})$ where $\frac{d}{k} \in Z \implies 0 \leq k \leq d - 1$
 
 &nbsp;
 
@@ -937,30 +939,41 @@ Various ways to solve equations of the form $ax \equiv b \pmod{m}$:
     **Example**: $2c \equiv 7 \pmod{9} \equiv 16 \pmod{9} \implies c = 8$
 - Use Proposition 6.8 and divide $a, b$ be a common factor $c$ and $m$ by $\gcd(c, m)$
 
-    **Example**: $6c \equiv 18 \pmod{21} \implies c \equiv 3 \pmod{7}$. So solutions are $c \equiv 3 \pmod{21}$. **Note**: answer was converted back to mod 21 at the end
+    **Example**: $6c \equiv 18 \pmod{21} \implies c \equiv 3 \pmod{7}$.
 
+    **Note**: Answer is in terms of mod 7
+
+&nbsp;
 
 **Proposition 6.9**: Let $n \in Z^{+}$ and $a, b \in Z$. Then $a \equiv b \pmod{n} \implies \gcd(a, n) = \gcd(b, n)$
 
-&nbsp; *Proof*: $a \equiv b \pmod{n} \implies a = b + nk$. Let $d$ be a divisor of $b, n$. Then $d \mid a$ since $a$ is a linear combination of $b, n$
+*Proof*: $a \equiv b \pmod{n} \implies a = b + nk$. Let $d$ be a divisor of $b, n$. Then $d \mid a$ since $a$ is a linear combination of $b, n$
 
-&nbsp; We also must have $b = a - nk \implies$ any common divisor of $a, n$ is also a divisor of $b$
+We also must have $b = a - nk \implies$ any common divisor of $a, n$ is also a divisor of $b$
 
-&nbsp; Thus the set of common divisors for $a, n$ is the same as the set of common divisors of $b, n$. Thus $\gcd(a, n) = \gcd(b, n)$
+Thus the set of common divisors for $a, n$ is the same as the set of common divisors of $b, n$. Thus $\gcd(a, n) = \gcd(b, n)$
+
+&nbsp;
 
 **Example**: $\gcd(1234, 10) = \gcd(4, 10)$ since $1234 \equiv 4 \pmod{10}$
 
+&nbsp;
+
 **Proposition 6.10**: If $p$ is a prime and $ab \equiv 0 \pmod{p}$. Then $a \equiv 0 \pmod{p}$ or $b \equiv 0 \pmod{p}$
 
-&nbsp; *Proof*: $ab \equiv 0 \pmod{p} \implies p \mid ab$. Thus by theorem, $p \mid a$ or $p \mid b \implies a \equiv 0 \pmod{p}$ or $b \equiv 0 \pmod{p}$, respectively
+*Proof*: $ab \equiv 0 \pmod{p} \implies p \mid ab$. Thus by theorem, $p \mid a$ or $p \mid b \implies a \equiv 0 \pmod{p}$ or $b \equiv 0 \pmod{p}$, respectively
+
+&nbsp;
 
 **Corollary 6.11**: Let $p$ be a prime. Then $x^2 \equiv 1 \pmod{p}$ has only solutions $x \equiv \pm 1 \pmod{p}$
 
-&nbsp; *Proof*: $x^2 \equiv 1 \pmod{p} \iff x^2 - 1 \equiv 0 \pmod{0} \iff (x-1)(x+1) \equiv 0 \pmod{p}$
+*Proof*: $x^2 \equiv 1 \pmod{p} \iff x^2 - 1 \equiv 0 \pmod{0} \iff (x-1)(x+1) \equiv 0 \pmod{p}$
 
-&nbsp; By the previous Proposition, this ony happens when $x-1 \equiv 0 \pmod{p}$ or $x + 1 \equiv 0 \pmod{p}$
+By the previous Proposition, this ony happens when $x-1 \equiv 0 \pmod{p}$ or $x + 1 \equiv 0 \pmod{p}$
 
-&nbsp; Thus the only possible solutions are $x \equiv \pm \pmod{p}$
+Thus the only possible solutions are $x \equiv \pm 1 \pmod{p}$
+
+**Exercise 6.34**
 
 ## Divisibility Tests
 
