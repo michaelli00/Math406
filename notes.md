@@ -977,28 +977,101 @@ Thus the only possible solutions are $x \equiv \pm 1 \pmod{p}$
 
 ## Divisibility Tests
 
-An integer $n$ is divisible by $4$ if the last 2 digits are divisible by $4$
+For $a \in N$, we can express $a$ in base $10$ as
+$$a = a_0 + 10^1 a_1 + \cdots + 10^k a_k \quad \quad 0 \leq a_i \leq 9$$
 
-An integer $n$ is divisible by $8$ if the last 3 digits are divisible by $8$
+&nbsp;
+
+**Axiom**: $2 \mid a$ if and only if $2 \mid a_0 \implies a \equiv a_0 \pmod{2}$
+
+&nbsp;
+
+**Proposition 6.12**: $10 \mid a$ if and only if $a_0 = 0$ AND $5 \mid a$ if and only if $a_0 = 0$ or $a_0 = 5$
+
+*Proof*:
+
+Let $a = a_0 + 10a_1 + \cdots + 10^k a_k \quad \quad 0 \leq a_i \leq 9$
+
+- $\implies$ Suppose $10 \mid a \implies 10 \mid a_0 \implies a_0 = 0$ since $0 \leq a_0 \leq 9$
+
+  $\impliedby$ Suppose $a_0 = 0 \implies a = 10a_1 + \cdots + 10^k a_k \implies 10 \mid a$
+
+- We prove that $a \equiv a_0 \pmod{5}$
+
+  $a = a_0 + 10(a_1 + 10a_2 + \cdots + 10^{k-1}a_k) \implies a \equiv a_0 \pmod{5}$
+
+  Thus it follows that $5 \mid a$ if and only if $a_0 \equiv 0 \pmod{10} \implies a_0 = 0$ or $a_0 = 5$
+
+&nbsp;
+
+**Corollary 6.12.1**: $a \equiv a_0 \pmod{10}$
+
+&nbsp;
+
+**Poroposition 6.13**: $4 \mid a$ if and only if $4 \mid 10a_1 + a_0$ AND $8 \mid a$ if and only if $8 \mid 100 a_2 + 10a_1 + a_0$
+
+*Proof*:
+
+- Note that $4 \mid 10^j$ for $j \geq 2$. Thus $a \equiv 10a_1 + a_0 \pmod{4} \implies 4 \mid a$ if and only if $4 \mid 10a_1 + a_0$
+- Note that $8 \mid 10^j$ for $j \geq 3$. Thus $a \equiv 100a_2 + 10a_1 + a_0 \pmod{8} \implies 8 \mid a$ if and only if $8 \mid 100a_2 + 10a_1 + a_0$
+
+&nbsp;
 
 **Proposition 6.14**: An integer mod 3 (respectively, mod 9) is congruent to the sum of its digits mod 3 (respectively, mod 9)
 
-&nbsp; *Proof*: Clearly $10 \equiv 1 \pmod{3}$. Since $1^k = 1$ for all integers $k$, we have
-$$10^k \equiv 1^k \equiv \pmod{3}$$
-&nbsp; Thus when we look at $n$ expanded in its base 10 form mod 3, we get
+*Proof*: Clearly $10 \equiv 1 \pmod{3}$. Since $1^k = 1$ for all integers $k$, we have
+$$10^k \equiv 1^k \equiv 1 \pmod{3}$$
+Thus when we look at $n$ expanded in its base 10 form mod 3, we get
 $$n = a_m 10^m + \cdots + a_10 + a_0 \equiv a_m + \cdots + a_1 + a_0 \pmod{3}$$
-&nbsp; Identical for mod 9
+Identical for mod 9
+
+&nbsp;
 
 **Corollary 6.15**: An integer $n$ is divisible by 3 if and only if the sum of its digits are divisible by 3. It is divisible by 9 if and only if the sum of its digits is divisible by 9
 
-**Proposition 6.16**: An integer mod 11 is congruent to the alternating sum its digits starting with the ones $(a_0)$, subtracting the tens $(a_1), \ldots$
+&nbsp;
 
-&nbsp; *Proof*: Note that $10 \equiv -1 \pmod{11} \implies 10^k \equiv (-1)^k \pmod{11}$
+**Example**: $8675309 \equiv 38 \pmod{9} \equiv 11 \pmod{9} \equiv 2 \pmod{9}$
 
-&nbsp; Thus when we look at $n$ expanded in its base 10 form mod 11, we get
+&nbsp;
+
+**Proposition 6.15.1**: $6 \mid a$ if and only if $2 \mid a$ and $3 \mid a$
+
+*Proof*: $\implies$ Suppose $6 \mid a$. Then any factor of $6$ also divides $a$
+
+$\impliedby$ Suppose $2 \mid a$ and $3 \mid a$. Then by the unique prime factorization of $a$, we know that $6 \mid a$
+
+**Corollary 6.15.2**: $a \equiv 0 \pmod{6}$ if and only if $a_0 \equiv 0 \pmod{2}$ AND $\displaystyle \sum_{n=0}^{k} a_i \equiv 0 \pmod{3}$
+
+&nbsp;
+
+**Proposition 6.16**: $a \equiv a_0 + a_1 + a_2 + \cdots + (-1)^k a_k \pmod{11}$
+
+*Proof*: Note that $10 \equiv -1 \pmod{11} \implies 10^k \equiv (-1)^k \pmod{11}$
+
+Thus when we look at $n$ expanded in its base 10 form mod 11, we get
 $$n = a_m 10^m + \cdots + a_10 + a_0 \equiv a_0 - a_1 + \cdots + (-1)^m a_m \pmod{11}$$
 
+&nbsp;
+
 **Corollary 6.17**: An integer $n$ is divisible $11$ if and only if the alternating sum of its digits is divisible by $11$
+
+&nbsp;
+
+**Proposition 6.17.1**: To test if $7 \mid a$, take $a$, truncate the last digit and subtract the rest of the digit by $2 * a_0$. Repeat until we reach one digit and it is $0$ or $7$. Then $7 \mid a$. Otherwise $7 \nmid a$
+
+*Proof*:
+\begin{align*}
+a &= a_0 + 10(a_1 + 10 a_1 + \cdots + 10^{k-1}a_k) \\
+&\equiv (-20)a_0 + 10(a_1 + \cdots + 10^{k-1}a_k) \equiv \pmod{7} \\
+&\equiv 10 (-2a_0 + a_1 + 10 a_2 + \cdots + 10^{k-1} a_k) \pmod{7}
+\end{align*}
+
+Thus $7 \mid a \implies 7 \mid (-2a_0 + a_1 + 10 a_2 + \cdots + 10^{k-1} a_k)$, which is the recursion we created above
+
+&nbsp;
+
+**Example**:
 
 ## Linear Congruences
 
