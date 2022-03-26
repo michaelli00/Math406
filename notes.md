@@ -25,7 +25,7 @@ and Kraft
 
 ## Divisibility
 
-**Definition 2.1**: Given $a, d \in Z$, for $d \neq 0$, $d$ **divides** $a$ if $\exists c \in Z$ such that $a = cd$
+**Definition - Divides**: Given $a, d \in Z$, for $d \neq 0$, $d$ **divides** $a$ if $\exists c \in Z$ such that $a = cd$
 
 &nbsp;
 
@@ -38,6 +38,8 @@ and Kraft
 **Proposition 2.3**: Let $a, b, d, x, y \in Z$. If $d \mid a$ and $d \mid b \implies d \mid ax + by$
 
 *Proof*: $a = md$ and $b = nd \implies ax + by = d(mx + ny)$
+
+&nbsp;
 
 **Upshot**: Every common divisor of both $a, b$ divides any linear combination of $a, b$
 
@@ -55,13 +57,13 @@ and Kraft
 
 Since $d \in N$, we also must have $k \in N$ (otherwise $n \notin N$)
 
-Thus $n = dk \geq d * 1$
+Thus $n = dk \geq d$
 
 ## Euclid's Theorem
 
-**Prime**: Integer $p \geq 2$ whose divisors are $1, p$
+**Definition - Prime**: Integer $p \geq 2$ whose divisors are $1, p$
 
-**Composite**: Integer $n \geq 2$ not prime such that $n = ab$ for $a, b \in Z$ and $1 < a, b, < p$
+**Definition - Composite**: Integer $n \geq 2$ not prime such that $n = ab$ for $a, b \in Z$ and $1 < a, b, < p$
 
 &nbsp;
 
@@ -77,7 +79,7 @@ This creates a decreasing sequence of positive integers, which by the Well Order
 
 So either some $a_i$ is prime and divides $n$ or we stop at $a_m$, which is prime. Thus $n$ is divisible by a prime
 
-&nbsp;
+\newpage
 
 *Proof 2 by Induction*: Let $n \in Z, n \geq 2$, and suppose $n$ is composite. Thus $n = kl$ for $k, l \in Z$ where $1 < k, l, < n$
 
@@ -88,7 +90,7 @@ IH: Suppose the Lemma holds for all $i \in N, i < n$
 IS: $n = kl$ where $k < n$. Thus $k$ is either a prime or is divisible by a prime
 
 - If $k$ is prime, we are done since $k \mid n$
-- Otherwise $p \mid k$ for some prime $p < k$. Then we have $p \mid k \wedge k \mid n \implies p \mid n$
+- Otherwise $p \mid k$ for some prime $p < k$. Then we have $p \mid k \implies k \mid n \implies p \mid n$
 
 &nbsp;
 
@@ -100,7 +102,7 @@ Let $N = (2 * 3 * 5 * \cdots * p_n) + 1$
 
 Since $N > 2p_n + 1 > p_n$, it is composite and thus is divisible by some $p_i$ in the list of primes
 
-Then we have $p_i \mid 2 * 3 * 5 * \cdots * p_n$ and $p_i \mid N \implies p_i \mid N - (2 * 3 * 5 * \cdots * p_n) \implies p_i \mid 1$ contradiction since $p_i > 1$
+Thus $p_i \mid 2 * 3 * 5 * \cdots * p_n$ and $p_i \mid N$ (by Lemma 2.6) $\implies p_i \mid N - (2 * 3 * 5 * \cdots * p_n) \implies p_i \mid 1$ contradiction since $p_i > 1$
 
 Thus there are an infinite number of primes
 
@@ -141,11 +143,11 @@ Thus $r_1 = r$ and since $b \neq 0 \implies b(q - q_1) = 0 \implies q = q_1$. So
 
 ## The Greatest Common Divisor
 
-**Relative Prime**: $a, b$ are relatively prime if $\gcd(a, b) = 1$
+**Definition - Relatively Prime**: $a, b$ are **relatively prime** if $\gcd(a, b) = 1$
 
 - By definition, we have $\gcd(a, 0) = a$
 
-&nbsp;
+\newpage
 
 **Proposition 2.10**: Let $a, b \in Z$ and $d = \gcd(a, b)$. Then $\gcd(\frac{a}{d}, \frac{b}{d}) = 1$
 
@@ -184,6 +186,7 @@ Various ways to find $\gcd(a, b)$:
 ## The Euclidean Algorithm
 
 **Euclidean Algorithm**: Let $a, b \in Z$ with $a \geq 0, b > 0$. Then we have
+
 \begin{align*}
 a &= q_1 b + r_1 \quad \quad 0 < r_1 < b \\
 b &= q_2 r_1 + r_2 \quad \quad 0 < r_2 < r_1 \\
@@ -205,11 +208,14 @@ Thus $d \leq r_{n-1}$ which means that $r_{n-1}$ is the largest divisor and $\gc
 
 **NOTE**: each common divisor of $a, b$ also divides $\gcd(a, b)$
 
+\newpage
+
 ### The Extended Euclidean Algorithm
 
 **Extended Euclidean Algorithm**: $\gcd(a, b)$ can be expressed as a linear combination of $a, b$.
 
 **Example**: $\gcd(456, 123)$
+
 \begin{align*}
 456 &= 3 * 123 + 87 \\
 123 &= 1 * 87 + 36 \\
@@ -235,7 +241,7 @@ Thus $3 = 456 * 17 - 123 * 63$
 
 &nbsp;
 
-**Theorem 2.12 (Bezout's Theorem)**: Let $a, b \in Z$ with at least one non-zero. Then there exists $x, y \in Z$ such that $\gcd(a, b) = ax + by$
+**Theorem 2.12 (Bezout's Theorem)**: For $a, b \in Z$ with at least one non-zero, $\exists x, y \in Z$ such that $\gcd(a, b) = ax + by$
 
 *Proof*: Let $S$ be a set of integers that can be written in the form $ax + by$ for $x, y \in Z$
 
@@ -244,18 +250,21 @@ Since $a, b, -a, -b \in S$, clearly $S$ contains at least one positive integer.
 Using the Well-Ordering Principle, let $d$ be the smallest positive integer in $S$. Thus $d = ax_0 + by_0$ for $x_0, y_0 \in Z$
 
 We show that $d$ is a common divisor of $a, b$
+
 $$a = dq + r \implies r = a - dq = a - (ax_0 + by_0)q = a(1- x_0 q) + b(-y_0 q)$$
+
 Thus $r \in S$. But since $d$ is the smallest positive element of $S$ and $0 \leq r < d$, we must have $r = 0$
 
 Thus $d \mid a$. Similarly, $d \mid b$. Thus $d$ is a common divisor of $a, b$
 
 Next we show that for any common divisor of $a, b$, call it $e$, we have $e \leq d$
 
-$e \mid a$ and $e \mid b \implies e \mid ax_0 + by_0 = d$. Thus $e \leq d$
+$e \mid a$ and $e \mid b \implies e \mid ax_0 + by_0 = d$. Thus $e \leq d$ and $d$ is the largest common factor of $a, b$
 
-&nbsp;
+\newpage
 
 **Theorem 2.13**: Let $n \geq 2$ and $a_1, \ldots, a_n \in Z$ with at least one nonzero $a_i$. Then $\exists x_1, \ldots, x_n \in Z$ such that
+
 $$\gcd(a_1, \ldots, a_n) = a_1 x_1 + \cdots + a_n x_n$$
 
 *Proof by Induction*: By Theorem 2.12, the statement holds for $n = 2$
@@ -309,11 +318,14 @@ $a \mid c \implies ba \mid bc$
 
 Since $c$ is a linear combination of $ac$ and $bc$, by Proposition 2.3, we must have that $ab \mid c$
 
+\newpage
+
 ## Other Bases
 
 We can convert a number from base 10 to any other base using the Division Algorithm
 
 **Example**: Convert $21963_{10}$ to base $8$
+
 \begin{align*}
 21963 &= 2745 * 8 + 3 \\
 2745 &= 343 * 8 + 1\\
@@ -321,7 +333,9 @@ We can convert a number from base 10 to any other base using the Division Algori
 42 &- 5 *8 + 2 \\
 5 &= 0*8 + 5
 \end{align*}
+
 Thus $21963_{10} = 52713_8$ This is because
+
 $$5 *8^4 + 2 * 8^3 + 7*8^2 + 1 *8 + 3 = 52713_8$$
 
 &nbsp;
@@ -396,7 +410,9 @@ We look for solutions to $ax + by = c$ for $a, b, c \in Z$
 **Theorem 3.1**: Let $a, b, c \in Z$ where $a, b$ are not both $0$. Then $ax + by = c$ has a solution if and only if $\gcd(a, b) \mid c$
 
 Furthermore, if it has one solution $(x_0, y_0)$, then there are an infinite number of solutions of the form
+
 $$x = x_0 + \frac{b}{\gcd(a, b)}t \quad \quad y = y_0 - \frac{a}{\gcd(a, b)}t \quad \quad t \in Z$$
+
 *Proof*: Let $d = \gcd(a, b)$
 
 $\implies$ Contraposition: If $d \nmid c$ then clearly no solutions
@@ -438,6 +454,7 @@ Furthermore, $\frac{a}{d}(u - x_0) = \frac{b}{d}(\frac{a}{d}t) \implies u = x_0 
 &nbsp;
 
 **Upshot**: If $(x_0, y_0)$ is a particular solution, then all solutions are of the form
+
 $$x = x_0 + bt \quad \quad y= y_0 - at \quad \quad t \in Z$$
 
 &nbsp;
@@ -454,8 +471,9 @@ $$x = x_0 + bt \quad \quad y= y_0 - at \quad \quad t \in Z$$
 3. If one of the solution variable (e.g. $x$) is negative, we can perform Extended Euclidean Algorithm with a positive $x$ then flip the sign of $x$ at the end
 4. General solutions will be $(x_0 + \frac{b}{d}t, y_0 - \frac{a}{d}t)$
 
-    - **Example**: $-17x +14y = 30 \implies 17x + 14y = 30$ has the solution $(5*30, -6*30)$ so the desired solution is $(-150, -180)$ and general solution is of the form
-  $$x = -150 + 14t \quad \quad y = -180 + 17t \quad \quad t \in Z$$
+**Example**: $-17x +14y = 30 \implies 17x + 14y = 30$ has the solution $(5*30, -6*30)$ so the desired solution is $(-150, -180)$ and general solution is of the form
+
+$$x = -150 + 14t \quad \quad y = -180 + 17t \quad \quad t \in Z$$
 
 &nbsp;
 
@@ -482,7 +500,9 @@ We find the smallest possible $y \geq 0$ then show that $x \geq 0$
 From Division Algorithm and dividing $y_0$ by $a$, we have $y_0 = at + y_1$ for $0 \leq y_1 < a$. Let $y_1$ be our choice of $y$
 
 Since $y_1 = y_0 - at$, we take $x_1 = x_0 + bt$ as our choice of $x$. First note that these are a valid solution
+
 $$ax_1 + by_1 = a(x_0 + bt) + b(y_0 - at) = ax_0 + by_0 = m$$
+
 Now we show that $x_1 \geq 0$
 
 Suppose by contradiction that $x_1 \leq -1$, then we have
@@ -519,11 +539,13 @@ We can apply Theorem 4.1 where $p \mid ab \implies$ statement holds for any $r \
 
 **Lemma 4.3**: Every integer can be written as a product of primes
 
-*Proof*: Assume there exist composite integers that cannot be written as product of primes. Let $S$ be the set of these ints $> 1$
+*Proof*: Assume there exist composite integers that cannot be written as product of primes.
+
+Let $S$ be the set of these integers $> 1$
 
 Since all $e \in S$ are positive, by Well Ordering Principle, it has a smallest element $s$
 
-Since $s$ is composite,we have $s = ab$, but $a, b < s \implies a, b \notin S \implies a, b$ can be written as the product of primes
+Since $s$ is composite, we have $s = ab$, but $a, b < s \implies a, b \notin S \implies a, b$ can be written as the product of primes
 
 Thus $s$ is also a product of primes and thus $S$ is empty
 
@@ -545,7 +567,7 @@ Thus we have a contradiction and every positive integer $> 1$ can be unique fact
 
 &nbsp;
 
-**Proposition 4.4**: Let $a, b \in Z^+$ where $a = 2^{a_2} 3 ^{a_3} \cdots$ and $b = 2^{b_2} 3 ^{b_3} \cdots$. Then $a \mid b \iff a_p \leq b_p$ for all $p$
+**Proposition 4.4**: Let $a, b \in Z^+$ where $a = 2^{a_2} 3 ^{a_3} \cdots$ and $b = 2^{b_2} 3 ^{b_3} \cdots$. Then $a \mid b$ if and only if $a_p \leq b_p$ for all $p$
 
 *Proof*: $\implies a \mid b \implies ac = b$ where $c = 2^{c_2} 3 ^{c_3} \cdots$
 
@@ -593,7 +615,7 @@ Then we have $r^2s = n$
 
 ## A Puzzle
 
-**Proposition 5.1**: Let $k \geq 2$ be an integer and $m \in Z^+$. Then $m$ is a kth power $\iff$ all exponents in the prime factorization of $m$ are multiples of $k$
+**Proposition 5.1**: Let $k \geq 2$ be an integer and $m \in Z^+$. Then $m$ is a kth power if and only if all exponents in the prime factorization of $m$ are multiples of $k$
 
 *Proof*: $\impliedby$ Let $m = 2^{y_2} 3^{y_3} \cdots$. If each $y_p$ is a multiple of $k$ then $y_p = k z_p \implies m = (2^{z_2} 3^{z_3} \cdots)^k$
 
@@ -637,9 +659,9 @@ But then we have $b^2 = 2a_1$ so $b^2$ is even $\implies b$ is even. This a cont
 
 Thus we have a contradiction and $\sqrt{2}$ is irrational
 
-&nbsp;
+\newpage
 
-**Theorem 5.3**: Let $k \in Z$ and $k \geq 2$. let $n \in Z^+$ that is not a perfect kth power. Then $\sqrt[k]{n}$ is irrational
+**Theorem 5.3**: Let $k \in Z$ and $k \geq 2$. Let $n \in Z^+$ that is not a perfect kth power. Then $\sqrt[k]{n}$ is irrational
 
 *Proof*: We show the contrapositive that if $\sqrt[k]{n}$ is rational then $n$ is a perfect kth power
 
@@ -667,9 +689,9 @@ $a_{n}u^n + \cdots + a_1 v^{n-1} u = -a_0 v^n \implies u \mid a_0 v^n$. But $\gc
 
 ## Pythagorean Triples
 
-**Pythagorean Triples**: positive integers $(a, b, c)$ where $a^2 + b^2 = c^2$
+**Definition - Pythagorean Triples**: positive integers $(a, b, c)$ where $a^2 + b^2 = c^2$
 
-**Primitive Pythagorean Triples**: Pythagorean triples where $\gcd(a, b, c) = 1$
+**Definition - Primitive Pythagorean Triples**: Pythagorean triples where $\gcd(a, b, c) = 1$
 
 &nbsp;
 
@@ -702,7 +724,7 @@ Let $n$ be odd $\implies n = 2k + 1 \implies n^2 4k(k+1) + 1$
 
 Since $k$ or $k+ 1$ is even, we have $4k(k+1)$ is a multiple of $8$. Thus $n$ is a $1$ more than a multiple of $8$
 
-&nbsp;
+\newpage
 
 **Theorem 5.5**: Let $(a, b, c)$ be a Primitive Pythagorean triple. Then $c$ is odd and exactly one of $a, b$ is even and the other is odd. Assume $b$ is even, then there are relatively prime integers $m, n$ such that $m < n$ and one odd and the other even such that
 
@@ -724,29 +746,29 @@ Then we have $a^2 + b^2 = c^2$ is odd.
 
 Let $b = 2b_1$ so we have $c^2 - a^2 = (c+a) (c-a) = b^2 = 4b_1^2$
 
-Thus we have $(\frac{c+a}{2})(\frac{c-a}{2}) = b_1^2$. Since $c, a$ are odd we must have $\frac{c+a}{2}$ and $\frac{c-a}{2} \in Z$
+Thus we have $\displaystyle (\frac{c+a}{2})(\frac{c-a}{2}) = b_1^2$. Since $c, a$ are odd we must have $\frac{c+a}{2}$ and $\frac{c-a}{2} \in Z$
 
-Let $d = \gcd((c + a)/2, (c - a)/2)$ and suppose by contradiction $d > 1$. Then let $p$ be a prime dividing $d$
+Let $\displaystyle d = \gcd(\frac{c+a}{2}, \frac{c-a}{2})$ and suppose by contradiction $d > 1$. Then let $p$ be a prime dividing $d$
 
-Then $c = \frac{c+a}{2} + \frac{c-a}{2}$ and $a = \frac{c + a}{2} - \frac{c - a}{2}$ are multiples of $p$
+Then $\displaystyle c = \frac{c+a}{2} + \frac{c-a}{2}$ and $\displaystyle a = \frac{c + a}{2} - \frac{c - a}{2}$ are multiples of $p$
 
 Thus $c^2 - a^2= b^2$ is a multiple of $p \implies p \mid b$ so $p$ is a common divisor of $a, b, c$, contradicting that $\gcd(a, b, c) = 1$. Thus $d = 1$
 
-Thus we have two relatively prime integers: $(c + a)/ 2$ and $(c - a)/2$ whose product is a square
+Thus we have two relatively prime integers: $\displaystyle \frac{c+a}{2}$ and $\displaystyle \frac{c-a}{2}$ whose product is a square
 
-By Lemma 5.6, each factor is a square so $\frac{c- a}{2} = m^2$ and $\frac{c + a}{2} = n^2$
+By Lemma 5.6, each factor is a square so $\displaystyle \frac{c- a}{2} = m^2$ and $\displaystyle \frac{c + a}{2} = n^2$
 
-Thus $c = \frac{c + a}{2} + \frac{c - a}{2} = n^2 + m^2$ and $a = \frac{c + a}{2} - \frac{c - a}{2} = n^2 - m^2$
+Thus $\displaystyle c = \frac{c + a}{2} + \frac{c - a}{2} = n^2 + m^2$ and $\displaystyle a = \frac{c + a}{2} - \frac{c - a}{2} = n^2 - m^2$
 
 Thus $b^2 = c^2 - a^2 = (n^2 + m^2)^2 - (n^2 - m^2)^2 = 4m^2n^2 \implies b = 2mn$
 
-Since $(c-a)/2 = m^2$ and $(c+a)/2 = n^2$ are relatively prime, then $\gcd(n, m) = 1$
+Since $\displaystyle \frac{c-a}{2} = m^2$ and $\displaystyle \frac{c+a}{2}= n^2$ are relatively prime, then $\gcd(n, m) = 1$
 
 Finally since $m^2 + n^2 = c$ is odd, one of $m, n$ is odd and the other is even
 
 ## Difference of Squares
 
-**Theorem 5.8**: Let $m \in Z^+$. Then $m$ is a difference of 2 squares $\iff$ either $m$ is odd or $m$ is a multiple of $4$
+**Theorem 5.8**: Let $m \in Z^+$. Then $m$ is a difference of 2 squares if and only if either $m$ is odd or $m$ is a multiple of $4$
 
 *Proof*: $\impliedby$ Let $m$ be odd then $m = 2n + 1 = (n+1)^2 - n^2$.
 
@@ -762,9 +784,9 @@ $\implies$ Suppose $m = x^2 - y^2 = (x+y)(x-y)$. Since $x + y, x - y$ differ by 
 
 As an aside, suppose $m = uv$ where $u,v$ have the same parity and $u \geq v$
 
-If we let $x = \frac{(u+v)}{2}$ and $y = \frac{(u-v)}{2}$ then clearly $x, y \in Z$ since $u,v$ have the same parity
+If we let $\displaystyle x = \frac{(u+v)}{2}$ and $y = \frac{(u-v)}{2}$ then clearly $x, y \in Z$ since $u,v$ have the same parity
 
-And we have $x^2 - y^2 = \frac{(u + v)^2}{4} - \frac{(u-v)^2}{4} = uv = m$
+And we have $\displaystyle x^2 - y^2 = \frac{(u + v)^2}{4} - \frac{(u-v)^2}{4} = uv = m$
 
 &nbsp;
 
@@ -794,11 +816,11 @@ but we see that $\lfloor \frac{n}{p} \rfloor = \lfloor q + (r/p) \rfloor = q$ so
 
 Similarly, there are $\lfloor \frac{n}{p^j} \rfloor$ multiples of $p^j$ up to $n$
 
-Thus we can write $b = (\# \text{ of multiples of p up to n}) + (\text{ of multiples of } p^2 \text{ up to n}) + \cdots$
+Thus we can write $b = (\# \text{ of multiples of p up to n}) + (\# \text{ of multiples of } p^2 \text{ up to n}) + \cdots$
 
 Take $m$ such that $1 \leq m \leq n$ and $m = p^k m_1$ with $p \nmid m_1$.
 
-Then $m$ contributes $p^k$ to $n!$ and contributes $k$ to the exponent $b$ since $m$ is a multiple of $p^j$ for $j \leq k$
+Then $m$ contributes $p^k$ to $n!$ and contributes $k$ to the exponent $b$ since $m$ is a multiple of $p^j$ for $1 \leq j \leq k$
 
 &nbsp;
 
@@ -810,6 +832,8 @@ Then $m$ contributes $p^k$ to $n!$ and contributes $k$ to the exponent $b$ since
 **Example**: $n = 30, p = 2 \implies \lfloor \frac{30}{2} \rfloor + \lfloor \frac{30}{4} \rfloor + \lfloor \frac{30}{8} \rfloor + \lfloor \frac{30}{16} \rfloor = 15 + 7 + 3 + 1 = 26 \implies 2^{26}$ is the power of $2$ in $30!$
 
 Thus $2^{26}5^{7} = 2^{19}10^{7} \implies 30!$ has $7$ zeros at the end
+
+\newpage
 
 ## Riemann Zeta Function
 
@@ -862,7 +886,7 @@ Thus there are an infinite number of primes
 
 &nbsp;
 
-**Proposition 6.2**: $a \equiv b \pmod{m} \iff a = b + km$ for some $k \in Z$
+**Proposition 6.2**: $a \equiv b \pmod{m}$ if and only if $a = b + km$ for some $k \in Z$
 
 *Proof*: $a \equiv b \pmod{m}$ if and only if $a-b$ is a multiple of $m$. Thus $a -b = km \implies a = b + km$
 
@@ -884,12 +908,12 @@ Thus from the previous proposition, $a \equiv r \pmod{m}$
 
 - $a \equiv a \pmod{m}$
 - $a \equiv b \pmod{m} \implies b \equiv a \pmod{m}$
-- $a \equiv c \pmod{m}$ and $b \equiv c \pmod{m} \implies a \equiv c \pmod{m}$
+- $a \equiv b \pmod{m}$ and $b \equiv c \pmod{m} \implies a \equiv c \pmod{m}$
 
 *Proof*:
 
 - $a = a + 0 * m \implies a \equiv a \pmod{m}$
-- $a \equiv b \pmod{m} \implies a = b + km \implies b = a + (-k)m \implies b \equiv a$
+- $a \equiv b \pmod{m} \implies a = b + km \implies b = a + (-k)m \implies b \equiv a \pmod{m}$
 - $a - c = (a - b) + (b - c) = (k_1 + k_2)m  \implies a \equiv c \pmod{m}$
 
 &nbsp;
@@ -904,7 +928,7 @@ Thus from the previous proposition, $a \equiv r \pmod{m}$
 
 - $a +c = (b + d) + (k_1 + k_2)m \implies a + c \equiv c + d \pmod{m}$
 - $a -c = (b - d) + (k_1 - k_2)m \implies a - c \equiv c - d \pmod{m}$
-- $ac = (bd)(bk_2 + dk_1 + k_1k_2m)m \implies ac \equiv cd \pmod{m}$
+- $ac = (bd) + (bk_2 + dk_1 + k_1k_2m)m \implies ac \equiv cd \pmod{m}$
 
 &nbsp;
 
@@ -942,6 +966,9 @@ Various ways to solve equations of the form $ax \equiv b \pmod{m}$:
     **Example**: $6c \equiv 18 \pmod{21} \implies c \equiv 3 \pmod{7}$.
 
     **Note**: Answer is in terms of mod 7
+- Divide $a, b, m$ be a common factor. Then solved the reduced congruence
+
+    **Example**: $15x \equiv 25 \pmod{55} \implies 3 x \equiv 5 \pmod{11} \implies x \equiv 9 \pmod{11}$
 
 &nbsp;
 
@@ -975,9 +1002,31 @@ Thus the only possible solutions are $x \equiv \pm 1 \pmod{p}$
 
 **Exercise 6.34**
 
+## Modular Exponentiation
+
+Consider $3^{385} \pmod{479}$
+
+Using **repeated squaring**, we see that
+
+\begin{align*}
+3^2 &\equiv 9 \pmod{479} \\
+3^4 &\equiv 81 \pmod{479} \\
+3^8 &\equiv 81^2 \equiv 334 \pmod{479} \\
+3^{16} &\equiv 334^2 \equiv 428 \pmod{479} \\
+3^{32} &\equiv 428^2 \equiv 206 \pmod{479} \\
+3^{64} &\equiv 206^2 \equiv 284 \pmod{479} \\
+3^{128} &\equiv 284^2 \equiv 184 \pmod{479} \\
+3^{256} &\equiv 184^2 \equiv 326 \pmod{479} \\
+\end{align*}
+
+Thus we see that
+
+$$3^{385} \equiv 3^{256} 3^{128} 3^1 \equiv 326 * 184 * 3 \equiv 327 \pmod{479}$$
+
 ## Divisibility Tests
 
 For $a \in N$, we can express $a$ in base $10$ as
+
 $$a = a_0 + 10^1 a_1 + \cdots + 10^k a_k \quad \quad 0 \leq a_i \leq 9$$
 
 &nbsp;
@@ -1071,73 +1120,108 @@ Thus $7 \mid a \implies 7 \mid (-2a_0 + a_1 + 10 a_2 + \cdots + 10^{k-1} a_k)$, 
 
 &nbsp;
 
-**Example**:
+**Example**: Consider $n = 42735$
+
+\begin{align*}
+4273 - 2(5) &= 4263 \\
+426 - 2(3) &= 420\\
+42 - 2(0) &= 42\\
+4 - 2(2) &= 0
+\end{align*}
+
+Thus $7 \mid 42735$
 
 ## Linear Congruences
 
 **Theorem 6.18**: Let $m \in Z^{+}$ and $a \neq 0$. Then $ax \equiv b \pmod{m}$ has a solution if and only if $d = \gcd(a, m)$ divides $b$. If $d \mid b$, then there are exactly $d$ solutions distinct mod m. Let $x_0$ be a solution, then the other solutions are of the form
+
 $$x = x_0 + (\frac{m}{d})k \quad \quad 0 \leq k \leq d$$
-&nbsp; Where $x_0$ can be found by satisfying
-$$(\frac{a}{d}) x_0 \equiv (\frac{b}{d}) \pmod{(m/d)}$$
 
-&nbsp; *Proof*: $ax \equiv b \pmod{m} \implies ax = b + my \implies ax - my = b$. This is a Diophantine problem with $(a, -m, b)$
+Where $x_0$ can be found by satisfying
 
-&nbsp; Let $d = \gcd(a, m)$. If $d \nmid b$, then there are no solutions
+$$(\frac{a}{d}) x_0 \equiv (\frac{b}{d}) \pmod{\frac{m}{d}}$$
 
-&nbsp; Otherwise let $d \mid b \implies$ solutions are of the form
+*Proof*: $ax \equiv b \pmod{m} \iff ax = b + my \iff  - my + ax = b$. This is a Diophantine problem with $(-m, a, b)$
+
+Let $d = \gcd(a, m)$. If $d \nmid b$, then there are no solutions
+
+Otherwise let $d \mid b \implies$ solutions are of the form
+
 $$x = x_0 + (\frac{m}{d})k \quad \quad \quad y = y_0 + (\frac{a}{d})k$$
-&nbsp; Which implies that $x \equiv x_0 \pmod{(m/d)}$. To show that these solutions are distinct mod m,
 
-&nbsp; Let $x_1 = x_0 + (\frac{m}{d})k_1$ and $x_2 = x_0 + (\frac{m}{d})k_2$ be distinct solutions and suppose $x_1 \equiv x_2 \pmod{m}$
+Which implies that $x \equiv x_0 \pmod{\frac{m}{d}}$
 
-&nbsp; Then $x_1 - x_2 = mk_3 \iff (\frac{m}{d})(k_1 - k_2) = mk_3 \iff k_1 - k_2 = dk_3 \implies k_1 \equiv k_2 \pmod{d}$. Thus $x_1, x_2$ are distinct
+To show that these solutions are distinct mod m, let $x_1 = x_0 + (\frac{m}{d})k_1$ and $x_2 = x_0 + (\frac{m}{d})k_2$ be distinct solutions and suppose $x_1 \equiv x_2 \pmod{m}$
 
-&nbsp; Finally, to show that $x_0$ arises from solving $(\frac{a}{d})x_0 \equiv \frac{b}{d} \pmod{(m/d)}$,
+Then $x_1 - x_2 = mk_3 \iff (\frac{m}{d})(k_1 - k_2) = mk_3 \iff k_1 - k_2 = dk_3 \implies k_1 \equiv k_2 \pmod{d}$
 
-&nbsp; Note that $(\frac{a}{d})x_0 = \frac{b}{d} + (\frac{m}{d}) z \implies ax_0 = b + mz \implies ax_0 \equiv b \pmod{m}$
+- **Note** that $0 \leq k \leq d - 1$
 
-&nbsp; Thus $x_0$ is a solution we desire
+Finally, to show that $x_0$ arises from solving $(\frac{a}{d})x_0 \equiv \frac{b}{d} \pmod{\frac{m}{d}}$,
+
+Note that $(\frac{a}{d})x_0 = \frac{b}{d} + (\frac{m}{d}) z \implies ax_0 = b + mz \implies ax_0 \equiv b \pmod{m}$
+
+Thus $x_0$ is a solution we desire
+
+&nbsp;
 
 **Corollary 6.19**: If $\gcd(a,m) = 1$, then $ax = b \pmod{m}$ has exactly 1 solution mod m
 
-&nbsp; *Proof*: Let $d = 1$ and apply Theorem 6.18. Then $d \mid b \implies$ there is only $1$ solution
+*Proof*: Let $d = 1$ and apply Theorem 6.18. Then $d \mid b \implies$ there is only $1$ solution
+
+&nbsp;
 
 **Example**: $6x \equiv 7 \pmod{15}$ has no solutions because $\gcd(6, 15) = 3$ but $3 \nmid 7$
 
+&nbsp;
+
 **Example**: $5x = 6 \pmod{11} \implies x = 10$ is a unique solution since $\gcd(5, 11) = 1$
+
+&nbsp;
 
 **Example**: $9x \equiv 6 \pmod{15}$ has $\gcd(9, 15) = 3$ solutions mod $15$
 
-&nbsp; Reducing the equation, we get $3x \equiv 2 \pmod{5} \implies x_0 = 4 \implies$ solutions are $\{4, 4 + \frac{15}{3}, 4 + 2 * \frac{15}{3}\} = \{4, 9, 14\}$
+Reducing the equation, we get $3x \equiv 2 \pmod{5} \implies x_0 = 4 \implies$ solutions are $\{4, 4 + \frac{15}{3}, 4 + 2 * \frac{15}{3}\} = \{4, 9, 14\}$
+
+&nbsp;
 
 We can also solve linear congruence problems using Extended Euclidean Algorithm
 
 **Example**: $183x \equiv 15 \pmod{31} \implies 28 x \equiv 15 \pmod{31}$
 
-&nbsp; Converting it into a Linear Diophantine problem, we get $28x - 31y = 15$. Now we find $\gcd(28, 31)$
+Converting it into a Linear Diophantine problem, we get $28x - 31y = 15$. Now we find $\gcd(28, 31)$
 \begin{align*}
 31 &= 1 * 28 + 3 \\
 28 &= 9 * 3 + 1\\
 3 &= 3* 1
 \end{align*}
-&nbsp; Thus $\gcd(28, 31) = 1$. Now we write it as a linear combination of $28, 31$
+
+Thus $\gcd(28, 31) = 1$. Now we write it as a linear combination of $28, 31$
+
 \begin{align*}
 31 &= 1*31 + 0 * 28\\
 28 &= 0 * 31 + 1 * 28\\
 3 &= 1*31 - 1*28\\
 1 &= 1*28 - 9*3 = -9 * 31 + 10*28
 \end{align*}
-&nbsp; Thus $28(10) + 31(-9) = 1 \implies 28(150) + 31(-135) = 15 \implies 28(150) \equiv 15 \pmod{31} \implies x= 26$
 
-**Multiplicative Inverse**: $a$ has a **multiplicative inverse** $b$ if $ab \equiv 1 \pmod{m}$
+Thus $28(10) + 31(-9) = 1 \implies 28(150) + 31(-135) = 15 \implies 28(150) \equiv 15 \pmod{31} \implies x \equiv 150 \equiv 26 \pmod{31}$
+
+&nbsp;
+
+**Definitino - Multiplicative Inverse**: $a$ has a **multiplicative inverse** $b$ if $ab \equiv 1 \pmod{m}$
+
+&nbsp;
 
 **Corollary 6.21**: $a$ has an inverse mod $m$ if and only if $\gcd(a, m) = 1$
 
-&nbsp; *Proof*: From Theorem 6.18, $ax = 1 \pmod{m}$ has a solution if and only if $\gcd(a, m) \mid 1 \iff \gcd(a, m) = 1$
+*Proof*: From Theorem 6.18, $ax = 1 \pmod{m}$ has a solution if and only if $\gcd(a, m) \mid 1 \iff \gcd(a, m) = 1$
 
-**Example**: $7x \equiv 4 \pmod{19}$ where $7^{-1} = 11$
+**Example**: $7x \equiv 4 \pmod{19}$ where $7^{-1} \equiv 11 \pmod{19}$
 
-&nbsp; $77x \equiv 44 \pmod{19} \implies x \equiv 6 \pmod{19}$
+$77x \equiv 44 \pmod{19} \implies x \equiv 6 \pmod{19}$
+
+&nbsp;
 
 Steps to solve $ax \equiv b \pmod{m}$ where $\gcd(a, m) = 1$
 
@@ -1147,97 +1231,108 @@ Steps to solve $ax \equiv b \pmod{m}$ where $\gcd(a, m) = 1$
 
 Steps to find an inverse of $a \pmod{m}$ with $\gcd(a, m) = 1$
 
-1. Convert the problem into Linear Diophantine problem $ax - my = b$
+1. Convert the problem into Linear Diophantine problem $ax - my = 1$
 2. Use Extended Euclidean Algorithm to find $x_0, y_0$ such that $ax_0 - my_0 = 1$
 3. $x_0 \pmod{m}$ is the inverse of $a \pmod{m}$
 
 ## Chinese Remainder Theorem
 
 **Theorem 6.22**: Let $m, n$ be relatively prime. Then the system of congruences
+
 \begin{align*}
 x &\equiv a \pmod{m}\\
 x &\equiv b \pmod{n}
 \end{align*}
+
 Has a unique solution mod $mn$
 
-&nbsp; *Existence Proof 1*: $x \equiv a \pmod{m} \implies a = m t \equiv b \pmod{n} \implies mt \equiv (b-a) \pmod{n}$
+*Existence Proof*: $x \equiv a \pmod{m} \implies x = a + m t \equiv b \pmod{n} \implies mt \equiv (b-a) \pmod{n}$
 
-&nbsp; By Theorem, since $m, n$ are relatively prime, there is a unique solution. Clearly $x = a + mt_0$ is a solution to both congruences
+Since $m, n$ are relatively prime, there is a unique solution (call it $t_0$). Clearly $x = a + mt_0$ is a solution to both congruences
 
-&nbsp; *Existence Proof 2*: $\gcd(m, n) = 1 \implies mu + nv = 1 \implies x = bmu + anv$
+- $x=a + mt_0 \equiv a \pmod{m}$
 
-&nbsp; Note that $\mu \equiv 0 \pmod{m}$ and $nv \equiv 1 - mu \equiv 1 \pmod{m} \implies x \equiv a \pmod{m}$ and $x \equiv b \pmod{n}$ as desired
+- $x = a + mt_0 \equiv a + (b - a) \equiv b \pmod{n}$
 
-&nbsp; Thus $x$ is the desired solution
+*Uniqueness Proof*: Let $x_1, x_2$ be 2 different solutions. Then we must have
 
-&nbsp; *Uniqueness Proof*: Let $x_1, x_2$ be 2 different solutions. Then we must have
 \begin{align*}
-x_1 &\equiv \pmod{m} \quad \quad x_1 \equiv b \pmod{n}\\
-x_2 &\equiv \pmod{m} \quad \quad x_2 \equiv b \pmod{n}
+x_1 &\equiv a \pmod{m} \quad \quad x_1 \equiv b \pmod{n}\\
+x_2 &\equiv a \pmod{m} \quad \quad x_2 \equiv b \pmod{n}
 \end{align*}
-&nbsp; Thus $x_1 \equiv x_2 \pmod{m}$ and $x_1 \equiv x_2 \pmod{n} \implies m \mid (x_1 - x_2)$ and $n \mid (x_1 - x_2) \implies x_1 - x_2$ is multiple of $m, n$
 
-&nbsp; Since $\gcd(m, n) = 1$, we must have $mn \mid x_1 - x_2 \implies x_1 \equiv x_2 \pmod{mn}$
+Thus $x_1 \equiv x_2 \pmod{m}$ and $x_1 \equiv x_2 \pmod{n} \implies m \mid (x_1 - x_2)$ and $n \mid (x_1 - x_2) \implies x_1 - x_2$ is multiple of $m, n$
+
+Since $\gcd(m, n) = 1$, we must have $mn \mid x_1 - x_2 \implies x_1 \equiv x_2 \pmod{mn}$
+
+&nbsp;
 
 **Example**: $x \equiv 2 \pmod{3} \quad \quad \quad x \equiv 4 \pmod{5}$
 
-&nbsp; $\gcd(3, 5) = 1$ and we solve that $3(2) + 5(-1) = 1 \implies x = bmu + anv = (4)(3)(2) + (2)(5)(-1) \equiv 14 \pmod{15}$
+$\gcd(3, 5) = 1$ and we solve that $3(2) + 5(-1) = 1 \implies x = bmu + anv = (4)(3)(2) + (2)(5)(-1) \equiv 14 \pmod{15}$
+
+&nbsp;
 
 **Theorem 6.23 Chinese Remainder Theorem**: Let $m_1, m_2, \ldots, m_r \in Z^{+}$ and are pairwise relatively prime. Then
+
 \begin{align*}
 x &\equiv a_1 \pmod{m_1}\\
 x &\equiv a_2 \pmod{m_1} \\
 & \ldots \\
 x &\equiv a_3 \pmod{m_r}
 \end{align*}
+
 Has a unique solution $x \pmod{m_1 m_2 \cdots m_r}$
 
-&nbsp; *Existence Proof 1*: Pair up the first 2 equations and use Theorem 6.22
+*Existence Proof 1*: Pair up the first 2 equations and use Theorem 6.22
+
 $$x \equiv b_1 \pmod{m_1 m_2)}$$
-&nbsp; Repeat process for $m_3$ and $m_1m_2$. Works because pairwise relatively prime implies that $m_3$ and $m_1m_2$ have no common divisors
 
-&nbsp; *Existence Proof 2*: Let $m = m_1 m_2 \cdots m_r$ and $n_i = m / m_i$. We claim that $\gcd(n_i, m_i) = 1$
+Repeat process for $m_3$ and $m_1m_2$. Works because pairwise relatively prime implies that $m_3$ and $m_1m_2$ have no common divisors
 
-&nbsp; Suppose by contradiction that $p \mid \gcd(n_i, m_i)$. Then $p \mid n_i \implies p \mid m_j$ for some $j \neq i$
-
-&nbsp; Thus we must have $p \mid \gcd(m_j, m_i)$, contradicting that $gcd(m_i, m_j) = 1$ and thus we must have $\gcd(n_i, m_i) = 1$
-
-&nbsp; For each $i$, by Corollary 6.21, there exists $u_i$ such that
-$$n_i u_i \equiv 1 \pmod{m_i}$$
-&nbsp; Let $x = a_1n_1u_1 + \cdots + a_rn_ru_r$, then clearly for each $m_i$
-$$x \equiv a_in_iu_i \equiv a_i \pmod{m_i}$$
-
-&nbsp; *Unique Proof*: Assume there are 2 solutions $x_1, x_2$. Then for each $m_i$ we must have
+*Uniqueness Proof*: Assume there are 2 solutions $x_1, x_2$. Then for each $m_i$ we must have
 $$m_i \mid (x_1 - x_2) \quad \quad 1 \leq i \leq r$$
-&nbsp; Thus means that $m_1 m_2 \cdots m_r \mid (x_1 - x_2)$ since $m_i$ are relatively prime
+Thus means that $m_1 m_2 \cdots m_r \mid (x_1 - x_2)$ since $m_i$ are relatively prime
 
-&nbsp; Thus $x_1 \equiv x_2 \pmod{m_1 m_2 \cdots m_r}$ and $x_1, x_2$ are the same solution
+Thus $x_1 \equiv x_2 \pmod{m_1 m_2 \cdots m_r}$ and $x_1, x_2$ are the same solution
+
+&nbsp;
 
 **Example** Let $x \equiv 2 \pmod{3} \quad \quad x \equiv 3 \pmod{5} \quad \quad x \equiv 2 \pmod{7}$
 
-&nbsp; Then we have $n_1 = 35$, $n_2 = 21$, $n_3 = 15$ and
-\begin{align*}
-35 u_1 &\equiv 1 \pmod{3} \implies u_1 = 2\\
-21 u_2 &\equiv 1 \pmod{5} \implies u_2 = 1\\
-15 u_3 &\equiv 1 \pmod{7} \implies u_3 = 1
-\end{align*}
-&nbsp; Thus we have $x = a_1n_1 u_1 + a_2 n_2 u_2 + a_3 n_3 u_3 = (2)(35)(2) + (3)(21)(1) + (2)(15)(1) \equiv 23 \pmod{105}$
+Taking the largest modulus, we have $x = 2 + 7k \equiv 3 \pmod{5} \implies 7k \equiv 1 \pmod{5} \implies k \equiv 3 \pmod{5}$
 
-**UPSHOT**: We can factor composite modulus $m$ into distinct prime powers and the solve the system of congruence mod
+Thus $k = 3 + 5l \equiv 2 \pmod{3}$. Now plugging this back into the original equation for $x$, we get
 
-**Example**: $x^2 \equiv \pmod{275 = 5^2 * 11}$ can be broken down into
+$$x = 2 + 7(3 + 5l) = 23 + 35l \equiv 0 \pmod{3}$
+
+This implies that $l \equiv 0 \pmod{3} \implies l = 3m$
+
+Thus $x = 23 + 35(3m) \equiv 23 \pmod{105}$
+
+&nbsp;
+
+**Example**: $x^2 \equiv 1 \pmod{275 = 5^2 * 11}$ can be broken down into
+
 \begin{align*}
 x^2 &\equiv 1 \pmod{25} \implies x \equiv 1, 24 \pmod{25}\\
 x^2 &\equiv 1 \pmod{11} \implies x \equiv 1, 10 \pmod{11}
 \end{align*}
+
 Thus solutions are of the form
+
 \begin{align*}
 x &\equiv 1 \pmod{25} \quad \quad x \equiv 1\pmod{11} \implies x \equiv 1 \pmod{275} \\
 x &\equiv 1 \pmod{25} \quad \quad x \equiv 10\pmod{11} \implies x \equiv 76 \pmod{275} \\
 x &\equiv 24 \pmod{25} \quad \quad x \equiv 1\pmod{11} \implies x \equiv 199 \pmod{275} \\
 x &\equiv 24 \pmod{25} \quad \quad x \equiv 10\pmod{11} \implies x \equiv 274 \pmod{275}
 \end{align*}
+
 Thus the solutions are $x \equiv \{1, 76, 199, 274\} \pmod{275}$
+
+&nbsp;
+
+**Upshot**: We can factor composite modulus $m$ into distinct prime powers and the solve the system of congruence mod
 
 ## Fractions mod m
 
@@ -1250,4 +1345,429 @@ We can interpret $\frac{a}{b} \pmod{m}$ as $a(b^{-1}) \pmod{m}$ where $b^{-1}$ c
 
 &nbsp; We see that $7^{-1} \equiv 11 \pmod{19}$. Thus $\frac{2}{7} = 2 * 11 \equiv 3 \pmod{19}$
 
+# Fermat, Euler, and Wilson
 
+## Fermat's Theorem
+
+**Lemma 8.3**: For a prime $p$, we have that the binomial coefficient
+
+$$\displaystyle {p \choose j} = \frac{p!}{j!(p-j)!} \equiv 0 \pmod{p} \quad \quad 1 \leq j \leq p-1$$
+
+*Proof*: From the equation above we have that
+
+$$p! = \displaystyle {p \choose j}(p-j)!j!$$
+
+Clearly $p$ divides the LHS and thus $p$ must also divide the RHS. However, clearly $p \nmid (p-j)!$ and $p \nmid j!$. Thus $p \mid \displaystyle {p \choose j}$
+
+&nbsp;
+
+**Lemma 8.4**: Let $b \not \equiv 0 \pmod{p}$, then the set
+
+$$b, 2b, \ldots, (p-1)b \pmod{p}$$
+
+contains each nonzero congruence class mod $p$ exactly once
+
+*Proof*: let $a \not \equiv \pmod{p}$ be arbitrary and look at the linear congruence
+
+$$bx \equiv a \pmod{p}$$
+
+This must have a solution $x$ where $1 \leq x \leq p - 1$
+
+Thus $a$ belongs to one of the congruence classes defined by $\{b, 2b, \ldots, (p-1)b\} \pmod{p}$
+
+Since $a$ was arbitrary, every congruence class occurs
+
+To show that each congruence class only occurs once, BWOC suppose that
+
+$$bi \equiv bj \pmod{p} \implies i \equiv j \pmod{p} \quad \quad 1 \leq i < J \leq p - 1$$
+
+However, the given bounds on $i, j$ make this impossible.
+
+Thus each nonzero congruence class occurs exactly ocne among the multiples of $b$
+
+&nbsp;
+
+**Example**: Let $p = 7$ and $b = 2$
+
+Then the numbers $2, 4, 6, 8, 10, 12 \pmod{12}$ are the same as $2, 4, 6, 1, 3, 5 \pmod{7}$
+
+Thus every nonzero congruence class mod $7$ is represented exactly once
+
+&nbsp;
+
+**Fermat's Theorem**: For a prime $p$, the following hold true
+
+- $\forall b \in Z, b^p - b \equiv 0 \pmod{p}$
+- $b \not \equiv 0 \pmod{p} \implies b^{p-1} \equiv 1 \pmod{p}$
+
+*Proof 1 (Using Lemma 8.3)*: Show that $b^p \equiv b \pmod{p}$ by Induction
+
+Base Case: $n = 0 \implies 0^p \equiv 0 \pmod{p}$ and $n =1 \implies 1^p \equiv 1 \pmod{p}$
+
+IH: Assume that for any arbitrary $b = k$, we have that $k^p \equiv k \pmod{p}$
+
+IS: Show for $b = k+1$. From the binomial coefficients formula, we see that
+
+$$(k+1)^p = k^p + \displaystyle {p \choose 1} k^{p-1} + \cdots + \displaystyle {p \choose p-1}k + 1$$
+
+Now applying Lemma 8.3 and the IH, we see that $(k+1)^p \equiv k^p + 1 \pmod{p} \equiv k + 1 \pmod{p}$
+
+Thus by Induction, $b^k \equiv b \pmod{p}$ for non-negative integers
+
+Now for negative integers, suppose that $-c < 0$. Then for an odd prime $p$, we have $c^p \equiv c \pmod{p}$. This also means that
+
+$$(-c)^p = -c^p \equiv -c \pmod{p}$$
+
+For negative integers where $p = 2$, we can clearly see that
+
+$(-c)^2 \equiv c \equiv -c \pmod{2}$
+
+Thus $b^p \equiv b$ for all integers
+
+Finally, since $b \neq 0 \pmod{p}$, we have that
+
+$$b^{p-1} \equiv 1 \pmod{p}$$
+
+*Proof 2 (Using Lemma 8.4)*: Suppose that $b \not \equiv 0 \pmod{p}$.
+
+From Lemma 8.4, we know that
+
+$$\prod_{i=1}^{p-1} i \equiv \prod_{i=1}^{p-1} bi \pmod{p} \implies (p-1)! \equiv b^{p-1} (p-1)!$$
+
+Since $p \nmid (p-1)!$, we have that
+
+$$b^{p-1} \equiv 1 \pmod{p}$$
+
+Multiplying both sides by $b$ gives the other form
+
+$$b^p \equiv b \pmod{p}$$
+
+Note that for the case where $b \equiv 0 \pmod{0}$, we have that $b^p \equiv 0^p \equiv 0 \equiv 0 \pmod{p}$
+
+Thus the congruence holds for all $b in Z$
+
+&nbsp;
+
+**Example**: $2^6 = 64 \equiv 1 \pmod{7}$ and $2^7 \equiv 2 \pmod{7}$
+
+&nbsp;
+
+**Example**: $3^{28} = (3^4)^7 \equiv 1^7 \equiv 1 \pmod{5}$
+
+- This follow from the second claim in Fermat's Theorem (since $3^{5-1} \equiv 1 \pmod{5}$)
+
+&nbsp;
+
+**Example**: Divide $23$ into $7^{200}$. What is the remainder?
+
+By Fermat's Theorem, we know that $7^{22} \equiv 1 \pmod{23}$
+
+Thus $7^{200} = (7^{22})^9 * 2^2 \equiv 1^9 * 49 \equiv 3 \pmod{23}$
+
+&nbsp;
+
+**Corollary 8.2**: For prime $p$ and $b \not \equiv 0 \pmod{p}$,
+
+$$x \equiv y \pmod{p-1} \implies b^x \equiv b^y \pmod{p}$$
+
+*Proof*: We know that $x = y + (p-1)k$ for some $k \in Z$
+
+Thus we see that $b^x = b^y b^{(p-1)k} \implies b^x \equiv b^y \pmod{p}$ by Fermat's Theorem
+
+&nbsp;
+
+**Upshot**: We can apply the Divisional Algorithm to the exponent of an integer with $p-1$ to quickly evaluate congruences mod $p$
+
+&nbsp;
+
+**Corollary 8.2.1**: If $n$ is odd and $2^{n-1} \not \equiv 1 \pmod{n}$, then $n$ is not prime
+
+*Proof*: Using Fermat's Theorem, we see that for an odd prime $p$, $2^{p-1} \equiv 1 \pmod{p}$
+
+Now by contraposition, suppose that $n$ is odd and that $p^{n-1} \not \equiv 1 \pmod{n}$, we get that $n$ is not prime
+
+&nbsp;
+
+**Upshot**: We can quickly test if a number $n$ is prime or not by looking at $2^{n-1} \equiv 1 \pmod{n}$
+
+&nbsp;
+
+**Example**: For $n = 77$, we see that
+
+$2^{n-1} = 2^{76} \equiv 9 \pmod{77} \not \equiv 1 \pmod{77}$
+
+Thus $77$ is not prime
+
+&nbsp;
+
+## Euler's Theorem
+
+**Definition - Euler Function**: $\phi(n)$ is the number of integers $1 \leq j \leq n$ such that $\gcd(j, n) = 1$
+
+&nbsp;
+
+**Examples**:
+
+- $\phi(12) = 4$ this comes from $\{1, 5, 7, 11\}$
+
+- For any prime $p$, $\phi(p) = p - 1$
+
+&nbsp;
+
+**Proposition 8.6**: For $m, n \in Z^+$, if $\gcd(m, n) = 1$ then
+
+$$\phi(mn) = \phi(m)\phi(n)$$
+
+&nbsp;
+
+**Proposition 8.7**: For a prime $p$ and $k \geq 1$,
+
+$$\phi(p^k) = p^k - p^{k-1}$$
+
+*Proof*: For $1 \leq j \leq p^k$, there are $p^{k-1}$ multiples of $k$, namely $\{p, 2p, \ldots, p^k\}$
+
+These multiples are exactly when $\gcd(j, p^k) \neq 1$
+
+&nbsp;
+
+**Theorem 8.8**: Let $n = p_1^{a_1} p_2^{a_2} \cdots p_r^{a_r}$ be the prime factorization of $n$ where each exponent $a_i \geq 1$. Then
+
+$$\phi(n) = \prod_{i=1}^r (p_i^{a_i} - p_i^{a_i - 1}) = n \prod_{p \mid n} (1 - \frac{1}{p})$$
+
+*Proof*: Applying Propositions 8.6 and 8.7, we see that
+
+$$\phi(n) = \prod_{i=1}^r \phi(p_i^{a_i}) = \prod_{i=1}^r (p_i^{a_i} - p_i^{a_i - 1})$$
+
+For the second part of the equality of the theorem, note that $\displaystyle p^a - p^{a-1} = p^a(1 - \frac{1}{p})$. Thus we see that
+
+\begin{align*}
+\prod_{i = 1}^r (p_i^{a_i} - p_i^{a_i-1}) &= \prod_{i=1}^r p_i^{a_i} (1 - \frac{1}{p_i}) \\
+&= n \prod_{i = 1}^r (1 - \frac{1}{p_i}) \\
+&= n \prod_{p \mid n} (1 - \frac{1}{p}) \quad \quad \text{since each } a_i \geq 1 \\
+\end{align*}
+
+&nbsp;
+
+**Example**: $\phi(100)$
+
+ - Applying Propositions 8.6, 8.7, we get that $\phi(100) = \phi(2^2)\phi(5^2) = (2^2 - 2)(5^2 - 2) = 40$
+ - Applying Theorem 8.8, we get that $\displaystyle \phi(100) = 100 (1 - \frac{1}{2})(1 - \frac{1}{5}) = 40$
+
+&nbsp;
+
+**Lemma 8.10**: Let $T$ be the set of $1 \leq j \leq n$ with $\gcd(j, n ) = 1$. Choose any $b$ with $\gcd(b, n) = 1$ and let $bT \mod{n}$ be the set of numbers of them form $bt \mod{n}$ for $t \in T$. Then each $t \in T$ is congruent to exactly one element of $bT \mod{n}$
+
+*Proof*: Let $t \in T$.
+
+Then $\gcd(t, n) = \gcd(b, n) = 1 \implies \gcd(bt, n) = 1$
+
+Let $bt \equiv c \pmod{n}$. Then $\gcd(c, n) = 1$
+
+Thus $c \in T$ so $bT \mod{n} \subseteq T$
+
+To show that $T = bT \mod{n}$, we show that they have the same number of elements
+
+Take $t_1, t_2 \in T$ with $bt_1 \equiv bt_2 \pmod{n}$
+
+From the second equation, we get that $t_1 \equiv t_2 \pmod{n}$. However elements of $T$ are distinct mod $n$. Thus we have a contradiction
+
+Thus distinct elements of $T$ must remain distinct when multiplied by $b$ under mod $n$
+
+Thus $bT \mod{n}$ and $T$ have the same elements and are thus equal
+
+&nbsp;
+
+**Example**: Let $n = 12, b = 5$
+
+&nbsp;
+
+Then we have $T = \{1, 5, 7, 11\}$ and $bT = \{5, 25, 35, 55\} \equiv \{5, 1, 11, 7\} \mod{12} = T$
+
+**Euler's Theorem**: For any $b$ such that $\gcd(b, n) = 1$, we have that
+
+$$b^{\phi(n)} \equiv 1 \pmod{n}$$
+
+- **Note**: This generalizes Fermat's Theorem since $\phi(p) = p - 1$
+
+*Proof*: Consider the set $T$ from Lemma 8.10. Then
+
+$$\prod_{i \in T} i \equiv \prod_{i \in T} bi \equiv b^{\phi(n)} \prod_{i \in T} i \pmod{n}$$
+
+Lemma 8.10 says that the second product is just a rearrangement of the first product. Thus we get that
+
+$$1 \equiv b^{\phi(n)} \pmod{n}$$
+
+&nbsp;
+
+**Example**: $\phi(10) = 4$ and $\gcd(3, 10) = 1 \implies 3^4 = 81 \equiv 1 \pmod{10}$
+
+**Example**: $3^{84} \pmod{100}$
+
+We see that $\phi(100) = 40$ so by Euler's Theorem, we have that $3^{40} \equiv 1 \pmod{100}$
+
+Thus $3^{84} = (3^{40})^2 3^4 \equiv 81 \pmod{81}$
+
+&nbsp;
+
+**Corollary 8.11**: Take $b \in Z$ such that $\gcd(b, n) = 1$. Then
+
+$$x \equiv y \pmod{\phi(n)} \implies b^x \equiv b^y \pmod{n}$$
+
+- **Note**: This also generalizes the Corollary of Fermat's Theorem since $\phi(p) = p-1$
+
+*Proof*: We know that $x = y + \phi(n)k$ for some $k \in Z$
+
+Thus we see that $b^x \equiv b^y (b^{\phi(n)})^k \equiv b^y \pmod{n}$
+
+&nbsp;
+
+**Example**: Let $n = 15$. Then we have $\phi(n) = 8$ and $9 \equiv 1 \pmod{8}$
+
+Thus $2^9 \equiv 2^1 \pmod{15}$
+
+&nbsp;
+
+**Example**: Let $n = 10$. Then $\phi(n) = 4$ and $5 \equiv 1 \pmod{4}$
+
+Thus for any $b$ such that $\gcd(b, 10) = 1$, we have that $b^5 \equiv b \pmod{10}$
+
+Thus $b^5$ and $b$ have the same last digit for $b \in \{1, 3, 7, 9\}$
+
+&nbsp;
+
+**Example**: Given $m \in Z$, let $\gcd(m, 77) = 1$ and let $c \equiv m^7 \pmod{77}$. Find $c^{43} \pmod{77}$
+
+$\phi(77) = 60$ and $301 \equiv 1 \pmod{60}$
+
+Thus we see that $c^{43} \equiv (m^7)^{43} \equiv m^{301} \equiv m \pmod{77}$
+
+&nbsp;
+
+**Example**: Find the last digit of $3^{7^5}$
+
+First, note that $\phi(4) = 2$ and $5 \equiv 1 \pmod{2}$
+
+Thus $7^5 \equiv 7^1 \equiv 3 \pmod{4}$
+
+Furthermore, we see that $\phi(10) = 4$.
+
+Thus $3^{7^5} \equiv 3^3 \equiv 27 \equiv 7 \pmod{10}$
+
+## Wilson's Theorem
+
+**Wilson's Theorem**: For a prime $p$
+
+$$(p-1)! \equiv -1 \pmod{p}$$
+
+*Proof*: For integers $1 \leq b \leq p - 1$, $bx \equiv 1 \pmod{p}$ has a unique solution $1 \leq x \leq p- 1$
+
+We pair multiple inverses with each other
+
+- Note that $b^2 \equiv 1 \pmod{p}$ only if $b \equiv \pm \pmod{p}$, so $b \equiv 1$ and $b \equiv p-1 \pmod{p}$ are the only numbers that are paired with themselves
+
+Now rearrange the factors so that each inverse is next to each other. This gives
+
+$$(p-1)! \equiv 1 (p-1) \equiv -1 \pmod{p}$$
+
+&nbsp;
+
+**Example**: For $p = 7$, we have $(p-1)! = 6! = 720 \equiv -1 \pmod{7}$
+
+This comes from $6! = (6)(5*3)(4*1)(1) \equiv -1 * 1 *1 *1 \equiv -1 \pmod{7}$
+
+&nbsp;
+
+**Corollary 8.13**: For $n \geq 2$, $n$ is prime if and only if $(n-1)! \equiv -1 \pmod{n}$
+
+*Proof*: $\implies$ If $n$ is prime, then $(n-1)! \equiv -1 \pmod{n}$ by the Wilson's Theorem
+
+$\impliedby$ BWOC suppose $n$ is composite. Then $n = ab$ for $a, b \in Z$ and $1 < a < n$
+
+Thus $a$ is a factor of $(n-1)! \implies (n-1)! \equiv 0 \pmod{a}$.
+
+But we also have that $(n-1)! \equiv -1 \pmod{n} \implies (n-1)! \equiv -1 \pmod{a}$
+
+Contradiction. Thus $n$ must be prime
+
+&nbsp;
+
+**Example**: Let $n = 6$, then $(n-1)! = 5! = 120 \equiv 0 \not \equiv -1 \pmod{6}$
+
+Thus $n$ is not prime
+
+# RSA
+
+## RSA Encryption
+
+**RSA Setup**:
+
+1. Alice chooses $2$ primes $p,q$ and calculates $n = pq$ and $\phi(n) = (p-1)(q-1)$
+
+2. Alice chooses an encryption key $e$ such that $\gcd(e, \phi(n)) = 1$
+
+3. Alice calculates a decryption key such that $ed \equiv 1 \pmod{\phi(n)}$
+
+4. Alice makes $n, e$ public and $d, p, q$ private
+
+&nbsp;
+
+**RSA Encryption**:
+
+1. Bob looks up Alice's public values $n, e$
+
+2. Bob writes the message as $m \pmod{n}$
+
+3. Bob computes $c \equiv m^e \pmod{n}$
+
+4. Bob sends $c$ to Alice
+
+&nbsp;
+
+**RSA Decryption**
+
+1. Alice receives $c$
+
+2. Alice computes $m \equiv c^d \pmod{n}$
+
+&nbsp;
+
+**Example**
+
+Let $p = 3598279$ and $q = 781629$
+
+Then $n = 28122813702491 \quad \quad \phi(n) = 28122802288584 \quad \quad e = 233 \quad \quad d = 27519308677241$
+
+
+Let $A = 01, B = 02, \ldots, Z = 26$ be the alphabet
+
+Suppose Bob wants tos send CAR $\implies m = 030118 = 30118$
+
+Then $c \equiv m^e \pmod{n} \equiv 21666077416496 \pmod{n}$
+
+Finally, Alice decrypts the text as $m \equiv c^d \equiv 30118 \pmod{n}$
+
+&nbsp;
+
+**Proposition 9.1**: Let $n = pq$ for distinct primes $p, q$, and take $e, d$ satisfying $ed \equiv 1 \pmod{\phi(n)}$. Then for all $m$, we have
+
+$$m^{ed} \equiv m \pmod{n} \quad \quad c \equiv m^e \pmod{n} \implies m \equiv c^d \pmod{n}$$
+
+*Proof*: Suppose $\gcd(m, n) = 1$.
+
+Then $ed \equiv 1 \pmod{\phi(n)} \implies ed = 1 + k\phi(n)$ for some $k \in Z$
+
+Thus using Euler's Theorem, we have
+
+$$m^{ed} \equiv m^{1 + k\phi(n)} \equiv m(m^{\phi(n)})^k \equiv m \pmod{n}$$
+
+Otherwise, suppose that $\gcd(m, n) \neq 1$. So possible values are $p, q, pq$
+
+- $pq \implies m \equiv 0 \pmod{n} \implies m^{ed} \equiv 0 \equiv m \pmod{n}$
+
+- $p \implies m \equiv 0 \pmod{p} \implies m^{ed} \equiv 0 \equiv m \pmod{p}$
+
+  However since $q \nmid m$, we have by Fermat Theorem that $m^{q-1} \equiv 1 \pmod{q}$
+
+  Thus $m^{ed} \equiv m(m^{q-1})^{k(p-1)} \equiv m \pmod{q}$
+
+  Thus $p \mid m^{ed} - m$ and $q \mid m^{ed} - m \implies pq \mid m^{ed} - m \implies m^{ed} \equiv m \pmod{pq}$

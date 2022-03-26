@@ -58,69 +58,72 @@ $\lcm(a, b) = 2^{e_2}3^{e_3} \cdots$ where $e_p = \max(a_p, b_p)$
 
 \newpage
 
-## Applications of Unique Prime Factorization
+## Applications of Unique Factorization
 
 **Proposition 5.1**: $n$ is a kth power if and only if all exponents in its prime factorization are multiples of $k$
 
-**Example**: Find $A$ such that $\frac{2}{3}A$ is a cube
+**Exercise 5.1.1.b**: Find $n$ such that $n/2$ is a square, $n/3$ is a cube, $n/5$ is a fifth power
 
-Let $A = 2^a 3^b 5^c \cdots$ be the prime factorization of $A$
+**Exercise 5.4**: Show that any $n$ with exponents $>1$ in prime factorization can be written as $n = x^2 y^3$
 
-Then $\frac{2}{3}A^2 = 2^{2a + 1} 3^{2b - 1} 5^{2c} \cdots$ means that eaech exponent is a multiple of $3$ Thus
-
-$3 \mid 2a + 1 \implies a = 1 \quad \quad 3 \mid 2b - 1 \implies b= 2 \quad \quad 3 \mid 2c \implies c$ is a multiple of $3$ (same for $d, e, \ldots$)
-
-Thus $A = 18B^3$ for $B \geq 1$
-
-## Irrationality Proof
-
-Show that $\sqrt{3}$ is irrational
-
-BWOC suppose $\sqrt{3} = \frac{a}{b} \implies 3b^2 = a^2$
-
-$\gcd(a, b) = 1 \implies 3 \mid a^2 \implies 3 \mid a$ by (UPF)
-
-Thus $3b^2 = 9k^2$ for some $k \in Z \implies b^2 = 3k^2 \implies 3 \mid b$. Contradiction thus $\sqrt{3} \notin Q$
+**Example**: Show that $\sqrt{3}$ is irrational
 
 **Theorem 5.3**: $n$ is not a perfect kth power $\implies \sqrt[k]{n}$ is irrational
 
-*Proof* By contraposition: Suppose $\sqrt[k]{n} = \frac{a}{b} \implies nb^k = a^k$
+**Exercise 5.2.9**: For which positive integers is $\sqrt[n]{64}$ rational?
 
-Looking at prime factorization, $nb^k = p_1^{x_1 + y_1k} \cdots = p_1^{z_1k} \cdots = a^k$
+**Theorem 5.4**: If $r = \frac{u}{v}$ is a root of $P(x)$ where $\gcd(u, v) = 1$, then $u \mid a_0$ and $v \mid a_n$
 
-Thus $x_i + y_i k = z_i k \implies x_i = k(z_i - y_i) \implies n$ is a perfect kth power
+**Lemma 5.6**: For relatively prime $a, b$, $ab = n^k \implies a, b$ are both $k$th powers
 
-## Rational Root Theorem
+**Lemma 5.7**: Square of an odd integer is $\equiv 1 \pmod{8}$. Square of an even integer is a multiple of $4$
 
-**Theorem 5.4**: For $P(x) = a_nx^n + \cdots a_1x + a_0$ with $a_i \in Z$ and $a_n, a_0 \neq 0$, if $r = \frac{u}{v} \in Q$ and $\gcd(u, v) = 1$ and $P(u/v) = 0$, then $u \mid a_0$ and $v \mid a_n$
+**Theorem 5.5**: For a PPT $(a, b, c)$, $c$ is odd and $a \not \equiv b \pmod{2}$ and
+$$a = n^2 - m^2 \quad \quad b = 2mn \quad \quad c = m^2 + n^2 \quad \quad \quad \quad \gcd(m, n) = 1, n \not \equiv m \pmod{2}$$
 
-*Proof*: $a_n (\frac{u}{v})^n + \cdots + a_1 (\frac{u}{v}) + a_0 =0 \implies a_n u^n + \cdots + a_1 u v^{n-1} + a_0 v^n = 0$
+**Theorem 5.8**: $m$ is a difference of 2 squares if and only if $m$ is odd or $4 \mid m$
 
-Because $\gcd(u, v) = 1$, we have $v \mid a_n$ and $v \mid a_0$
+- Factorize $m$ into $2$ factors with the same parity and set $m = \frac{v-u}{2}$ and $n = \frac{v+u}{2}$
+
+**Theorem 5.9**: $n! = p^b c$ with $p \nmid c \implies b = \lfloor \frac{n}{p} \rfloor + \lfloor \frac{n}{p^2} \rfloor + \cdots$
+
+**Riemann Zeta Function**: $\zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s} = \prod_p (1 - p^{-s})^{-1}$
 
 ## Linear Congruence
 
 $a \equiv b \pmod{m} \implies m \mid a - b$ AND $a = b + km$ AND $\gcd(a, n) = \gcd(b, n)$
 
-- Example $\gcd(1234, 10) = \gcd(4, 10)$ since $1234 \equiv 4 \pmod{10}$
+- **Example**: $\gcd(1234, 10) = \gcd(4, 10)$ since $1234 \equiv 4 \pmod{10}$
 
-Linear Congruence problem $ax \equiv b \pmod{m}$ can be reduced to a Diophantine Problem with $(a, -m, b)$
+**Proposition 6.7**: $\gcd(c, m) = 1$ and $ac \equiv bc \pmod{m} \implies a \equiv b \pmod{m}$
+
+**Proposition 6.8**: $\gcd(c, m) = d$ and $ac \equiv bc \pmod{m} \implies a \equiv b \pmod{\frac{m}{d}}$
+
+**Proposition 6.10**: For a prime $p$, $ab \equiv 0 \pmod{p} \implies a \equiv 0 \pmod{p}$ or $b \equiv 0 \pmod{p}$
+
+- **Corollary 6.11**: For a prime $p$, $x^2 \equiv 1 \pmod{p} \implies x \equiv \pm 1 \pmod{p}$
+
+**Exercise 6.1.9**: Find all positive $n$ such that $123 \equiv 234 \pmod{n}$
+
+**Exercise 6.1.26**: For twim primes, show that $p, q \geq 5 \implies 3 \mid p + q \quad \quad p, q \implies 4 \mid p + q \quad \quad 12 \mid p + q$
+
+**Example**: Compute $3^{385} \pmod{479}$ using repeated squaring
+
+**Division/Congruence Tests**: $a \equiv a_0 \pmod{10, 5, 2} \quad \quad a \equiv \sum_{i=0}^{n} a_i \pmod{3, 9} \quad \quad \sum_{i=0}^{n}(-1)^i a_i \pmod{11}$ where $0 \leq a_i \leq a_n$
+
+Linear Congruence problem $ax \equiv b \pmod{m}$ can be reduced to a Diophantine Problem with $(-m, a, b)$ $-mx + ay = b$
 
 - Let $d = \gcd(g, m)$. Then $d \mid b \implies$ the congruence problem has $d$ distinct solutions mod m
 
-Steps to solve $ax \equiv b \pmod{m}$ where $\gcd(a, m) = 1$
+**Exercise 6.4.60**: Find all $0 \leq n \leq 23$ such that $10 x \equiv n \pmod{24}$ has solutions
 
-1. Convert the problem into Linear Diophantine problem $ax - my = b$
-2. Use Extended Euclidean Algorithm to find $x_0, y_0$ such that $ax_0 - my_0 = 1$
-3. Compute $x = bx_0$
+**Exercise 6.4.65**: Find $83 x \equiv 1 \pmod{100} \quad \quad 83 x \equiv 2 \pmod{100}$
 
-Steps to find an inverse of $a \pmod{m}$ with $\gcd(a, m) = 1$
-
-1. Convert the problem into Linear Diophantine problem $ax - my = b$
-2. Use Extended Euclidean Algorithm to find $x_0, y_0$ such that $ax_0 - my_0 = 1$
-3. $x_0 \pmod{m}$ is the inverse of $a \pmod{m}$
+**Exercise 6.4.69**: Show that $x^2 - 2y^2 = 10$ has no integer solutions
 
 **Chinese Remainder Theorem**: Given $x \equiv a_i \pmod{m_i}$ for relatively pairwise prime $m_i$ then
 $$x \equiv \sum_{i=1}^n a_in_iu_i \quad \quad n_i = \prod_{j \neq i} m_j \quad \quad u_i = n_i^{-1} \pmod{m_i}$$
 
-- Can factor composite modulues $m$ into distinct prime powers and solve the system of congruence
+- **Example**: $x^2 \equiv 1 \pmod{275 = 5^2 * 11}$
+
+**TODO Supplementary 14, 16**
