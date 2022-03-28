@@ -1269,7 +1269,13 @@ Since $\gcd(m, n) = 1$, we must have $mn \mid x_1 - x_2 \implies x_1 \equiv x_2 
 
 **Example**: $x \equiv 2 \pmod{3} \quad \quad \quad x \equiv 4 \pmod{5}$
 
-$\gcd(3, 5) = 1$ and we solve that $3(2) + 5(-1) = 1 \implies x = bmu + anv = (4)(3)(2) + (2)(5)(-1) \equiv 14 \pmod{15}$
+$x \equiv 4 \pmod{5} \implies x = 4 + 5k \equiv 2 \pmod{3}$ for some $k \in Z$
+
+$\implies 5k \equiv 1 \pmod{3} \implies -1k \equiv 1 \pmod{3} \implies k \equiv 2 \pmod{3}$
+
+Thus $x = 4 + 5(2 + 3l)$ for some $l \in Z$
+
+Thus $x \equiv 14 \pmod{15}$
 
 &nbsp;
 
@@ -1284,17 +1290,24 @@ x &\equiv a_3 \pmod{m_r}
 
 Has a unique solution $x \pmod{m_1 m_2 \cdots m_r}$
 
-*Existence Proof 1*: Pair up the first 2 equations and use Theorem 6.22
+*Proof by Induction*:
 
-$$x \equiv b_1 \pmod{m_1 m_2)}$$
+Base Case $r = 2$ is handled by previous Theorem
 
-Repeat process for $m_3$ and $m_1m_2$. Works because pairwise relatively prime implies that $m_3$ and $m_1m_2$ have no common divisors
+IH: Suppose that for an arbitrary $k \leq n$, we the CRT holds true
 
-*Uniqueness Proof*: Assume there are 2 solutions $x_1, x_2$. Then for each $m_i$ we must have
-$$m_i \mid (x_1 - x_2) \quad \quad 1 \leq i \leq r$$
-Thus means that $m_1 m_2 \cdots m_r \mid (x_1 - x_2)$ since $m_i$ are relatively prime
+IS: Prove CRT is true for $n + 1$
 
-Thus $x_1 \equiv x_2 \pmod{m_1 m_2 \cdots m_r}$ and $x_1, x_2$ are the same solution
+Consider the first $n$ congruences. By IH, they have a unique solution mod $m_1 m_2 \cdots m_n$. Call the solution $x_0$
+
+Now we have the system
+
+\begin{align*}
+x &\equiv a_{n+1} \pmod{m_{n+1}} \\
+x &\equiv x_0 \pmod{m_1, \cdots, m_n}
+\end{align*}
+
+This is handled by the previous theorem, thus CRT holds for any $n \geq 2$
 
 &nbsp;
 
@@ -1304,7 +1317,7 @@ Taking the largest modulus, we have $x = 2 + 7k \equiv 3 \pmod{5} \implies 7k \e
 
 Thus $k = 3 + 5l \equiv 2 \pmod{3}$. Now plugging this back into the original equation for $x$, we get
 
-$$x = 2 + 7(3 + 5l) = 23 + 35l \equiv 0 \pmod{3}$
+$$x = 2 + 7(3 + 5l) = 23 + 35l \equiv 2 \pmod{3}$$
 
 This implies that $l \equiv 0 \pmod{3} \implies l = 3m$
 
@@ -1341,9 +1354,11 @@ We can interpret $\frac{a}{b} \pmod{m}$ as $a(b^{-1}) \pmod{m}$ where $b^{-1}$ c
 - Only works when $\gcd(b, m) = 1$. Since these are the only $b$'s with a multiplicative inverse mod m
 - Here we interpret $\frac{1}{b}$ as the number we need to multiply $b$ by to get $1 \pmod{m}$
 
+&nbsp;
+
 **Example**: Calculate $\frac{2}{7} \pmod{19}$
 
-&nbsp; We see that $7^{-1} \equiv 11 \pmod{19}$. Thus $\frac{2}{7} = 2 * 11 \equiv 3 \pmod{19}$
+We see that $7^{-1} \equiv 11 \pmod{19}$. Thus $\frac{2}{7} = 2 * 11 \equiv 3 \pmod{19}$
 
 # Fermat, Euler, and Wilson
 
