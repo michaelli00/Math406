@@ -127,3 +127,17 @@ $$x \equiv \sum_{i=1}^n a_in_iu_i \quad \quad n_i = \prod_{j \neq i} m_j \quad \
 - **Example**: $x^2 \equiv 1 \pmod{275 = 5^2 * 11}$
 
 **TODO Supplementary 14, 16**
+
+## Fermat, Euler, Wilson
+
+**Fermat's Theorem**: For prime $p$, we have $\forall b \in Z, b^p - p \equiv 0 \pmod{p} \quad \quad b \not \equiv 0 \pmod{p} \implies b^{p-1} \equiv 1 \pmod{p}$
+
+**Corollary 8.2**: For prime $p$ and $b \not \equiv 0 \pmod{p}$, $x \equiv y \pmod{p-1} \implies b^x \equiv b^y \pmod{p}$
+
+**Corollary 8.2.1**: If $n$ is odd and $2^{n-1} \not \equiv 1 \pmod{n}$, then $n$ is not prime
+
+**Proposition 8.6**: $\gcd(m, n) = 1 \implies \phi(mn) = \phi(m) \phi(n)$
+
+**Proposition 8.7**: For a prime $p$, $\phi(p^k) = p^k - p^{k-1}$
+
+**Theorem 8.8**: $\phi(n) = \displaystyle \prod_{i=1}^r (p_1^{a_i} - p_i^{a_i - 1}) = n \prod_{p \mid n}(1 - \frac{1}{p})$

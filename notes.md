@@ -1364,15 +1364,21 @@ We see that $7^{-1} \equiv 11 \pmod{19}$. Thus $\frac{2}{7} = 2 * 11 \equiv 3 \p
 
 ## Fermat's Theorem
 
-**Lemma 8.3**: For a prime $p$, we have that the binomial coefficient
+**Lemma 8.3**: For a prime $p$,
 
-$$\displaystyle {p \choose j} = \frac{p!}{j!(p-j)!} \equiv 0 \pmod{p} \quad \quad 1 \leq j \leq p-1$$
+$$(x + y)^p \equiv x^p + y^p \pmod{p}$$
 
-*Proof*: From the equation above we have that
+*Proof*: Using the binomial theorem, we have that
 
-$$p! = \displaystyle {p \choose j}(p-j)!j!$$
+$$(x + y)^p = \sum_{k=0}^{p} \displaystyle {p \choose k} x^k y^{p-k}$$
 
-Clearly $p$ divides the LHS and thus $p$ must also divide the RHS. However, clearly $p \nmid (p-j)!$ and $p \nmid j!$. Thus $p \mid \displaystyle {p \choose j}$
+Where
+
+$$\displaystyle {p \choose k} = \frac{p!}{k!(p-k)!} \implies p! = k!(p-k)! \displaystyle {p \choose k}$$
+
+Clearly $p$ divides the LHS and thus $p$ must also divide the RHS.
+
+However, for $0 < k < p$, clearly $p \nmid (p-k)!$ and $p \nmid k!$. Thus $p \mid \displaystyle {p \choose k}$
 
 &nbsp;
 
@@ -1382,7 +1388,7 @@ $$b, 2b, \ldots, (p-1)b \pmod{p}$$
 
 contains each nonzero congruence class mod $p$ exactly once
 
-*Proof*: let $a \not \equiv \pmod{p}$ be arbitrary and look at the linear congruence
+*Proof*: let $a \not \equiv 0 \pmod{p}$ be arbitrary and look at the linear congruence
 
 $$bx \equiv a \pmod{p}$$
 
@@ -1394,17 +1400,17 @@ Since $a$ was arbitrary, every congruence class occurs
 
 To show that each congruence class only occurs once, BWOC suppose that
 
-$$bi \equiv bj \pmod{p} \implies i \equiv j \pmod{p} \quad \quad 1 \leq i < J \leq p - 1$$
+$$bi \equiv bj \pmod{p} \implies i \equiv j \pmod{p} \quad \quad 1 \leq i < j \leq p - 1$$
 
 However, the given bounds on $i, j$ make this impossible.
 
-Thus each nonzero congruence class occurs exactly ocne among the multiples of $b$
+Thus each nonzero congruence class occurs exactly once among the multiples of $b$
 
 &nbsp;
 
 **Example**: Let $p = 7$ and $b = 2$
 
-Then the numbers $2, 4, 6, 8, 10, 12 \pmod{12}$ are the same as $2, 4, 6, 1, 3, 5 \pmod{7}$
+Then the numbers $2, 4, 6, 8, 10, 12 \pmod{7}$ are the same as $2, 4, 6, 1, 3, 5 \pmod{7}$
 
 Thus every nonzero congruence class mod $7$ is represented exactly once
 
@@ -1417,31 +1423,21 @@ Thus every nonzero congruence class mod $7$ is represented exactly once
 
 *Proof 1 (Using Lemma 8.3)*: Show that $b^p \equiv b \pmod{p}$ by Induction
 
-Base Case: $n = 0 \implies 0^p \equiv 0 \pmod{p}$ and $n =1 \implies 1^p \equiv 1 \pmod{p}$
+Base Case: $b = 0 \implies 0^p \equiv 0 \pmod{p}$ and $b =1 \implies 1^p \equiv 1 \pmod{p}$
 
-IH: Assume that for any arbitrary $b = k$, we have that $k^p \equiv k \pmod{p}$
+IH: Assume that for any arbitrary $b$, we have that $b^p \equiv k \pmod{b}$
 
-IS: Show for $b = k+1$. From the binomial coefficients formula, we see that
+IS: Show for $b + 1$. From the binomial coefficients formula and Lemma 8.3, we see that
 
-$$(k+1)^p = k^p + \displaystyle {p \choose 1} k^{p-1} + \cdots + \displaystyle {p \choose p-1}k + 1$$
+$$(b+1)^p \equiv b^p + 1 \equiv \underbrace{b + 1}_{\text{by IH}} \pmod{p}$$
 
-Now applying Lemma 8.3 and the IH, we see that $(k+1)^p \equiv k^p + 1 \pmod{p} \equiv k + 1 \pmod{p}$
+The above proves Fermat's Theorem for non-negative integers
 
-Thus by Induction, $b^k \equiv b \pmod{p}$ for non-negative integers
+Now for negative integers, suppose that $b < 0$. Then for an odd prime $p$, we have $(-b)^p \equiv -b \pmod{p}$ by the ideas above.
 
-Now for negative integers, suppose that $-c < 0$. Then for an odd prime $p$, we have $c^p \equiv c \pmod{p}$. This also means that
+- If $p$ is odd, then $(-1)^p \equiv -1 \pmod{p}$
 
-$$(-c)^p = -c^p \equiv -c \pmod{p}$$
-
-For negative integers where $p = 2$, we can clearly see that
-
-$(-c)^2 \equiv c \equiv -c \pmod{2}$
-
-Thus $b^p \equiv b$ for all integers
-
-Finally, since $b \neq 0 \pmod{p}$, we have that
-
-$$b^{p-1} \equiv 1 \pmod{p}$$
+- If $p$ is $2$, then clearly $-b^p \equiv -b \pmod{p} \implies b^p \equiv b \pmod{p}$
 
 *Proof 2 (Using Lemma 8.4)*: Suppose that $b \not \equiv 0 \pmod{p}$.
 
@@ -1495,15 +1491,17 @@ Thus we see that $b^x = b^y b^{(p-1)k} \implies b^x \equiv b^y \pmod{p}$ by Ferm
 
 &nbsp;
 
-**Corollary 8.2.1**: If $n$ is odd and $2^{n-1} \not \equiv 1 \pmod{n}$, then $n$ is not prime
+**Fermat Primality Test**: If $n$ is odd, $b \not \equiv 0 \pmod{n}$, and $b^{n-1} \not \equiv 1 \pmod{n}$, then $n$ is not prime
 
-*Proof*: Using Fermat's Theorem, we see that for an odd prime $p$, $2^{p-1} \equiv 1 \pmod{p}$
+*Proof*: Using Fermat's Theorem, we see that for an odd prime $p$, $b^{p-1} \equiv 1 \pmod{p}$
 
 Now by contraposition, suppose that $n$ is odd and that $p^{n-1} \not \equiv 1 \pmod{n}$, we get that $n$ is not prime
 
 &nbsp;
 
-**Upshot**: We can quickly test if a number $n$ is prime or not by looking at $2^{n-1} \equiv 1 \pmod{n}$
+**Upshot**: We can quickly test if a number $n$ is not prime by looking at $2^{n-1} \not \equiv 1 \pmod{n}$
+
+- **Note**: $2^{n-1} \equiv 1 \pmod{n}$ DOES NOT guarantee $n$ is prime
 
 &nbsp;
 
@@ -1565,7 +1563,7 @@ For the second part of the equality of the theorem, note that $\displaystyle p^a
 
 **Example**: $\phi(100)$
 
- - Applying Propositions 8.6, 8.7, we get that $\phi(100) = \phi(2^2)\phi(5^2) = (2^2 - 2)(5^2 - 2) = 40$
+ - Applying Propositions 8.6, 8.7, we get that $\phi(100) = \phi(2^2)\phi(5^2) = (2^2 - 2)(5^2 - 5) = 40$
  - Applying Theorem 8.8, we get that $\displaystyle \phi(100) = 100 (1 - \frac{1}{2})(1 - \frac{1}{5}) = 40$
 
 &nbsp;
