@@ -1388,11 +1388,11 @@ $$b, 2b, \ldots, (p-1)b \pmod{p}$$
 
 contains each nonzero congruence class mod $p$ exactly once
 
-*Proof*: let $a \not \equiv 0 \pmod{p}$ be arbitrary and look at the linear congruence
+*Proof*: Let $a \not \equiv 0 \pmod{p}$ be arbitrary and look at the linear congruence
 
 $$bx \equiv a \pmod{p}$$
 
-This must have a solution $x$ where $1 \leq x \leq p - 1$
+This must have a unique solution $x$ where $1 \leq x \leq p - 1$
 
 Thus $a$ belongs to one of the congruence classes defined by $\{b, 2b, \ldots, (p-1)b\} \pmod{p}$
 
@@ -1455,7 +1455,7 @@ $$b^p \equiv b \pmod{p}$$
 
 Note that for the case where $b \equiv 0 \pmod{0}$, we have that $b^p \equiv 0^p \equiv 0 \equiv 0 \pmod{p}$
 
-Thus the congruence holds for all $b in Z$
+Thus the congruence holds for all $b \in Z$
 
 &nbsp;
 
@@ -1530,6 +1530,10 @@ Thus $77$ is not prime
 **Proposition 8.6**: For $m, n \in Z^+$, if $\gcd(m, n) = 1$ then
 
 $$\phi(mn) = \phi(m)\phi(n)$$
+
+*Proof*: Define $T_n = \{1 \leq j \leq n \mid \gcd(j, n) = 1\}$, so $|T_n| = \phi(n)$
+
+Now define a function $f: T_{mn} \rightarrow T_m \times T_n$ where $f(a) = (a \pmod{m}, a \pmod{n})$
 
 &nbsp;
 
