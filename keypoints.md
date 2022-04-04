@@ -141,3 +141,9 @@ $$x \equiv \sum_{i=1}^n a_in_iu_i \quad \quad n_i = \prod_{j \neq i} m_j \quad \
 **Proposition 8.7**: For a prime $p$, $\phi(p^k) = p^k - p^{k-1}$
 
 **Theorem 8.8**: $\phi(n) = \displaystyle \prod_{i=1}^r (p_1^{a_i} - p_i^{a_i - 1}) = n \prod_{p \mid n}(1 - \frac{1}{p})$
+
+**Lemma 8.10**: For $b \in T_n$, each $t \in T_n$ is congruent to exactly one element of $bT_n \pmod{n}$
+
+**Euler's Theorem**: For any $b$ such that $\gcd(b, n) = 1 \implies b^{\phi(n)} = 1 \pmod{n}$
+
+**Corollary 8.11**: For $b \gcd(b, n) = 1$, $x \equiv y \pmod{\phi(n)} \implies b^x \equiv b^y \pmod{n}$

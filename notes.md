@@ -1535,13 +1535,45 @@ $$\phi(mn) = \phi(m)\phi(n)$$
 
 Now define a function $f: T_{mn} \rightarrow T_m \times T_n$ where $f(a) = (a \pmod{m}, a \pmod{n})$
 
+Firstly, we show that $a \pmod{m} \in T_m$, i.e. $a \pmod{m}$ is relatively prime to $m$. Similar for $a \pmod{n}$
+
+Suppose $a \equiv l \pmod{m} \implies a = mk + l$ for some $k , l \in Z$
+
+If $d$ is a common divisor for $l ,m$, then $d \mid a$ and $d \mid mn \implies d = 1$ since $a \in T_{mn}$
+
+Now we show that this function is 1-1 and onto
+
+- 1-1: Suppose $f(a) = f(b)$ for some $a, b \in T_{mn}$, we show that $a = b$
+
+  Then $(a \pmod{m}, a \pmod{n}) = (b \pmod{m}, b \pmod{n}) \implies a \equiv b \pmod{m}$ and $a \equiv b \pmod{n}$
+
+  Thus $\underbrace{mn \mid (b - a)}_{\gcd(m, n) = 1} \implies b \equiv a \pmod{mn}$
+
+  Since $0 \leq a, b \leq mn$, we must have that $b = a$
+
+- Onto: Take $(r, t) \in T_m \times T_n$, so $\gcd(r, m) = 1$ and $\gcd(t, n) = 1$
+
+  By CRT, $x \equiv r \pmod{m} \quad \quad x \equiv t \pmod{n}$ has a unique solution mod $mn$, call it $a$
+
+  We show that $\gcd(a, mn) = 1 \implies a \in T_{mn}$
+
+  BWOC, suppose we have a prime $p$ such that $p \mid a$ and $p \mid mn$
+
+  This implies either $p \mid a$ and $p \mid m$ OR $p \mid a$ and $p \mid n$ since $\gcd(m, n) = 1$
+
+  Thus $a = mk + r = nl + t \implies p \mid r$ and $p \mid m$ OR $p \mid t$ and $p \mid n$
+
+  Contradiction since we supposed $\gcd(r, m) = 1$ and $\gcd(t, n) = 1$
+
+  Thus $\gcd(a, mn) = 1 \implies a \in T_{mn}$
+
 &nbsp;
 
 **Proposition 8.7**: For a prime $p$ and $k \geq 1$,
 
 $$\phi(p^k) = p^k - p^{k-1}$$
 
-*Proof*: For $1 \leq j \leq p^k$, there are $p^{k-1}$ multiples of $k$, namely $\{p, 2p, \ldots, p^k\}$
+*Proof*: For $1 \leq j \leq p^k$, there are $p^{k-1}$ multiples of $p$, namely $\{(1)p, (2)p, \ldots, (p^{k-1})p\}$
 
 These multiples are exactly when $\gcd(j, p^k) \neq 1$
 
@@ -1572,25 +1604,19 @@ For the second part of the equality of the theorem, note that $\displaystyle p^a
 
 &nbsp;
 
-**Lemma 8.10**: Let $T$ be the set of $1 \leq j \leq n$ with $\gcd(j, n ) = 1$. Choose any $b$ with $\gcd(b, n) = 1$ and let $bT \mod{n}$ be the set of numbers of them form $bt \mod{n}$ for $t \in T$. Then each $t \in T$ is congruent to exactly one element of $bT \mod{n}$
+**Lemma 8.10**: Let $T_n$ be the set of $1 \leq j \leq n$ with $\gcd(j, n ) = 1$. Choose any $b \in T_n$ and let $bT_n \mod{n}$ be the set of numbers of the form $bt \mod{n}$ for $t \in T_n$. Then each $t \in T_n$ is congruent to exactly one element of $bT_n \mod{n}$
 
-*Proof*: Let $t \in T$.
+*Proof*: Let $t \in T_n$. Then $\gcd(t, n) = 1$
 
-Then $\gcd(t, n) = \gcd(b, n) = 1 \implies \gcd(bt, n) = 1$
+This means that $bx \equiv t \pmod{n}$ has a unique solution. Call it $x_0$
 
-Let $bt \equiv c \pmod{n}$. Then $\gcd(c, n) = 1$
+We claim that $\gcd(x_0, n) = 1 \implies x_0 \in T_n$
 
-Thus $c \in T$ so $bT \mod{n} \subseteq T$
+Suppose $d \mid x_0$ and $d \mid n$
 
-To show that $T = bT \mod{n}$, we show that they have the same number of elements
+Then $n \mid bx_0 - t \implies d \mid bx_0 - t \implies d \mid t$ and $d \mid n \implies n = 1$ since $\gcd(t, n) = 1$
 
-Take $t_1, t_2 \in T$ with $bt_1 \equiv bt_2 \pmod{n}$
-
-From the second equation, we get that $t_1 \equiv t_2 \pmod{n}$. However elements of $T$ are distinct mod $n$. Thus we have a contradiction
-
-Thus distinct elements of $T$ must remain distinct when multiplied by $b$ under mod $n$
-
-Thus $bT \mod{n}$ and $T$ have the same elements and are thus equal
+The uniqueness of follows from the uniqueness of $x_0$
 
 &nbsp;
 
@@ -1600,15 +1626,17 @@ Thus $bT \mod{n}$ and $T$ have the same elements and are thus equal
 
 Then we have $T = \{1, 5, 7, 11\}$ and $bT = \{5, 25, 35, 55\} \equiv \{5, 1, 11, 7\} \mod{12} = T$
 
+&nbsp;
+
 **Euler's Theorem**: For any $b$ such that $\gcd(b, n) = 1$, we have that
 
 $$b^{\phi(n)} \equiv 1 \pmod{n}$$
 
 - **Note**: This generalizes Fermat's Theorem since $\phi(p) = p - 1$
 
-*Proof*: Consider the set $T$ from Lemma 8.10. Then
+*Proof*: Consider the set $T_n$ from Lemma 8.10. Then
 
-$$\prod_{i \in T} i \equiv \prod_{i \in T} bi \equiv b^{\phi(n)} \prod_{i \in T} i \pmod{n}$$
+$$\prod_{i \in T_n} i \equiv \prod_{i \in T_n} bi \equiv b^{\phi(n)} \prod_{i \in T_n} i \pmod{n}$$
 
 Lemma 8.10 says that the second product is just a rearrangement of the first product. Thus we get that
 
