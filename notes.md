@@ -643,7 +643,7 @@ Finally, we see that $A = 2^a3^b 5^c \dots = 2*3^2 (2^j3^k5^{c'} \cdots)^3 = 18 
 
 ## Irrationality Proof
 
-**Rational**: Number that can expressed as a ratio of $2$ integers
+**Definition - Rational**: Number that can expressed as a ratio of $2$ integers
 
 &nbsp;
 
@@ -882,7 +882,7 @@ Thus there are an infinite number of primes
 
 ## Definitions and Examples
 
-**Definition - Congruence**: $a \equiv b \pmod{m}$ if $a - b$ is a multiple of $m$
+**Definition - Congruence**: $a \equiv b \pmod{m}$ if and only if $a - b$ is a multiple of $m$
 
 &nbsp;
 
@@ -996,11 +996,9 @@ Thus the set of common divisors for $a, n$ is the same as the set of common divi
 
 *Proof*: $x^2 \equiv 1 \pmod{p} \iff x^2 - 1 \equiv 0 \pmod{0} \iff (x-1)(x+1) \equiv 0 \pmod{p}$
 
-By the previous Proposition, this ony happens when $x-1 \equiv 0 \pmod{p}$ or $x + 1 \equiv 0 \pmod{p}$
+By the previous Proposition, this only happens when $x-1 \equiv 0 \pmod{p}$ or $x + 1 \equiv 0 \pmod{p}$
 
 Thus the only possible solutions are $x \equiv \pm 1 \pmod{p}$
-
-**Exercise 6.34**
 
 ## Modular Exponentiation
 
@@ -1209,7 +1207,7 @@ Thus $28(10) + 31(-9) = 1 \implies 28(150) + 31(-135) = 15 \implies 28(150) \equ
 
 &nbsp;
 
-**Definitino - Multiplicative Inverse**: $a$ has a **multiplicative inverse** $b$ if $ab \equiv 1 \pmod{m}$
+**Definition - Multiplicative Inverse**: $a$ has a **multiplicative inverse** $b$ if $ab \equiv 1 \pmod{m}$
 
 &nbsp;
 
@@ -1294,7 +1292,7 @@ Has a unique solution $x \pmod{m_1 m_2 \cdots m_r}$
 
 Base Case $r = 2$ is handled by previous Theorem
 
-IH: Suppose that for an arbitrary $k \leq n$, we the CRT holds true
+IH: Suppose that for an arbitrary $k \leq n$, CRT holds true
 
 IS: Prove CRT is true for $n + 1$
 
@@ -1740,9 +1738,15 @@ Contradiction. Thus $n$ must be prime
 
 Thus $n$ is not prime
 
-# RSA
+# Cryptography
 
-## RSA Encryption
+**Shift Cipher**: $x \rightarrow x + k \pmod{26}$ has key space size of $26$
+
+&nbsp;
+
+**Affine Cipher**: $x \rightarrow ax + b \pmod{26}$ where $\gcd(a, 26) = 1$ has key space size of $12 * 26$
+
+## RSA
 
 **RSA Setup**:
 
