@@ -5,6 +5,7 @@ geometry: "left=1cm,right=1cm,top=1cm,bottom=2cm"
 header-includes:
     - \usepackage{amsmath}
     - \DeclareMathOperator{\lcm}{lcm}
+    - \DeclareMathOperator{\ord}{ord}
 output: pdf_document
 ---
 
@@ -1820,3 +1821,431 @@ Otherwise, suppose that $\gcd(m, n) \neq 1$. So possible values are $p, q, pq$
   Thus $m^{ed} \equiv m(m^{q-1})^{k(p-1)} \equiv m \pmod{q}$
 
   Thus $p \mid m^{ed} - m$ and $q \mid m^{ed} - m \implies pq \mid m^{ed} - m \implies m^{ed} \equiv m \pmod{pq}$
+
+# Order and Primitive Roots
+
+## Orders of Elements
+
+**Definition - Order**: The **order** of $a \mod{n}$, denoted $\ord_n(a)$ is the smallest positive integer such that
+
+$$a^m \equiv 1 \pmod{n}$$
+
+- In particular powers of $a \mod{n}$ create a cyclic group
+
+- The order of an integer $a$ has to exist because of Euler's Theorem: $a^{\phi(n)} \equiv 1 \pmod{n}$. Thus $\ord_n(a) \leq \phi(n)$
+
+&nbsp;
+
+**Theorem 11.1**: Let $n$ be a positive integer and $a$ be an integer where $\gcd(a, n) = 1$. Take any integer $m$. Then
+
+$$a^m \equiv 1 \pmod{n} \iff \ord_n(a) \mid m$$
+
+*Proof*: Let $m_0 = \ord_n(a)$
+
+$\implies$ Suppose $a^m \equiv 1 \pmod{n}$. Now apply the division algorithm to $m, m_0$, so $m = m_0 q + r$ where $0 \leq r < m_0$
+
+Now we see that
+
+$$a^m = a^{m_0 q + r} \equiv a^r \equiv 1 \pmod{n}$$
+
+Since $m_0$ is the smallest positive exponent that yields $1$ and $r < m_0$, we must have that $r = 0 \implies m_0 \mid m$
+
+$\impliedby$ If $m_0 \mid m$, then $m = m_0 k$. Thus we have
+
+$$a^m \equiv (a^{m_0})^k \equiv 1 \pmod{n}$$
+
+&nbsp;
+
+**Corollary 11.2**:
+
+- For a prime $p$ and integer $a$ such that $a \not \equiv 0 \pmod{p}$, then $\ord_p(a) \mid p - 1$
+
+- For a positive integer $n$ and integer $a$ such that $\gcd(a, n) = 1$, we have $\ord_n(a) \mid \phi(n)$
+
+*Proof*: The first point follows from the second point
+
+By Euler's Theorem, we have that
+
+$$a^{\phi(n)} \equiv 1 \pmod{n}$$
+
+Thus using Theorem 11.1, we have that $\ord_n(a) \mid \phi(n)$
+
+&nbsp;
+
+**Example**: $\ord_{23}(3)$
+
+Divisors of $23 - 1 = 22$ are $\{1, 2, 11, 22\}$. By inspection we see that $3^{11} \equiv 1 \pmod{23}$
+
+Thus $\ord_{23}(3) = 11$
+
+### Fermat Numbers
+
+Recall that Fermat Numbers are of the form
+
+$$F_n = 2^{2^n} + 1$$
+
+&nbsp;
+
+**Proposition 11.3**: For $n \geq 2$, let $p$ be a prime dividing $F_n$. Then $p \equiv 1 \pmod{2^{n+2}}$
+
+*Proof*: If $p \mid 2^{2^n} + 1$, then $2^{2^n} \equiv -1 \pmod{p}$. Squaring both sides yields
+
+$$2^{2^{n+1}} \equiv 1 \pmod{p}$$
+
+Thus by Theorem 11.1, $\ord_p(2) \mid 2^{n+1}$, so $\ord_p(2) = 2^j$ for some $j \leq n + 1$
+
+BWOC, suppose that $j \leq n$, then we have
+
+$$2^{2^n} \equiv (2^{2^j})^{2n - j} \equiv 2^{2^n} \equiv 1 \pmod{p}$$
+
+But we had $2^{2^n} \equiv -1 \pmod{p}$. Contradiction
+
+Thus we must have $\ord_p(2) = 2^{n+ 1}$
+
+Thus by Corollary 11.2, $2^{n + 1} \mid p - 1$
+
+Since $n \geq 2$, we must have that $p \equiv 1 \pmod{8}$
+
+We claim that $p \equiv 1 \pmod{8} \implies \exists b \in Z$ such that $b^2 \equiv 2 \pmod{p}$ (Exercise 11.2.31)
+
+Thus we have
+
+$$2^{2n + 1} \equiv (2^2)^{2^n} \equiv 2^{2^n} \equiv -1 \pmod{p} \implies b^{2n + 2} \equiv 1 \pmod{p}$$
+
+Thus $\ord_p(b)$ divides $2^{n+2}$ and does not divide $2^{n+1} \implies \ord_p(2) = 2^{n + 2}$
+
+Thus by Corollary 11.2, $2^{n + 2} \mid p - 1 \implies p \equiv 1 \pmod{2^{n + 2}}$
+
+&nbsp;
+
+**Example**: Factor $F_5$
+
+By Proposition 11.3, any prime must be congruent $1 \mod{128}$. Some of the primes include
+
+$$257, \quad 641, \quad, 769, \quad, 1153, \quad, 1409$$
+
+By inspection, we see that $F_5 = 641 * 6700417$
+
+- **Note**: Any prime factor of $6700417$ must also be a prime factor of $F_5$ and therefore must be $1 \mod{128}$. Thus $6700417$ has no prime factors less than $\sqrt{6700417} \implies 6700417$ is prime
+
+&nbsp;
+
+**Non-Example**: Factor $F_4 = 65537$
+
+Any prime factors of $F_4$ must be $p \equiv 1 \pmod{64}$. The first two such primes are $193, 257$ but $193 \nmid 65537$ and $257 > \sqrt{65537} \implies F_4$ is prime
+
+### Mersenne Numbers
+
+Recall that Mersenne numbers are of the form
+
+$$M_p = 2^p - 1$$
+
+where $p$ is a prime
+
+&nbsp;
+
+**Proposition 11.4**: Let $p, q$ be primes and suppose that $q \mid 2^p - 1$. Then $q \equiv 1 \pmod{p}$
+
+*Proof*: If $2^p \equiv 1 \pmod{q}$, then by Theorem 11.1, $\ord_q(2) \mid p \implies \ord_q(2) = 1$ or $p$
+
+- If $\ord_q(2) = 1 \implies 2^1 \equiv 1 \pmod{q}$ which is impossible
+
+- Therefore $\ord_q(2) = p \implies p \mid q -1 \implies q \equiv 1 \pmod{p}$ by Corollary 11.2
+
+## Primitive Roots
+
+**Definition - Primitive Root**: For a prime $p$, if the order of $g \mod{p}$ equals $p-1$, then $g$ is a **primitive root**
+
+&nbsp;
+
+**Example**: $\ord_5(2) = 4 \implies 2$ is a primitive root for $5$
+
+**Non-Example**: $\ord_7(2) = 3 \implies 2$ is not a primitive root for $7$
+
+&nbsp;
+
+**Proposition 11.5**: Suppose $\gcd(g, p) = 1$ for a prime $p$, then the following are equivalent
+
+- $g$ is a primitive root, $\ord_p(g) = p - 1$
+
+- Every integer that is non-zero mod $p$ is congruent to a power of $g \mod{p}$
+
+*Proof $1 \rightarrow 2$*: Let $g$ be a primitive root. We claim that $1, g, g^2, \ldots, g^{p - 2} \pmod{p}$ are distinct
+
+BWOC, suppose $g^i \equiv g^j \pmod{p}$ for $0 \leq i , j \leq p - 2$
+
+Then $g^j - i \equiv 1 \implies p - 1 = \ord_p(g) \mid j - i$. Contradiction since $0 \leq j - i < p - 1$
+
+Thus powers of $g$ mod $p$ give $p-1$ distinct congruence classes
+
+*Proof $2 \rightarrow 1$*: Let $m = \ord_p(g)$. Then
+
+$$1, g, g^2, \ldots, g^{m - 1} \pmod{p}$$
+
+are distinct
+
+Since $g^m \equiv 1$, the cycle starts again. Thus $m = p - 1$ by definition
+
+&nbsp;
+
+**Proposition 11.6**: Let $g$ be a primitive root for an odd prime $p$. Then
+
+$$g^{(p-1)/2} \equiv -1 \pmod{p}$$
+
+*Proof*: Let $x \equiv g^{(p-1)/2} \pmod{p}$. Then
+
+$$x^2 \equiv g^{p-1} \equiv 1 \pmod{p} \implies x \equiv \pm 1 \pmod{p}$$
+
+- If $x \equiv 1 \pmod{p} \implies g^{(p-1)/2} \equiv 1 \pmod{p}$. Contradiction since the order of $g$ is $p - 1$
+
+- Thus $x \equiv -1 \pmod{p}$ as desired
+
+&nbsp;
+
+**Proposition 11.7**: For a positive integer and $\gcd(x, n) = 1$. Let $m = \ord_n(x)$ and take an integer $i$. Then
+
+$$\ord_n(x^i) = \frac{m}{\gcd(i, m)}$$
+
+*Proof*: Let $k = \ord_n(x^i)$
+
+Then $x^ik \equiv 1 \pmod{n} \implies ik \equiv 0 \pmod{m}$
+
+Now let $d = \gcd(i, m)$. then
+
+$$\frac{i}{d}k \equiv 0 \pmod{\frac{m}{d}}$$
+
+Since $\gcd(i/d, m/d) = 1$, we can divide the congruence by $i/d$ to get
+
+$$k \equiv 0 \pmod{m/d}$$
+
+Furthermore, since $i/d$ is an integer,
+
+$$(x^i)^{m/d} \equiv (x^m)^{i/d} \equiv 1 \pmod{p}$$
+
+Thus by Theorem 11.1, $k \mid \frac{m}{d} \implies k \leq \frac{m}{d}$
+
+&nbsp;
+
+**Corollary 11.8**: For a prime $p$ and a primitive root $g$ mod $p$, we have that
+
+$$\ord_p(g^i) = \frac{p-1}{\gcd(i, p-1)}$$
+
+*Proof*: Follows from Proposition 11.7 using $x = g$ and $m = p - 1$
+
+&nbsp;
+
+**Example**: Since $2$ is a primitive root for $13$, we have that $2^8 \equiv 9 \pmod{13}$. Proposition 11.7 says that
+
+$$\ord_{13}(9) = \frac{12}{\gcd(8, 12)} = 3$$
+
+&nbsp;
+
+**Corollary 11.8**: Let $g$ be a primitive root for a prime $p$. The primitve roots for $p$ are numbers congruent to $g^i \pmod{p}$ for $\gcd(i, p -1) = 1$
+
+*Proof*: Since $g$ is a primite root, every number that is nonzero mod $p$ is congruent so some $g^i$
+
+By Corollary 11.8, $\ord_p(g^i) = p - 1$ if and only if $\gcd(i, p - 1)$
+
+&nbsp;
+
+**Example**: Numbers relatively prime to $12$ are $1, 5, 7, 11$. Thus the primitive roots for $13$ are
+
+$$2, \quad 2^5 \equiv 6, \quad 2^7 \equiv 11, \quad 2^{11} \equiv 7$$
+
+- **Note**: Fermat's Theorem tells us that everything starts over at $2^{12} \equiv 1$, so
+
+$$2^{17} \equiv 2^{15} 2^5 \equiv 2^{5} \equiv 6 \pmod{13}$$
+
+&nbsp;
+
+**Theorem 11.10**: Let $p$ be a prime. There are $\phi(p - 1)$ primitive roots $g$ for $p$ where $1 \leq g < p$
+
+*Proof*: Let $g$ be a primitive root. The other primitive roots are exactly $g^i \pmod{p}$ where $1 \leq u \leq p - 1$ with $\gcd(i, p - 1)$
+
+There are $\phi(p - 1)$ such values of $i$, so we are done
+
+&nbsp;
+
+**Example**: The number of primitive roots for $10003$ is
+
+$$\phi(100002) = 28560$$
+
+&nbsp;
+
+**Example**: Suppose we want to show that $6$ is a primitive root mod $41$
+
+Let $m = \ord_{41}(6)$. Since $m \mid 40$, by Corollary 11.2, we see that $m \in \{1, 2, 4, 5, 8, 10, 20, 40\}$
+
+Calculation shows that $6^{20} \equiv -1 \pmod{41}$. Then $m$ cannot be a divisor of $20$
+
+- BWOC, if $6^ \equiv 1 \pmod{41}$, then $6^{20} \equiv (6^5)^4 \equiv 1 ^4 \equiv 1$. Contradiction
+
+The only remaining choices are $m = 8$ and $m = 40$
+
+- If $m = 8$, then $6^8 \equiv 10 \pmod{41} \implies m \neq 8$
+
+- Thus we must have $m = 40$. Thus $6$ is a primitive root for $41$
+
+&nbsp;
+
+**Proposition 11.11**: For a prime $p$ and $h \neq 0 \pmod{p}$, the following are equivalent
+
+- $h$ is a primitive root for $p$
+
+- For each prime $l$ dividing $p - 1$, we have
+
+$$h^{(p-1)/ l} \not \equiv 1 \pmod{p}$$
+
+*Proof $1 \rightarrow 2$*: If $h$ is a primitive root, then
+
+$$\ord_p(h) = p - 1 > (p - 1) / l > 0$$
+
+Thus for each $l$,
+
+$$h^{(p-1)/l} \not \equiv 1 \pmod{p}$$
+
+*Proof $2 \rightarrow 1$*: Let $m = \ord_p(h)$
+
+Corollary 11.2 says that $m \mid p - 1$.
+
+If $m \neq p - 1$, let $p$ be a prime dividing $(p - 1)/m$ such that $lk = (p-1)/m$ for some $k$
+
+Then we have
+
+$$mk = (p-1)/l \implies h^{(p-1)/ l} \equiv (h^m)^k \equiv 1 \pmod{p}$$
+
+## Discrete Log Problem
+
+**Definition - Discrete Log Problem (DLP)**: Given a prime $p$, a primitive roto $g$, and $h \not \equiv 0 \pmod{p}$, find $x$ such that $g^x \equiv h \pmod{p}$
+
+- Here the answer $x$ is called the **discrete log** of $h$
+
+&nbsp;
+
+**Example**: Suppose we want to solve $3^x = 1594323$ without mods
+
+- $3^{10} = 59049 \quad \quad 3^{15} = 14348907 \implies x$ is between $10$ and $15$. By inspection $x = 13$ works
+
+Now suppose we want to solve $3^x \equiv 8 \pmod{43}$. This is clearly harder since higher powers are reduced mod $43$
+
+- Brute force approach gives us $x = 39$
+
+- In particular, $x = 81$ also works
+
+$$3^{81} \equiv 3^{42} 3^{39} \equiv 1 * 3^{39} \equiv 8 \pmod{43}$$
+
+In general, using Fermat's Theorem, $x = 39 + 42k$ for any integer $k$
+
+### Baby Step-Giant Step Method
+
+Let $g$ be a primitive root for a prime $p$ and let $h \not \equiv 0 \pmod{p}$. We solve
+
+$$g^x \equiv h \pmod{p}$$
+
+1. Let $N = \lceil \sqrt{p - 1} \rceil$
+
+2. Make two lists
+
+  - $g^i \pmod{p}$ for $0 \leq i \leq N - 1$
+
+  - $h g^{-Nj} \pmod{p}$ for $0 \leq j \leq N - 1$
+
+3. Find a match between the two lists $g^i \equiv h g^{-Nj} \pmod{p}$
+
+4. $x = i + Nj$ solves the DLP
+
+&nbsp;
+
+**Example**: Solve $2^x \equiv 9 \pmod{19}$. Here
+
+$$N = \lceil \sqrt{19 - 1} \rceil = 5$$
+
+Since $h = 9$, we have the lists
+
+- $2^0 \equiv 1, \quad 2^1 \equiv 2, \quad 2^2 \equiv 4, \quad 2^3 \equiv 8, \quad 2^4 \equiv 16$
+
+- $9 * 2^{-0} \equiv 9, \quad 9 * 2^{-5} \equiv 8, \quad 9*2^{-10} \equiv 5, \quad 9*2^{-15} \equiv 15, \quad 9*2^{-20} \equiv 7$
+
+Both lists have $8$ in common, so a match is $2^3 \equiv 8 \equiv 9 * 2^{-5}$
+
+Thus $2^8 \equiv 9$
+
+&nbsp;
+
+Reasoning behind why a match generates a solution to the DSL:
+
+Since $g$ is a primitive root, there is a solution $x$ where $0 \leq x \leq p - 2$. We can write $x$ is base $N$
+
+$$x = a_0 + a_1 N + a_2 N^2 + \cdots \quad \quad 0 \leq a_i < N$$
+
+Since $N = \lceil \sqrt{p - 1} \rceil \implies N^2 \geq p -1 > x$, we must have that $a_2 = a_3 \cdots = 0$
+
+Thus we have
+
+$$x = a_0 + a_1 N$$
+
+Which then gives
+
+$$g^{a_0} \equiv g^{x - a_1N} \equiv h * g^{-a_1N} \pmod{p}$$
+
+Thus $i = a_0$ and $j = a_1$ yield a match
+
+### Index Calculus
+
+Baby Step-Giant Step Method is slow when $p$ is large. In this section, we solve DLPs faster
+
+Notationwise, we usually let $\log(h)$ be the DLP of $h$ when $p, g$ are understood
+
+$$\log(h) \implies x \text{ such that } 2^x \equiv h \pmod{101}$$
+
+&nbsp;
+
+**Example**: Solve $2^x \equiv 55 \pmod{101}$
+
+First ignore $55$ and compute some other discrete logs instead
+
+- Choose a set of small primes $\{3, 5, 7\}$. Call this set a **factor base**
+
+The first goal is to compute their discrete logs by computing $2^r \pmod{101}$ for randomly chosen values of $r$ and trying to factor the results using only $3, 5, 7$
+
+\begin{align*}
+ 2^7 & \equiv 27 \equiv 3^3 * 5^0 * 7^0 \pmod{101} \\
+ 2^9 & \equiv 7 \equiv 3^0 * 5^0 * 7^1 \pmod{101} \\
+ 2^{17} & \equiv 75 \equiv 3^1 * 5^2 * 7^0 \pmod{101} \\
+ 2^{24} & \equiv 5 \equiv 3^0 * 5^1 * 7^0 \pmod{101} \\
+ 2^{47} & \equiv 63 \equiv 3^2 * 5^0 * 7^1 \pmod{101} \\
+\end{align*}
+
+Relations such as $2^{22} \equiv 77 \pmod{101}$ are excluded since $77$ is not a product of numbers in the factor base
+
+We want to find $\log(n)$ for $n \in \{3, 5, 7\}$
+
+- Since $2^9 \equiv 7 \implies \log(7) = 9$
+
+- Since $2^{24} \equiv 5 \implies \log(5) = 24$
+
+- To get $\log(3)$, we look at the prime factorizations we already have
+
+$$3 \equiv (3^3 * 5^0 * 7^0) (3^0 * 5^0 * 7^1) (3^2 * 5^0 * 7^1)^{-1} \equiv 2^7 * 2^9 \equiv 2^{-47} \equiv 2^{-31} \equiv 2^{69}$$
+
+Finally, we now find $\log(55)$ by computing $55 * 2^r \pmod{101}$ for random values of $r$ until we obtain a number that can be factored using only primes in the factor base
+
+$$55 * 2^{25} \equiv 45 \equiv 3^2 * 5 \pmod{101} \implies 55 \equiv 2^{-25} * 3^2 * 5 \pmod{101} \equiv 2^{-25} * 2^{2 * 69} * 2^{24} \equiv 2^{37} \pmod{101}$$
+
+Thus we conclude that $x = 37$
+
+&nbsp;
+
+The steps above can be generalized into
+
+Let $g$ be a primitive root for prime $p$ and let $h \not \equiv 0 \pmod{p}$. We solve
+
+$$g^x \equiv h \pmod{p}$$
+
+1. Choose a factor base $B$ of small primes
+
+2. Compute $g^3 \pmod{p}$ for many random values of $r$ and try to factor the results using only primes from $B$
+
+3. Use combinations of successes from Step $2$ to evaluate $\log(q)$ for all $q \in B$
+
+4. Computer $h * g^r \pmod{p}$ for random values of $r$ and try to factor these using only primes from $B$. If this happens, evaluate $\log(h)$ using the values of $\log(q)$ for $q \in B$

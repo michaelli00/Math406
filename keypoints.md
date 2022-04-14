@@ -85,9 +85,7 @@ $$a = n^2 - m^2 \quad \quad b = 2mn \quad \quad c = m^2 + n^2 \quad \quad \quad 
 
 - Factorize $m$ into $2$ factors with the same parity and set $m = \frac{v-u}{2}$ and $n = \frac{v+u}{2}$
 
-**Theorem 5.9**: $n! = p^b c$ with $p \nmid c \implies b = \lfloor \frac{n}{p} \rfloor + \lfloor \frac{n}{p^2} \rfloor + \cdots$
-
-**Riemann Zeta Function**: $\zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s} = \prod_p (1 - p^{-s})^{-1}$
+**Theorem 5.9**: $n! = p^b c$ with $p \nmid c \implies b = \lfloor \frac{n}{p} \rfloor + \lfloor \frac{n}{p^2} \rfloor + \cdots \quad \quad$ **Riemann Zeta Function**: $\zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s} = \prod_p (1 - p^{-s})^{-1}$
 
 ## Linear Congruence
 
@@ -103,8 +101,6 @@ $a \equiv b \pmod{m} \implies m \mid a - b$ AND $a = b + km$ AND $\gcd(a, n) = \
 
 - **Corollary 6.11**: For a prime $p$, $x^2 \equiv 1 \pmod{p} \implies x \equiv \pm 1 \pmod{p}$
 
-**Exercise 6.1.9**: Find all positive $n$ such that $123 \equiv 234 \pmod{n}$
-
 **Exercise 6.1.26**: For twim primes, show that $p, q \geq 5 \implies 3 \mid p + q \quad \quad p, q \implies 4 \mid p + q \quad \quad 12 \mid p + q$
 
 **Example**: Compute $3^{385} \pmod{479}$ using repeated squaring
@@ -113,7 +109,7 @@ $a \equiv b \pmod{m} \implies m \mid a - b$ AND $a = b + km$ AND $\gcd(a, n) = \
 
 Linear Congruence problem $ax \equiv b \pmod{m}$ can be reduced to a Diophantine Problem with $(-m, a, b)$ $-mx + ay = b$
 
-- Let $d = \gcd(g, m)$. Then $d \mid b \implies$ the congruence problem has $d$ distinct solutions mod m
+- Let $d = \gcd(a, m)$. Then $d \mid b \implies$ the congruence problem has $d$ distinct solutions mod m
 
 **Exercise 6.4.60**: Find all $0 \leq n \leq 23$ such that $10 x \equiv n \pmod{24}$ has solutions
 
@@ -130,7 +126,11 @@ $$x \equiv \sum_{i=1}^n a_in_iu_i \quad \quad n_i = \prod_{j \neq i} m_j \quad \
 
 ## Fermat, Euler, Wilson
 
-**Fermat's Theorem**: For prime $p$, we have $\forall b \in Z, b^p - p \equiv 0 \pmod{p} \quad \quad b \not \equiv 0 \pmod{p} \implies b^{p-1} \equiv 1 \pmod{p}$
+**Lemma 8.3**: $(x + y)^p \equiv x^p + y^p \pmod{p}$
+
+**Lemma 8.4**: For $b \neq 0 \pmod{p}$, $\{b, 2b, \ldots, (p-1)b\} \pmod{p}$ contains each congruence class exactly once
+
+**Fermat's Theorem**: For prime $p$, we have $\forall b \in Z, b^p - b \equiv 0 \pmod{p} \quad \quad b \not \equiv 0 \pmod{p} \implies b^{p-1} \equiv 1 \pmod{p}$
 
 **Corollary 8.2**: For prime $p$ and $b \not \equiv 0 \pmod{p}$, $x \equiv y \pmod{p-1} \implies b^x \equiv b^y \pmod{p}$
 
