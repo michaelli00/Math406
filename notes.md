@@ -2008,7 +2008,7 @@ $$\ord_n(x^i) = \frac{m}{\gcd(i, m)}$$
 
 *Proof*: Let $k = \ord_n(x^i)$
 
-Then $x^ik \equiv 1 \pmod{n} \implies ik \equiv 0 \pmod{m}$
+Then $x^{ik} \equiv 1 \pmod{n} \implies ik \equiv 0 \pmod{m}$
 
 Now let $d = \gcd(i, m)$. then
 
@@ -2016,13 +2016,15 @@ $$\frac{i}{d}k \equiv 0 \pmod{\frac{m}{d}}$$
 
 Since $\gcd(i/d, m/d) = 1$, we can divide the congruence by $i/d$ to get
 
-$$k \equiv 0 \pmod{m/d}$$
+$$k \equiv 0 \pmod{m/d} \implies k \geq \frac{m}{d}$$
 
 Furthermore, since $i/d$ is an integer,
 
 $$(x^i)^{m/d} \equiv (x^m)^{i/d} \equiv 1 \pmod{p}$$
 
 Thus by Theorem 11.1, $k \mid \frac{m}{d} \implies k \leq \frac{m}{d}$
+
+Thus we see that $\displaystyle k = \frac{m}{d}$
 
 &nbsp;
 
@@ -2078,7 +2080,7 @@ Let $m = \ord_{41}(6)$. Since $m \mid 40$, by Corollary 11.2, we see that $m \in
 
 Calculation shows that $6^{20} \equiv -1 \pmod{41}$. Then $m$ cannot be a divisor of $20$
 
-- BWOC, if $6^ \equiv 1 \pmod{41}$, then $6^{20} \equiv (6^5)^4 \equiv 1 ^4 \equiv 1$. Contradiction
+- BWOC, if $6^{5} \equiv 1 \pmod{41}$, then $6^{20} \equiv (6^5)^4 \equiv 1 ^4 \equiv 1$. Contradiction
 
 The only remaining choices are $m = 8$ and $m = 40$
 
@@ -2092,31 +2094,33 @@ The only remaining choices are $m = 8$ and $m = 40$
 
 - $h$ is a primitive root for $p$
 
-- For each prime $l$ dividing $p - 1$, we have
+- For each prime $q$ dividing $p - 1$, we have
 
-$$h^{(p-1)/ l} \not \equiv 1 \pmod{p}$$
+$$h^{(p-1)/ q} \not \equiv 1 \pmod{p}$$
 
 *Proof $1 \rightarrow 2$*: If $h$ is a primitive root, then
 
-$$\ord_p(h) = p - 1 > (p - 1) / l > 0$$
+$$\ord_p(h) = p - 1 > (p - 1) / q > 0$$
 
-Thus for each $l$,
+Thus for each $q$,
 
-$$h^{(p-1)/l} \not \equiv 1 \pmod{p}$$
+$$h^{(p-1)/q} \not \equiv 1 \pmod{p}$$
 
 *Proof $2 \rightarrow 1$*: Let $m = \ord_p(h)$
 
 Corollary 11.2 says that $m \mid p - 1$.
 
-If $m \neq p - 1$, let $p$ be a prime dividing $(p - 1)/m$ such that $lk = (p-1)/m$ for some $k$
+If $m \neq p - 1$, let $p$ be a prime dividing $(p - 1)/m$ such that $qk = (p-1)/m$ for some $k$
 
 Then we have
 
-$$mk = (p-1)/l \implies h^{(p-1)/ l} \equiv (h^m)^k \equiv 1 \pmod{p}$$
+$$mk = (p-1)/q \implies h^{(p-1)/ q} \equiv (h^m)^k \equiv 1 \pmod{p}$$
+
+Contradiction. Thus $m = p - 1$
 
 ## Discrete Log Problem
 
-**Definition - Discrete Log Problem (DLP)**: Given a prime $p$, a primitive roto $g$, and $h \not \equiv 0 \pmod{p}$, find $x$ such that $g^x \equiv h \pmod{p}$
+**Definition - Discrete Log Problem (DLP)**: Given a prime $p$, a primitive root $g$, and $h \not \equiv 0 \pmod{p}$, find $x$ such that $g^x \equiv h \pmod{p}$
 
 - Here the answer $x$ is called the **discrete log** of $h$
 
