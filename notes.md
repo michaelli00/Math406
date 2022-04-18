@@ -2160,6 +2160,10 @@ $$g^x \equiv h \pmod{p}$$
 
 &nbsp;
 
+**Note**: There is always a match since we can express $n$ in terms of base $N \implies n = \underbrace{x_0}_{j} + \underbrace{x_1}_{k} N$
+
+&nbsp;
+
 **Example**: Solve $2^x \equiv 9 \pmod{19}$. Here
 
 $$N = \lceil \sqrt{19 - 1} \rceil = 5$$
@@ -2174,37 +2178,17 @@ Both lists have $8$ in common, so a match is $2^3 \equiv 8 \equiv 9 * 2^{-5}$
 
 Thus $2^8 \equiv 9$
 
-&nbsp;
-
-Reasoning behind why a match generates a solution to the DSL:
-
-Since $g$ is a primitive root, there is a solution $x$ where $0 \leq x \leq p - 2$. We can write $x$ is base $N$
-
-$$x = a_0 + a_1 N + a_2 N^2 + \cdots \quad \quad 0 \leq a_i < N$$
-
-Since $N = \lceil \sqrt{p - 1} \rceil \implies N^2 \geq p -1 > x$, we must have that $a_2 = a_3 \cdots = 0$
-
-Thus we have
-
-$$x = a_0 + a_1 N$$
-
-Which then gives
-
-$$g^{a_0} \equiv g^{x - a_1N} \equiv h * g^{-a_1N} \pmod{p}$$
-
-Thus $i = a_0$ and $j = a_1$ yield a match
-
 ### Index Calculus
 
 Baby Step-Giant Step Method is slow when $p$ is large. In this section, we solve DLPs faster
 
 Notationwise, we usually let $\log(h)$ be the DLP of $h$ when $p, g$ are understood
 
-$$\log(h) \implies x \text{ such that } 2^x \equiv h \pmod{101}$$
-
 &nbsp;
 
 **Example**: Solve $2^x \equiv 55 \pmod{101}$
+
+$$\log(h) \implies x \text{ such that } 2^x \equiv h \pmod{101}$$
 
 First ignore $55$ and compute some other discrete logs instead
 
@@ -2248,7 +2232,7 @@ $$g^x \equiv h \pmod{p}$$
 
 1. Choose a factor base $B$ of small primes
 
-2. Compute $g^3 \pmod{p}$ for many random values of $r$ and try to factor the results using only primes from $B$
+2. Compute $g^r \pmod{p}$ for many random values of $r$ and try to factor the results using only primes from $B$
 
 3. Use combinations of successes from Step $2$ to evaluate $\log(q)$ for all $q \in B$
 
