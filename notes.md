@@ -2237,3 +2237,254 @@ $$g^x \equiv h \pmod{p}$$
 3. Use combinations of successes from Step $2$ to evaluate $\log(q)$ for all $q \in B$
 
 4. Computer $h * g^r \pmod{p}$ for random values of $r$ and try to factor these using only primes from $B$. If this happens, evaluate $\log(h)$ using the values of $\log(q)$ for $q \in B$
+
+# Diifie-Hellman Key Exchange
+
+1. Alice and Bob agree on a large prime $p$ and a primitive root $g \mod p$
+
+2. Alice chooses a secret $a$ and computes $h_1 \equiv g^a \pmod{p}$
+
+3. Bob chooses a secret $b$ and calculates $h_2 \equiv g^b \pmod{p}$
+
+4. Alice sends $h_1$ to Bob and Bob sends $h_2$ to Alice
+
+5. Alice computes $k \equiv h_2^a \pmod{p}$
+
+6. Bob computes $k \equiv h_1^b \pmod{p}$
+
+Thus Alice and Bob have computed $k \equiv g^{an}$, which is their shared key
+
+- **Note** an eavesdropper can intercept $g,g^a \pmod{p}$, and $g^b \pmod{p}$. If Discrete Log Problem is easy, they can use $g$ and $g^a$ to find $a$, then compute $k \equiv g^{ba}$
+
+# Quadratic Reciprocity
+
+## Squares and Square Roots Mod Primes
+
+**Definition - Quadratic Residue**: If $a$ is a square mod $n$, then $a$ is a **quadratic residue** mod $n$
+
+- If not, then $a$ is a **quadratic nonresidue**
+
+&nbsp;
+
+**Examples**:
+
+- $2$ is a square mod $7$ since $3^2 \equiv 2 \pmod{7}$
+
+- $-1$ is a square mod $5$ since $2^2 \equiv 1 \pmod{5}$
+
+- $2$ is not a square mod $3$ since for $x^2 \not \equiv 2$ for $x = 0, 1, 2$
+
+&nbsp;
+
+**Proposition 13.1**: Let $p$ be an odd prime and let $q \not \equiv 0 \pmod{p}$. Then
+
+$$a^{(p-1)/ 2} \equiv \pm 1 \pmod{p} \quad \text{ and } \quad a \text{ is a square mod } p \iff a^{(p-1)/2} \equiv 1 \pmod{p}$$
+
+*Proof*: Let $b \equiv a^{(p-1)/2} \pmod{p}$. Then $b^2 \equiv a^{p-1} \equiv 1 \pmod{p}$ by Fermat's Theorem
+
+Thus by Corllary 6.11, $b \equiv a^{(p-1)/2} \equiv \pm 1 \pmod{p}$
+
+$\implies$ Let $a$ be a square mod $p$, then $x^2 \equiv a$ for some $x$. Thus we have
+
+$$a^{(p-1)/2} \equiv (x^2)^{(p-1)/2} \equiv x^{p-1} \equiv 1 \pmod{p}$$
+
+by Fermat's Theorem
+
+$\impliedby$ Suppose $a^{(p-1)/2} \equiv 1 \pmod{p}$ and let $g$ be a primitive root mod $p$. Then $g^i \equiv a$ for some $i$, so
+
+$$1 \equiv a^{(p-1)/2} \equiv g^{i(p-1)/2} \pmod{p}$$
+
+Thus $p - 1 \mid i(p-1)/2 \implies (p-1)k = i(p-1)/2$ for some $k$
+
+Thus $i = 2k$ and therefore $a \equiv g^i \equiv (g^k)^2$
+
+Thus $a$ is a square mod $p$
+
+&nbsp;
+
+**Definition Legendre Symbol**: For an odd prime $p$ and integer $a \not \equiv 0 \pmod{p}$, we define the **Legendre symbol** as
+
+$$(\frac{a}{p}) = \begin{cases} +1 & x^2 \equiv a \pmod{p} \text{ has a solution } \\ -1 x^2 \equiv a \pmod{p} \text{ has no solution }\end{cases}$$
+
+&nbsp;
+
+**Examples**
+
+- $\displaystyle (\frac{2}{7}) = +1$
+
+- $\displaystyle (\frac{-1}{5}) = +1$
+
+- $\displaystyle (\frac{2}{3}) = -1$
+
+&nbsp;
+
+**Proposition 13.3**: For an odd prime $p$ and $a, b \not \equiv 0 \pmod{p}$, we have
+
+- *(a) Euler's Criterion*:
+
+$$(\frac{a}{p}) \equiv a^{(p-1)/2} \pmod{p}$$
+
+- *(b)
+
+$$(\frac{a}{p}) (\frac{b}{p}) = (\frac{ab}{p})$$
+
+- *(c)*
+
+$$a \equiv b \pmod{p} \implies (\frac{a}{p}) (\frac{b}{p})$$
+
+- *(d)*
+
+$$(\frac{-1}{p}) = \begin{cases} +1 & p \equiv 1 \pmod{4} \\ -1 & p \equiv 3 \pmod{4} \end{cases}$$
+
+*Proof*:
+
+*(a)*: Using Proposition 13.1, we know that
+
+- If $a$ is a square mod $p$, then $a^{(p-1)/2} \equiv +1 \equiv (\frac{a}{p}) \pmod{p}$
+
+- If $a$ is not a square mod $p$, then $a^{(p-1)/2} \equiv -1 \equiv (\frac{a}{p}) \pmod{p}$
+
+*(b)*: The congruence of *(a)* also holds for $b, ab$. Thus
+
+$$(\frac{a}{p})(\frac{b}{p}) \equiv a^{(p-1)/2}b^{(p-1)/2} = (ab)^{(p-1)/2} \equiv (\frac{ab}{p}) \pmod{p}$$
+
+  Since $-1 \not \equiv +1 \pmod{p}$ for $p \geq 3$, the congruence above must hold
+
+*(c)*: If $a \equiv b \pmod{p}$, then $x^2 \equiv a \pmod{p}$ has a solution if and only if $x^2 \equiv b \pmod{p}$ has a solution. This is what $(c)$ is saying
+
+*(d)*: Note that $(p-1)/2$ is even if $p \equiv 1 \pmod{4}$ and odd if $p \equiv 3 \pmod{4}$. Thus
+
+$$(\frac{-1}{p}) \equiv (-1)^{(p-1)/2} = \begin{cases} +1 & p \equiv 1 \pmod{4} \\ -1 & p \equiv 3 \pmod{4}\end{cases}$$
+
+&nbsp;
+
+**Note** that $(\frac{x^2}{p}) = 1$ if $p \nmid x$ since $x^2$ will be a square mod $p$. Thus from part *(b)*, we have that
+
+$$(\frac{x^2}{p}) = (\frac{x}{p})^2 = (\pm 1)^2 = 1$$
+
+&nbsp;
+
+**Theorem 13.4**: For distinct odd primes $p, q$, we have
+
+- *(a) Quadratic Reciprocity*:
+
+$$(\frac{q}{p}) = (-1)^{(p-1)(q-1)/4} (\frac{p}{q}) = \begin{cases} (\frac{p}{q}) & p, \equiv 1 \pmod{4} \vee q \equiv 1 \pmod{4} \\ -(\frac{p}{q}) & p \equiv q \equiv 3 \pmod{4}\end{cases}$$
+
+- *(b) Supplementary Law 1*:
+
+$$(\frac{-1}{p}) = (-1)^{(p-1)/2} = \begin{cases} +1 & p \equiv 1 \pmod{4} \\ -1 & p \equiv 3 \pmod{4}\end{cases}$$
+
+- *(c) Supplementary Law 2*:
+
+$$(\frac{2}{p}) = (-1)^{(p^2-1)/8} = \begin{cases} +1 & p \equiv 1, 7 \pmod{7} \\ -1 & p \equiv 3, 5 \pmod{8}\end{cases}$$
+
+&nbsp;
+
+**Example**: Is $23$ a square mod $419$?
+
+\begin{align*}
+(\frac{23}{419}) &= - (\frac{419}{23}) \quad \text{ since } 23 \equiv 419 \equiv 3 \pmod{4} \\
+&= - (\frac{5}{23}) \quad \text{ since } 419 \equiv 5 \pmod{23} \\
+&= - (\frac{23}{5}) \quad \text{ since } 5 \equiv 1 \pmod{4} \\
+&= - (\frac{3}{5}) \quad \text{ since } 23 \equiv 3 \pmod{5} \\
+&= - (\frac{5}{3}) \quad \text{ since } 5 \equiv 1 \pmod{4} \\
+&= - (\frac{2}{3}) \quad \text{ since } 5 \equiv 2 \pmod{3} \\
+&= -(-1) = +1 \quad \text{ by Supplementary Law 2 }
+\end{align*}
+
+Thus $23$ is a square root mod $419$
+
+&nbsp;
+
+**Non-Example**: Is $295$ a square mod $401$?
+
+$$(\frac{295}{401}) = (\frac{5}{401}) (\frac{59}{401})$$
+
+Where
+
+$$(\frac{5}{401}) = (\frac{401}{5}) = (\frac{1}{5}) = +1 \quad \quad (\frac{59}{401}) = (\frac{401}{59}) = (\frac{47}{59}) = - (\frac{59}{47}) = -(\frac{12}{47}) = -(\frac{12}{47}) = -(\frac{4}{47})(\frac{3}{47}) = -(\frac{3}{47}) = +(\frac{47}{3}) = (\frac{2}{3}) = -1$$
+
+Thus
+
+$$(\frac{295}{401}) = (+1)(-1) = -1$$
+
+Thus $295$ is not a square mode $401$
+
+&nbsp;
+
+**Consider**: For which primes $p$ is $5$ a square mod $p$?
+
+To answer this, we look at $5$ mod $p$ for each $p$ and get a list of primes. By Quadratic Reciprocity
+
+$$(\frac{5}{p}) = (\frac{p}{5}) = \begin{cases} +1 p & \equiv \pm 1 \pmod{5} \\ -1 & p \equiv \pm 2 \pmod{5} \end{cases}$$
+
+Thus the primes for which $5$ is a quadratic residue form congruence classes
+
+$$p \equiv 1 mod{5} \quad \quad p \equiv 4 \mod{5}$$
+
+&nbsp;
+
+**Consider**: For which primes $p$ is $3$ a square mod $p$
+
+The answer to this depends on $p$ mod $12$
+
+- If $p \equiv 1 \pmod{12}$, then
+
+$$(\frac{3}{p}) = (\frac{p}{3}) = (\frac{1}{3}) = + 1$$
+
+- If $p \equiv 5 \pmod{12}$, then
+
+$$(\frac{3}{p}) = (\frac{p}{3}) = (\frac{2}{3}) = -1$$
+
+- If $p \equiv 7 \pmod{12}$, then
+
+$$(\frac{3}{p}) = -(\frac{p}{3}) = -(\frac{1}{3}) = -1$$
+
+Thus we need to consider the congruence class of $p$ both mod $3$ and mod $4 \implies$ we are looking at $p$ mod $12$
+
+This wasn't necessary in the previous case since $5 \equiv 1 \pmod{4}$ and $3 \equiv 3 \pmod{4}$, so a negative sign never occurs in Quadratic Reciprocity
+
+&nbsp;
+
+**Upshot**: For a prime $p$, when asking if $a$ is a square mod $p$, the answer depends only on the congruence class of $p$ mod $4a$
+
+## Computing Square Roots Mod p
+
+**Proposition 13.5**: Let $p \equiv 3 \pmod{4}$ be prime and take $x \not \equiv 0 \pmod{p}$. Then exactly one of $x$ or $-x$ is a square mod $p$. Let
+
+$$y \equiv x^{(p+1)/4} \pmod{p} \implies y^2 \equiv \pm x \pmod{p}$$
+
+*Proof*: Since $p \equiv 3 \pmod{4}$, by Proposition 13.3, we have that $(\frac{-1}{p}) = -1$. Thus
+
+$$(\frac{-x}{p}) = (\frac{-1}{p}) (\frac{x}{p}) = -(\frac{x}{p})$$
+
+Therefore exactly one of $(\frac{x}{p})$ and $(\frac{-x}{p})$ is $+1$ and the other is $-1$
+
+Thus exactly one of $x$ and $-x$ is a square mod $p$
+
+Now let $y \equiv x^{(p+1)/4}$. Then
+
+$$y^2 \equiv (x^{(p+1)/4})^2 \equiv x^{(p+1)/2} \equiv x^{(p-1)/2} x \equiv (\pm 1)x \pmod{p}$$
+
+since $x^{(p-1)/2} \equiv \pm 1$ by Proposition 13.1
+
+&nbsp;
+
+**Proposition 13.6**: Let $p \equiv 5 \pmod{8}$ be prime and take $x \not \equiv 0 \pmod{p}$. If $x \equiv y^2 \pmod{p}$, then
+
+$$y \equiv \begin{cases} \pm x^{(p+3)/8} & x^{(p-1)/4} \equiv 1 \pmod{p} \\ \pm 2^{(p-1)/4} x^{(p+3)/8} & x^{(p-1)/4} \equiv -1 \pmod{p}\end{cases}$$
+
+*Proof*: Since $x^{(p-1)/4} \equiv y^{(p-1)/2} \equiv \pm 1 \pmod{p}$, so the cases above are the only possibilities
+
+- Assume that $x^{(p-1)/4} \equiv 1$. Then we see that
+
+$$(x^{(p + 3)/8})^2 \equiv x^{(p+3)/4} \equiv x^{(p-1)/4} x \equiv x \equiv y^2 \pmod{p} \implies \pm x^{(p+3)/8} \equiv y \pmod{p}$$
+
+- Assume that $x^{(p-1)/4} \equiv -1$. Then we see that
+
+$$(2^{(p-1)/4}x^{(p+3)/8})^2 \equiv 2^{(p-1)/2} x^{(p-1)/4} x \equiv (\frac{2}{p}) (-1)y^2 \equiv y^2 \pmod{p}$$
+
+  Thus by Supplementary Law $2$, we have that $(\frac{2}{p}) = -1$ when $p \equiv 5 \pmod{8}$
+
+  Thus the formula in the proposition holds
+
