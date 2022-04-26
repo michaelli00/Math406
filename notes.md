@@ -2304,7 +2304,7 @@ Thus $a$ is a square mod $p$
 
 **Definition Legendre Symbol**: For an odd prime $p$ and integer $a \not \equiv 0 \pmod{p}$, we define the **Legendre symbol** as
 
-$$(\frac{a}{p}) = \begin{cases} +1 & x^2 \equiv a \pmod{p} \text{ has a solution } \\ -1 x^2 \equiv a \pmod{p} \text{ has no solution }\end{cases}$$
+$$(\frac{a}{p}) = \begin{cases} +1 & x^2 \equiv a \pmod{p} \text{ has a solution } \\ -1 x^2 \equiv a & \pmod{p} \text{ has no solution }\end{cases}$$
 
 &nbsp;
 
@@ -2324,7 +2324,7 @@ $$(\frac{a}{p}) = \begin{cases} +1 & x^2 \equiv a \pmod{p} \text{ has a solution
 
 $$(\frac{a}{p}) \equiv a^{(p-1)/2} \pmod{p}$$
 
-- *(b)
+- *(b)*
 
 $$(\frac{a}{p}) (\frac{b}{p}) = (\frac{ab}{p})$$
 
@@ -2368,7 +2368,7 @@ $$(\frac{x^2}{p}) = (\frac{x}{p})^2 = (\pm 1)^2 = 1$$
 
 - *(a) Quadratic Reciprocity*:
 
-$$(\frac{q}{p}) = (-1)^{(p-1)(q-1)/4} (\frac{p}{q}) = \begin{cases} (\frac{p}{q}) & p, \equiv 1 \pmod{4} \vee q \equiv 1 \pmod{4} \\ -(\frac{p}{q}) & p \equiv q \equiv 3 \pmod{4}\end{cases}$$
+$$(\frac{q}{p}) = (-1)^{(p-1)(q-1)/4} (\frac{p}{q}) = \begin{cases} (\frac{p}{q}) & p \equiv 1 \pmod{4} \vee q \equiv 1 \pmod{4} \\ -(\frac{p}{q}) & p \equiv q \equiv 3 \pmod{4}\end{cases}$$
 
 - *(b) Supplementary Law 1*:
 
@@ -2376,7 +2376,7 @@ $$(\frac{-1}{p}) = (-1)^{(p-1)/2} = \begin{cases} +1 & p \equiv 1 \pmod{4} \\ -1
 
 - *(c) Supplementary Law 2*:
 
-$$(\frac{2}{p}) = (-1)^{(p^2-1)/8} = \begin{cases} +1 & p \equiv 1, 7 \pmod{7} \\ -1 & p \equiv 3, 5 \pmod{8}\end{cases}$$
+$$(\frac{2}{p}) = (-1)^{(p^2-1)/8} = \begin{cases} +1 & p \equiv 1, 7 \pmod{8} \\ -1 & p \equiv 3, 5 \pmod{8}\end{cases}$$
 
 &nbsp;
 
@@ -2470,6 +2470,16 @@ since $x^{(p-1)/2} \equiv \pm 1$ by Proposition 13.1
 
 &nbsp;
 
+**Example**: Let $p = 12583 \equiv 3 \pmod{4}$ and $\equiv 7 \pmod{8}$
+
+$$(\frac{8}{12583}) = (\frac{2}{12583})^3 = +1$$
+
+Thus we see that
+
+$$8^{(12583 + 1)/4 Q} = 8^{3146} \equiv 9363 \pmod{12583} \implies 9363^2 \equiv 8 \pmod{12583}$$
+
+&nbsp;
+
 **Proposition 13.6**: Let $p \equiv 5 \pmod{8}$ be prime and take $x \not \equiv 0 \pmod{p}$. If $x \equiv y^2 \pmod{p}$, then
 
 $$y \equiv \begin{cases} \pm x^{(p+3)/8} & x^{(p-1)/4} \equiv 1 \pmod{p} \\ \pm 2^{(p-1)/4} x^{(p+3)/8} & x^{(p-1)/4} \equiv -1 \pmod{p}\end{cases}$$
@@ -2488,3 +2498,70 @@ $$(2^{(p-1)/4}x^{(p+3)/8})^2 \equiv 2^{(p-1)/2} x^{(p-1)/4} x \equiv (\frac{2}{p
 
   Thus the formula in the proposition holds
 
+&nbsp;
+
+**Example**: Let $p = 37 \equiv 5 \pmod{8}$ and $\equiv 1 \pmod{4}$
+
+$$(\frac{7}{37}) = (\frac{37}{7}) = (\frac{2}{7}) = +1$$
+
+Thus we have that
+
+$$p^{(37-1)/4} = 7^9 \equiv 1 \pmod{37} \implies y \equiv \pm 7^{(37 + 3)/8} \equiv \pm 7^5 \equiv \pm 9 \pmod{37}$$
+
+# Arithmetic Functions
+
+## Perfect Numbers
+
+**Definition - Perfect Number**: $n > 0$ is **perfect** if
+
+$$n = \sum_{d \mid n, d \neq n} d$$
+
+**Definition - Abundant Number**: $n > 0$ is **perfect** if
+
+$$n < \sum_{d \mid n, d \neq n} d$$
+
+**Definition - Deficient Number**: $n > 0$ is **perfect** if
+
+$$n > \sum_{d \mid n, d \neq n} d$$
+
+&nbsp;
+
+We define $\displaystyle \sigma(n) = \sum_{d \mid n} d \quad \quad$ (including $n$)
+
+- **Note**: $n$ is perfect if $n = \sigma(n) - n \implies \sigma(n) = 2n$
+
+&nbsp;
+
+**Proposition 16.3**: For a prime $p$
+
+$$\sigma(p^k) = 1 + p + \cdots + p^k = \frac{p^{k+1} - 1}{p - 1}$$
+
+*Proof*: Divisors for $p^k$ are $1, p, \ldots, p^k$, so the sum of these is $\sigma(p^k)$
+
+The second part of the equation comes from the geometric series
+
+&nbsp;
+
+**Example**: $\sigma(9) = \sigma(3^2) = 1 + 3 + 9 = 13 = \frac{27 - 1}{2}$
+
+&nbsp;
+
+**Proposition 16.4**: If $m, n$ are relatively prime, then
+
+$$\sigma(mn) = \sigma(m) \sigma(n)$$
+
+*Proof*:
+
+&nbsp;
+
+**Theorem 16.5**: Let $n$ be an even perfect number, then there exists a unique prime $p$ such that
+
+1. $2^p - 1$ is prime
+
+2. $n = 2^{p-1}(2^p - 1)$ is prime
+
+Conversely, every $n$ of this form with $p, 2^{p-1}$ prime, is perfect
+
+*Proof*: $\impliedby$ Suppose $p, 2^{p-1}$ are prime. Then
+
+$$\sigma(n) = \sigma(2^{p-1}(2^p - 1)) = (2^p - 1)(2^p) = 2(2^{p-1}(2^p - 1)) \implies \sigma(n) = 2n$$
