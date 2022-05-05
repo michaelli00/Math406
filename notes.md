@@ -1836,6 +1836,14 @@ $$a^m \equiv 1 \pmod{n}$$
 
 &nbsp;
 
+**Example**: Consider $2^k \pmod{9}$
+
+$$2^0 \equiv 1, 2^1 \equiv 2, 2^2 \equiv 4, 2^3 \equiv 8, 2^4 \equiv 7, 2^5 \equiv 5, 2^6 \equiv 1, 2^7 \equiv 2, \ldots$$
+
+Here we have a cyclic group of order $6$ and thus $\ord_9(2) = 6$
+
+&nbsp;
+
 **Theorem 11.1**: Let $n$ be a positive integer and $a$ be an integer where $\gcd(a, n) = 1$. Take any integer $m$. Then
 
 $$a^m \equiv 1 \pmod{n} \iff \ord_n(a) \mid m$$
@@ -1894,7 +1902,7 @@ $$2^{2^{n+1}} \equiv 1 \pmod{p}$$
 
 Thus by Theorem 11.1, $\ord_p(2) \mid 2^{n+1}$, so $\ord_p(2) = 2^j$ for some $j \leq n + 1$
 
-BWOC, suppose that $j \leq n$, then we have
+We claim that $j = n + 1$. BWOC, suppose that $j \leq n$, then we have
 
 $$2^{2^n} \equiv (2^{2^j})^{2n - j} \equiv 2^{2^n} \equiv 1 \pmod{p}$$
 
@@ -1922,7 +1930,7 @@ Thus by Corollary 11.2, $2^{n + 2} \mid p - 1 \implies p \equiv 1 \pmod{2^{n + 2
 
 By Proposition 11.3, any prime must be congruent $1 \mod{128}$. Some of the primes include
 
-$$257, \quad 641, \quad, 769, \quad, 1153, \quad, 1409$$
+$$257, \quad 641, \quad 769, \quad 1153, \quad 1409$$
 
 By inspection, we see that $F_5 = 641 * 6700417$
 
@@ -1932,7 +1940,9 @@ By inspection, we see that $F_5 = 641 * 6700417$
 
 **Non-Example**: Factor $F_4 = 65537$
 
-Any prime factors of $F_4$ must be $p \equiv 1 \pmod{64}$. The first two such primes are $193, 257$ but $193 \nmid 65537$ and $257 > \sqrt{65537} \implies F_4$ is prime
+Any prime factors of $F_4$ must be $p \equiv 1 \pmod{64}$.
+
+The first two such primes are $193, 257$ but $193 \nmid 65537$ and $257 > \sqrt{65537} \implies F_4$ is prime
 
 ### Mersenne Numbers
 
@@ -1972,13 +1982,13 @@ where $p$ is a prime
 
 *Proof $1 \rightarrow 2$*: Let $g$ be a primitive root. We claim that $1, g, g^2, \ldots, g^{p - 2} \pmod{p}$ are distinct
 
-BWOC, suppose $g^i \equiv g^j \pmod{p}$ for $0 \leq i , j \leq p - 2$
+BWOC, suppose $g^i \equiv g^j \pmod{p} \implies g^{i - j} \equiv 1 \pmod{p}$ for $0 \leq i , j \leq p - 2$
 
-Then $g^j - i \equiv 1 \implies p - 1 = \ord_p(g) \mid j - i$. Contradiction since $0 \leq j - i < p - 1$
+Then $\ord_p(g)  = p - 1 \mid j - i$. Contradiction since $0 \leq j - i < p - 1$
 
 Thus powers of $g$ mod $p$ give $p-1$ distinct congruence classes
 
-*Proof $2 \rightarrow 1$*: Let $m = \ord_p(g)$. Then
+*Proof $2 \rightarrow 1$*: Let $m = \ord_p(g)$ and suppose
 
 $$1, g, g^2, \ldots, g^{m - 1} \pmod{p}$$
 
@@ -2042,7 +2052,7 @@ $$\ord_{13}(9) = \frac{12}{\gcd(8, 12)} = 3$$
 
 &nbsp;
 
-**Corollary 11.8**: Let $g$ be a primitive root for a prime $p$. The primitve roots for $p$ are numbers congruent to $g^i \pmod{p}$ for $\gcd(i, p -1) = 1$
+**Corollary 11.9**: Let $g$ be a primitive root for a prime $p$. The primitve roots for $p$ are numbers congruent to $g^i \pmod{p}$ for $\gcd(i, p -1) = 1$
 
 *Proof*: Since $g$ is a primite root, every number that is nonzero mod $p$ is congruent so some $g^i$
 
@@ -2238,7 +2248,7 @@ $$g^x \equiv h \pmod{p}$$
 
 4. Computer $h * g^r \pmod{p}$ for random values of $r$ and try to factor these using only primes from $B$. If this happens, evaluate $\log(h)$ using the values of $\log(q)$ for $q \in B$
 
-# Diifie-Hellman Key Exchange
+# Diffie-Hellman Key Exchange
 
 1. Alice and Bob agree on a large prime $p$ and a primitive root $g \mod p$
 
@@ -2565,3 +2575,221 @@ Conversely, every $n$ of this form with $p, 2^{p-1}$ prime, is perfect
 *Proof*: $\impliedby$ Suppose $p, 2^{p-1}$ are prime. Then
 
 $$\sigma(n) = \sigma(2^{p-1}(2^p - 1)) = (2^p - 1)(2^p) = 2(2^{p-1}(2^p - 1)) \implies \sigma(n) = 2n$$
+
+# Gaussian Integers
+
+## Complex Arithmetic
+
+**Definition - Gaussian Integer**: $Z[i] = \{a + bi \mid a, b \in Z\}$
+
+**Definition - Norm**: $\|a + bi\| = \sqrt{a^2 + b^2}$
+
+- **Note**: $z \overline{z} = \|z\|^2$
+
+## Gaussian Irreducible
+
+Consider when a Gaussian integer has a factor
+
+We define a function $N: Z[i] \rightarrow Z \quad \quad N(a + bi) = a^2 + b^2 = |a + bi|^2$
+
+**Note**: $N(zw) = N(z)N(w)$ for $z, w \in Z[i]$
+
+&nbsp;
+
+**Lemma 18.1**: For $\alpha \in Z[i]$, the following are equivalent
+
+1. $N(\alpha) = 1$
+
+2. $1/ \alpha \in Z[i]$
+
+3. $\alpha = \pm 1$ or $\alpha = \pm i$
+
+*Proof $1 \leftrightarrow 3$*: Suppose $\alpha = a + bi$, then $N(\alpha) = a^2 + b^2 = 1 \iff (a, b) = (\pm 1, 0)$ or $(0, \pm 1)$
+
+*Proof $1 \rightarrow 2$*: Suppose $N(\alpha) = 1$ and $\alpha = a + bi \implies a^2 + b^2 = 1$
+
+Thus we see that $1/ \alpha = a - bi \in Z[i]$
+
+*Proof $2 \rightarrow 1$*: Let $\beta = 1 / \alpha \in Z[i]$, then $\alpha \beta = 1 \implies N(1) = N(\alpha)N(\beta) \implies N(\alpha) = N(\beta) = 1$
+
+&nbsp;
+
+**Definition - Units**: $\pm 1$ and $\pm i$ are called **units** of $Z[i]$
+
+&nbsp;
+
+**Definition - Irreducible**: Gaussian integers are **irreducible** if $\alpha$ is not a unit and $\alpha = \beta \gamma \implies \beta$ or $\gamma$ is a unit
+
+&nbsp;
+
+**Proposition 18.3**: Suppose $N(\alpha) = p$ for some prime, then $\alpha$ is irreducible
+
+*Proof*: Let $\alpha = \beta \gamma \implies p = N(\alpha) = N(\beta) N(\gamma)$
+
+Thus either $N(\beta) = 1$ or $N(\gamma) = 1$
+
+Thus by Lemma 18.1, either $\beta$ or $\gamma$ is a unit
+
+Thus $\alpha$ is irreducible
+
+&nbsp;
+
+**Proposition 18.4**: Let $p$ be a prime such that $p \equiv 3 \pmod{4}$, then $p$ is irreducible in $Z[i]$
+
+*Proof*: Let $p = \beta \gamma \implies p^2 = N(p) = N(\beta)N(\gamma)$
+
+BWOC, suppose neither $\beta$ nor $\gamma$ are units, then $N(\beta) = N(\gamma) = p$
+
+Looking at, $\beta = a + bi$, we see that $p = a^2 + b^2$
+
+Since a square can is either equivalent to $0, 1 \pmod{4}$, we must have that $a^2 + b^2 \equiv 0, 1, 2 \pmod{4}$
+
+However, we were given that $a^2 + b^2 \equiv 3 \pmod{4}$. Contradiction
+
+Thus either $\beta$ or $\gamma$ is a unit, which means that $p$ is irreducible
+
+&nbsp;
+
+**Proposition 18.5**: The irreducible elements of $Z[i]$ are the following and their associates
+
+- $1 + i$
+
+- $p$ where $p$ is a prime $p \equiv 3 \pmod{4}$
+
+- $(a + bi), (a - bi)$ where $a^2 + b^2 = p$ a prime where $p \equiv 1 \pmod{4}$
+
+&nbsp;
+
+**Example**: Let $p = 29 \equiv 1 \pmod{4}$. Then $29 = 5^2 + 2^2$ gives two irreducibles: $(5 + 2i), (5 - 2i)$
+
+**Proposition 18.6**: All $Z[i]$ are either units, irreducible, or a product of irreducibles
+
+*Proof*: BWOC, let $\alpha$ not be a unit, irreducible, or a product of irreducibles with a minimal $N(\alpha)$
+
+Then $\alpha = \beta \gamma \implies N(\alpha) = N(\beta) N(\gamma)$, where $\beta, \gamma$ are either irreducible or product of irreducibles since $N(\beta), N(\gamma) < N(\alpha)$
+
+Thus $\alpha$ must be a product of irreducibles. Contradiction
+
+## Division Algorithm
+
+**Theorem 18.7**: Let $\alpha, \beta \in Z[i]$ with $\beta \neq 0$, then there exists $\eta, \rho \in Z[i]$ such that
+
+$$\alpha = \beta \eta \quad \quad 0 \leq N(\rho) < N(\beta)$$
+
+&nbsp;
+
+**Example**: Let $\alpha = 23 - 9i$ and $\beta = 3 + 2i$, then
+
+$$23 - 9i = (3 + 2i)(4 - 5i) + (1 - 2i) \quad \quad N(1 - 2i) < N(3 + 2i)$$
+
+## Unique Factorization
+
+**Definition - Divides**: For $\alpha, \beta \in Z[i]$, we say that $\alpha$ **divides** $\beta$ if there exists $\gamma \in Z[i]$ such that
+
+$$\alpha \gamma = \beta$$
+
+&nbsp;
+
+**Examples**:
+
+$$-1 + 7i = (2+i)(1 + 3i) \implies 2+i \mid -1 + 7i$$
+
+$$6 + 3i = 3(2 + i) \implies 2 + i \mid 6 + 3i$$
+
+&nbsp;
+
+If $\alpha \mid \beta$ and $u$ is a unit, then $u \alpha \mid \beta$. This can be seen by
+
+$$\alpha \mid \beta \implies \beta = \alpha \gamma = (u \alpha) (u^{-1} \gamma) \implies u \alpha \mid \beta$$
+
+Thus $\alpha \mid \beta \iff$ an associate of $\alpha \mid \beta$
+
+- **Note**: Since $u$ is a unit, $u^{-1} \in Z[i]$
+
+&nbsp;
+
+**Definition - Greatest Common Divisor**: Let $\alpha, \beta \in Z[i]$, and assume one is non-zero. Then $\gamma$ is a **greatest common divisor** of $\alpha, \beta$ if
+
+1. $\gamma \mid \alpha$ and $\gamma \mid \beta$
+
+2. Whenever $\delta \mid \alpha$ and $\delta \mid \beta$, then $\delta \mid \gamma$
+
+&nbsp;
+
+**Theorem 18.9**: For $\alpha, \beta \in Z[i]$, where one if non-zero, then
+
+1. $\gamma = \gcd(\alpha, \beta)$ exists
+
+2. If $\gamma'$ is another gcd of $\alpha, \beta$, then $\gamma'$ is an associate of $\gamma$
+
+3. There exists $x, y \in Z[i]$ such that $\alpha x + \beta y = \gamma$
+
+4. If $\delta$ is a common divisor of $\alpha, \beta$, then $N(\delta) \leq N(\gamma)$
+
+5. If $\delta$ is a common divisor of $\alpha, \beta$ and $N(\delta) = N(\gamma)$, then $\delta$ is also a gcd of $\alpha, \beta$
+
+&nbsp;
+
+**Corollary 18.10**: Let $\pi$ be irreducible in $Z[i]$, and let $\alpha, \beta \in Z[i]$ then
+
+$$\pi \mid \alpha \beta \implies \pi \mid \alpha \vee \pi \mid \beta$$
+
+*Proof*: If $\pi \mid \alpha$, we're done
+
+Otherwise assume that $\pi \nmid \alpha$ and let $\gamma = \gcd(\alpha, \pi)$
+
+Then $\gamma \mid \pi$. But since $\pi$ is irreducible, $\gamma = 1$ or $\gamma = \pi$
+
+However $\gamma \neq \pi$ since $\gamma \mid \alpha$ and $\gamma \nmid \alpha$. Thus $\gamma$ is a unit
+
+Thus there exists $x_1, y_1 \in Z[i]$ such that
+
+$$\alpha x_1 + \pi y_1 = \gamma$$
+
+Since $\gamma$ is a unit, $\gamma^{-1}$ exists. Letting $x = \gamma^{-1} x_1$ and $y = \gamma^{-1} y_1$, we have
+
+$$\alpha x + \pi y = 1 \implies \alpha \beta x + \pi \beta y = \beta$$
+
+Since $\pi \mid \alpha \beta$ and $\pi \mid \pi \beta y \implies \pi \mid \beta$
+
+&nbsp;
+
+**Corollary 18.11**: Let $\pi \in Z[i]$ be irreducible. If $\pi \mid \alpha_1 \alpha_2, \cdots \alpha_m$, then $\pi \mid \alpha_j$ for some $j$
+
+*Proof by Induction*:
+
+Base Case: $m = 2$ is handled by Corollary 18.10
+
+IH: Assume the corollary holds for an arbitrary $k$
+
+IS: Show that the corollary holds for $k + 1$
+
+$$\pi \mid \alpha_1 \alpha_2 \cdots \alpha_{k+1} = (\alpha_1 \alpha_2 \cdots \alpha_k) \alpha_{k+1}$$
+
+Thus we can apply Corollary 18.10 and either $\pi \mid \alpha_{k+1}$ or $\pi \mid \alpha_1 \cdots \alpha_k$ (handled by IH)
+
+Thus the corollary holds for $m = k + 1$
+
+&nbsp;
+
+**Theorem 18.12**: Every non-zero Gaussian integer is either a unit, irreducible, or a product of irreducibles. This factorization is unique up to the order of the factors and multiplication of irreducibles by units
+
+*Proof*: Proposition 18.6 showed that such a factorization exists
+
+For uniqueness, BWOC, suppose that there are elements of $Z[i]$ that can be written as a product of irreducibles in more than one way. Among these, let $\alpha$ have the smallest norm
+
+$$\alpha = \pi_1 \pi_2 \cdots \pi_r = \pi_1' \pi_2' \cdots \pi_s'$$
+
+Where each $\pi_j, \pi_j'$ is irreducible
+
+Now divide $\pi_1$ on both sides. By Corollary 18.11, $\pi_1 \mid \pi_j'$ for some $j$
+
+WLOG, we can reorder and have $\pi_j' = \pi_1'$
+
+Since $\pi_1'$ is irreducible and $\pi_1 \mid \pi_1'$, they must differ by a unit $u$. Thus we have
+
+$$\alpha = \pi_1 \pi_2 \cdots = \pi_r = u \pi_1 \pi_2' \cdots \pi_r' \implies \mu = \pi_2 \pi_3 \cdots \pi_r = \pi_2'' \pi_3' \cdots \pi_s'$$
+
+Since $\alpha$ had different factorizations, $\mu$ also has different factorizations, but $N(\mu) < N(\alpha)$, contradicting the minimality of $N(\alpha)$
+
+Thus every Gaussian integer can be factored into a product of irreducibles in one way
