@@ -1707,7 +1707,7 @@ $$(p-1)! \equiv -1 \pmod{p}$$
 
 We pair multiple inverses with each other
 
-- Note that $b^2 \equiv 1 \pmod{p}$ only if $b \equiv \pm \pmod{p}$, so $b \equiv 1$ and $b \equiv p-1 \pmod{p}$ are the only numbers that are paired with themselves
+- Note that $b^2 \equiv 1 \pmod{p}$ only if $b \equiv \pm 1 \pmod{p}$, so $b \equiv 1$ and $b \equiv p-1 \pmod{p}$ are the only numbers that are paired with themselves
 
 Now rearrange the factors so that each inverse is next to each other. This gives
 
@@ -2286,7 +2286,7 @@ Thus Alice and Bob have computed $k \equiv g^{an}$, which is their shared key
 
 &nbsp;
 
-**Proposition 13.1**: Let $p$ be an odd prime and let $q \not \equiv 0 \pmod{p}$. Then
+**Proposition 13.1**: Let $p$ be an odd prime and let $a \not \equiv 0 \pmod{p}$. Then
 
 $$a^{(p-1)/ 2} \equiv \pm 1 \pmod{p} \quad \text{ and } \quad a \text{ is a square mod } p \iff a^{(p-1)/2} \equiv 1 \pmod{p}$$
 
@@ -2314,7 +2314,7 @@ Thus $a$ is a square mod $p$
 
 **Definition Legendre Symbol**: For an odd prime $p$ and integer $a \not \equiv 0 \pmod{p}$, we define the **Legendre symbol** as
 
-$$(\frac{a}{p}) = \begin{cases} +1 & x^2 \equiv a \pmod{p} \text{ has a solution } \\ -1 x^2 \equiv a & \pmod{p} \text{ has no solution }\end{cases}$$
+$$(\frac{a}{p}) = \begin{cases} +1 & x^2 \equiv a \pmod{p} \text{ has a solution } \\ -1 & x^2 \equiv a \pmod{p} \text{ has no solution }\end{cases}$$
 
 &nbsp;
 
@@ -2426,11 +2426,11 @@ Thus $295$ is not a square mode $401$
 
 To answer this, we look at $5$ mod $p$ for each $p$ and get a list of primes. By Quadratic Reciprocity
 
-$$(\frac{5}{p}) = (\frac{p}{5}) = \begin{cases} +1 p & \equiv \pm 1 \pmod{5} \\ -1 & p \equiv \pm 2 \pmod{5} \end{cases}$$
+$$(\frac{5}{p}) = (\frac{p}{5}) = \begin{cases} +1 & p \equiv \pm 1 \pmod{5} \\ -1 & p \equiv \pm 2 \pmod{5} \end{cases}$$
 
 Thus the primes for which $5$ is a quadratic residue form congruence classes
 
-$$p \equiv 1 mod{5} \quad \quad p \equiv 4 \mod{5}$$
+$$p \equiv 1 \mod{5} \quad \quad p \equiv 4 \mod{5}$$
 
 &nbsp;
 
@@ -2560,8 +2560,6 @@ The second part of the equation comes from the geometric series
 
 $$\sigma(mn) = \sigma(m) \sigma(n)$$
 
-*Proof*:
-
 &nbsp;
 
 **Theorem 16.5**: Let $n$ be an even perfect number, then there exists a unique prime $p$ such that
@@ -2572,9 +2570,125 @@ $$\sigma(mn) = \sigma(m) \sigma(n)$$
 
 Conversely, every $n$ of this form with $p, 2^{p-1}$ prime, is perfect
 
-*Proof*: $\impliedby$ Suppose $p, 2^{p-1}$ are prime. Then
+*Proof*: $\implies$ Suppose $n$ is perfect and even, we show that $n$ has the desired form $n = 2^{p-1}(2^p - 1)$
+
+First write $n = 2^km$ where $m$ is odd, then
+
+$$\sigma(n) = \sigma(2^k) \sigma(m) = (2^{k+1} - 1) \sigma(m)$$
+
+Now we find the value of $m$. BWOC suppose $m = 1$, then
+
+$$n = 2^k \implies \phi(n) = 2^{k + 1} - 1 \neq 2n$$
+
+Thus $m > 1$ and we have at least 2 distinct divisors of $m$, namely $1$ and $m$. Now we see that
+
+$$\sigma(m) = 1 + m + s$$
+
+Where $s$ is the sum of the other divisors. We show that $s = 0$
+
+Since $n$ is assumed to be perfect, we have that
+
+$$2^{k+1} m = 2n = \sigma(n) = \sigma(2^k) \sigma(m) = (2^{k+1} - 1)(1 + m + s)$$
+
+Which implies that
+
+$$m = (2^{k+1} - 1)(s + 1)$$
+
+Thus $s + 1 \mid m$ and we see that
+
+$$\sigma(m) \geq 1 + m + (s + 1)$$
+
+However, this leads to
+
+$$\sigma(m) = 1 + m + s \geq 1 + m + (s + 1)$$
+
+Contradiction. Thus $s = 0$ and $m$ is prime and $m = 2^{k + 1} - 1$
+
+Thus $n = 2^km = 2^k(2^{k+1} - 1)$
+
+$\impliedby$ Suppose $p, 2^{p-1}$ are prime and that $n = 2^{p-1}(2^p - 1)$. Then
 
 $$\sigma(n) = \sigma(2^{p-1}(2^p - 1)) = (2^p - 1)(2^p) = 2(2^{p-1}(2^p - 1)) \implies \sigma(n) = 2n$$
+
+Thus $n$ is perfect
+
+## Multiplicative Functions
+
+**Definition - Multiplicative Function**: $f(x)$ is a **multiplicative function** if $f(mn) = f(m) f(n)$ for all positive integers with $\gcd(m, n) = 1$
+
+&nbsp;
+
+**Examples**:
+
+- $\phi(35) = \phi(7)\phi(5) = 6 * 4$
+
+- For $f(n) = n$, we have that $f(mn) = mn = f(m) f(n)$
+
+- For $f(n) = 1$, we see that $f(mn) = 1 = f(m) f(n)$
+
+- $\sigma(n)$ is multiplicative
+
+- Let $\tau(n)$ be the number of positive divisors of $n$, for example $\tau(4) = 3$. Then $\tau(n)$ is multiplicative
+
+- **Mobius Function**: $\mu(n) = \begin{cases} (-1)^r & n \text{ is the product of } r \text{ distinct primes } \\ 0 & \text{otherwise} \end{cases}$
+
+&nbsp;
+
+**Proposition 16.7**: If $f, g$ are multiplicative functions and $f(p^j) = g(p^j)$ for all primes $p$, then $f(n) = g(n)$
+
+*Proof*: Let $n = p_1^{a_1} \cdots p_r^{a_r}$. Since $\gcd(p_i^{a_i}, p_j^{a_j}) = 1$ if $i \neq j$ we can write
+
+$$f(n) = f(p_1^{a_1}) f(p_2^{a_2}) \cdots f(p_r^{a_r}) = f(p_1^{a_1}) f(p_2^{a_2}) \cdots f(p_r^{a_r}) = g(n)$$
+
+&nbsp;
+
+**Lemma 16.9**: Let $\gcd(m, n) = 1$ and let $d$ be a positive divisor of $mn$. Then $d$ has a unique decomposition $d = d_1 d_2$ where $d_1 \mid m$ and $d_2 \mid n$
+
+*Proof*: Let $m = p_1^{a_1} \cdots p_r^{a_r}$ and let $n = q_1^{b_1} \cdots q_s^{b_s}$, then $d$ has the form
+
+$$d = p_1^{a_1'} \cdots p_r^{a_r'} q_1^{b_1'} \cdots q_s^{b_s'}$$
+
+We also have $d_1 \mid m$ and $\gcd(m, n) = 1 \implies \gcd(d_1, n) = 1$ so $q_j$ cannot appear in $d_1$. Similarly, $p_i$ cannot appear in $d_2$
+
+Thus we can form
+
+$$d_1 = p_1^{a_1'} \cdots p_r^{a_r'} \quad \quad d_2 = q_1^{b_1'} \cdots q_s^{b_s'} \implies d = d_1d_2$$
+
+&nbsp;
+
+**Example**: Let $m = 56 = 2^3 * 7$ and $n = 75 = 3 * 5^2$, then $d = 70$
+
+We see that
+
+$$70 \mid 4200 = 56 * 75 \implies 70 = 14 * 5 \quad d_1 = 14 \mid 56 \quad d_2 = 5 \mid 75$
+
+&nbsp;
+
+**Proposition 16.8**: Let $f$ be a multiplicative function and let
+
+$$g(n) = \sum_{d \mid n}^{} f(d)$$
+
+Then $g$ is multiplicative
+
+*Proof*: Let $\gcd(m, n) = 1$, then we have
+
+$$g(mn) = \sum_{d \mid mn}^{} f(d) = \sum_{d_1 \mid m, d_2 \mid n}^{} f(d_1 d_2)$$
+
+Clearly $\gcd(d_1, d_2) = 1$ and since $f$ is multiplicative, we have that $f(d_1d_2) = f(d_1)f(d_2)$. Thus the sum becomes
+
+$$\sum_{d_1 \mid m}^{d_2 \mid n} f(d_1)f(d_2) = (\sum_{d_1 \mid m}^{} f(d_1))(\sum_{d_2 \mid n}^{} f(d_2)) = g(m)g(n)$$
+
+Thus $g$ is multiplicative
+
+&nbsp;
+
+**Corollary 16.10**: $\tau(n) = \sum_{d \mid n}^{}1$ is multiplicative
+
+- **Note**: $\tau(n) = (a_1 + 1)(a_2 + 1) \cdots (a_r + 1)$
+
+&nbsp;
+
+**Corollary 16.11**: $\sigma(n) = \sum_{d \mid n}^{}d$ is multiplicative
 
 # Gaussian Integers
 
@@ -2662,6 +2776,8 @@ Thus either $\beta$ or $\gamma$ is a unit, which means that $p$ is irreducible
 
 **Example**: Let $p = 29 \equiv 1 \pmod{4}$. Then $29 = 5^2 + 2^2$ gives two irreducibles: $(5 + 2i), (5 - 2i)$
 
+&nbsp;
+
 **Proposition 18.6**: All $Z[i]$ are either units, irreducible, or a product of irreducibles
 
 *Proof*: BWOC, let $\alpha$ not be a unit, irreducible, or a product of irreducibles with a minimal $N(\alpha)$
@@ -2674,7 +2790,7 @@ Thus $\alpha$ must be a product of irreducibles. Contradiction
 
 **Theorem 18.7**: Let $\alpha, \beta \in Z[i]$ with $\beta \neq 0$, then there exists $\eta, \rho \in Z[i]$ such that
 
-$$\alpha = \beta \eta \quad \quad 0 \leq N(\rho) < N(\beta)$$
+$$\alpha = \beta \eta  + \rho \quad \quad 0 \leq N(\rho) < N(\beta)$$
 
 &nbsp;
 
